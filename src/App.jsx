@@ -1,377 +1,254 @@
-import { useState } from "react";
-
-const services = [
+const serviceCards = [
   {
-    number: "01",
-    title: "Primary Care",
-    description:
-      "Annual wellness, preventive screenings, medication management, and follow-up care for common chronic conditions.",
+    title: "Weight Loss Program",
+    subtitle: "",
+    tone: "tone-a",
   },
   {
-    number: "02",
-    title: "Immigration Medical Exams",
-    description:
-      "I-693 physicals presented with a clearer process so patients know what to expect before they arrive.",
+    title: "Immigration Medical Exam",
+    subtitle: "I-693",
+    tone: "tone-b",
   },
   {
-    number: "03",
-    title: "Weight Management",
-    description:
-      "Structured plans focused on realistic progress, measurable health goals, and steady clinical support.",
-  },
-  {
-    number: "04",
-    title: "Women's Health",
-    description:
-      "Preventive visits, screenings, and ongoing care in a warm, accessible clinic environment.",
-  },
-  {
-    number: "05",
-    title: "DOT Exams",
-    description:
-      "Straightforward occupational and transportation physicals with easier appointment guidance.",
-  },
-  {
-    number: "06",
-    title: "In-House Lab Services",
-    description:
-      "Convenient testing and faster care coordination without sending patients through a fragmented workflow.",
+    title: "Primary Care Services",
+    subtitle: "",
+    tone: "tone-c",
   },
 ];
 
 const providers = [
-  ["PA", "Paul Tromba, PA", "Primary care and patient-centered follow-up care."],
-  ["PA", "Sharndeep Chokar, PA", "Comprehensive care with attention to continuity and access."],
-  ["NP", "Xan Layugan, NP", "Preventive and ongoing care for families and individual patients."],
-  ["NP", "Jamie Chinnick, NP", "Supportive communication and practical treatment planning."],
-  ["MD", "Payal Shah, MD", "Experienced physician support for primary care and clinic leadership."],
+  { name: "Paul Tromba, PA", initials: "PT", tone: "tone-a", size: "large", style: { top: 0, left: 90 } },
+  { name: "Sharndeep Chokar, PA", initials: "SC", tone: "tone-b", size: "small", style: { top: 48, left: 250 } },
+  { name: "Xan Layugan, NP", initials: "XL", tone: "tone-c", size: "medium", style: { top: 24, right: 70 } },
+  { name: "Jamie Chinnick, NP", initials: "JC", tone: "tone-d", size: "medium", style: { top: 170, left: 120 } },
+  { name: "Payal Shah, MD", initials: "PS", tone: "tone-e", size: "medium", style: { top: 160, right: 24 } },
 ];
 
-const locations = [
-  {
-    title: "Bellevue Clinic",
-    address: ["1380 112th Ave NE, Suite 100", "Bellevue, WA 98004"],
-    contact: "(253) 397-8683",
-    details: "Monday to Friday: 8:00 AM - 6:00 PM",
-  },
-  {
-    title: "Kent Clinic",
-    address: ["1314 Central Ave S, Suite 102", "Kent, WA 98032"],
-    contact: "(253) 397-8683",
-    details: "Monday to Friday: 8:00 AM - 6:00 PM",
-  },
-  {
-    title: "Virtual Visits",
-    address: ["Remote appointments available", "for eligible visit types."],
-    contact: "info@1stopmedicalservices.com",
-    details: "Monday to Friday: 8:00 AM - 6:00 PM",
-  },
+const testimonials = [
+  "I got my vaccination here. The staff was knowledgeable, friendly and efficient. They made sure that I was given proper information and guidance.",
+  "Very happy with my experience at Onestop medical. They made it very easy and simple and I appreciate them doing this service for the community.",
+  "I've been seeing Dr. Shah for quite sometime now, and I'm truly happy throughout with my medical needs. Communication and professionalism stand out.",
 ];
 
-const faqs = [
-  {
-    question: "What types of appointments does the clinic offer?",
-    answer:
-      "Primary care, immigration physicals, weight management, women's health, DOT exams, lab services, and select virtual visits.",
-  },
-  {
-    question: "Where are the clinics located?",
-    answer: "OneStop Medical Services lists locations in Bellevue and Kent, Washington.",
-  },
-  {
-    question: "How do patients book an appointment?",
-    answer:
-      "Patients can use the online booking link, call the clinic directly, or use the patient portal for follow-up needs.",
-  },
-  {
-    question: "What languages are supported?",
-    answer:
-      "The current clinic site states support for English, Hindi, Punjabi, Gujarati, French, and Spanish.",
-  },
+const hours = [
+  "Monday: 8:00AM-6:00PM",
+  "Tuesday: 8:00AM-6:00PM",
+  "Wednesday: 8:00AM-6:00PM",
+  "Thursday: 8:00AM-6:00PM",
+  "Friday: 8:00AM-6:00PM",
 ];
 
 function App() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const year = new Date().getFullYear();
-
   return (
-    <div className="site-shell">
-      <header className="topbar">
-        <p>Two Washington locations. Same-week appointments. Virtual visits available.</p>
-        <a href="tel:2533978683">(253) 397-8683</a>
-      </header>
-
-      <header className="header">
-        <a className="brand" href="#top" aria-label="OneStop Medical Services home">
-          <span className="brand-mark">1</span>
-          <span>
-            <strong>OneStop Medical Services</strong>
-            <small>Primary care for everyday health and long-term wellness</small>
-          </span>
-        </a>
-
-        <button
-          className="nav-toggle"
-          aria-expanded={menuOpen}
-          aria-controls="site-nav"
-          onClick={() => setMenuOpen((open) => !open)}
-        >
-          Menu
-        </button>
-
-        <nav id="site-nav" className={`nav ${menuOpen ? "is-open" : ""}`}>
-          <a href="#services">Services</a>
-          <a href="#providers">Providers</a>
-          <a href="#locations">Locations</a>
-          <a href="#faq">FAQ</a>
-          <a
-            className="button button-small button-ghost"
-            href="https://ehr.ethizo.com/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Patient Portal
-          </a>
-          <a
-            className="button button-small"
-            href="https://www.zocdoc.com/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Book Online
-          </a>
-        </nav>
-      </header>
-
-      <main id="top">
-        <section className="hero">
-          <div className="hero-copy">
-            <p className="eyebrow">Family medicine, immigration exams, and preventive care</p>
-            <h1>Clinic care that feels organized, personal, and easy to navigate.</h1>
-            <p className="hero-text">
-              OneStop Medical Services supports families and individuals with
-              primary care, women's health, weight management, DOT exams,
-              in-house lab testing, and I-693 immigration physicals.
-            </p>
-            <div className="hero-actions">
-              <a className="button" href="https://www.zocdoc.com/" target="_blank" rel="noreferrer">
-                Book an Appointment
-              </a>
-              <a className="button button-secondary" href="#locations">
-                View Locations &amp; Hours
-              </a>
-            </div>
-            <ul className="hero-points">
-              <li>In-person visits in Bellevue and Kent</li>
-              <li>Virtual care Monday through Friday</li>
-              <li>English, Hindi, Punjabi, Gujarati, French, and Spanish support</li>
-            </ul>
-          </div>
-
-          <div className="hero-panel">
-            <div className="panel-card panel-primary">
-              <span className="panel-label">Now offering</span>
-              <h2>Primary care with practical access</h2>
-              <p>
-                Routine wellness visits, preventive screenings, chronic condition support,
-                and care plans that are understandable from the first visit.
-              </p>
-            </div>
-            <div className="panel-grid">
-              <article className="panel-card">
-                <strong>2 clinic locations</strong>
-                <p>Bellevue and Kent, Washington</p>
-              </article>
-              <article className="panel-card">
-                <strong>Weekday hours</strong>
-                <p>Monday through Friday, 8:00 AM to 6:00 PM</p>
-              </article>
-              <article className="panel-card">
-                <strong>Specialized services</strong>
-                <p>I-693 exams, DOT physicals, lab work, and weight management</p>
-              </article>
-              <article className="panel-card">
-                <strong>Patient-first flow</strong>
-                <p>Clear navigation, faster booking, and stronger care information</p>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <section className="trust-band" aria-label="Highlights">
-          <div>
-            <strong>Primary Care</strong>
-            <span>Routine visits, wellness support, and ongoing care coordination</span>
-          </div>
-          <div>
-            <strong>Immigration Physicals</strong>
-            <span>I-693 medical exam support in a clear, structured process</span>
-          </div>
-          <div>
-            <strong>In-House Lab</strong>
-            <span>Convenient testing and follow-up in one place</span>
-          </div>
-        </section>
-
-        <section id="services" className="section">
-          <div className="section-heading">
-            <p className="eyebrow">Services</p>
-            <h2>Built around the care people actually come in for.</h2>
-            <p>
-              The site is now organized into clearer service categories so patients can
-              quickly understand what the clinic offers and what to book.
-            </p>
-          </div>
-
-          <div className="service-grid">
-            {services.map((service) => (
-              <article className="service-card" key={service.title}>
-                <span>{service.number}</span>
-                <h3>{service.title}</h3>
-                <p>{service.description}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="section feature-section">
-          <div className="feature-copy">
-            <p className="eyebrow">Why this feels better</p>
-            <h2>A calmer, more trustworthy experience for a clinic website.</h2>
-            <p>
-              Primary care websites work best when they reduce uncertainty. This layout emphasizes
-              contact details, access, services, provider credibility, and booking actions without
-              overwhelming first-time visitors.
-            </p>
-          </div>
-          <div className="feature-list">
-            <article>
-              <h3>Clarity first</h3>
-              <p>Patients can immediately see where the clinic is, what it offers, and how to book.</p>
-            </article>
-            <article>
-              <h3>More credible tone</h3>
-              <p>The messaging now fits family medicine and avoids generic or mismatched healthcare copy.</p>
-            </article>
-            <article>
-              <h3>Responsive by default</h3>
-              <p>The interface is designed for both mobile appointment seekers and desktop research visits.</p>
-            </article>
-          </div>
-        </section>
-
-        <section id="providers" className="section">
-          <div className="section-heading">
-            <p className="eyebrow">Providers</p>
-            <h2>Care backed by a multidisciplinary team.</h2>
-            <p>
-              The provider area keeps the clinic team visible while presenting them in a cleaner,
-              more credible clinical format.
-            </p>
-          </div>
-
-          <div className="provider-grid">
-            {providers.map(([badge, name, description]) => (
-              <article className="provider-card" key={name}>
-                <div className="provider-badge">{badge}</div>
-                <h3>{name}</h3>
-                <p>{description}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="section testimonial-section">
-          <div className="section-heading">
-            <p className="eyebrow">Patient Experience</p>
-            <h2>Care that patients describe as clear, friendly, and dependable.</h2>
-          </div>
-          <div className="testimonial-grid">
-            <blockquote>
-              “Friendly staff, clear guidance, and efficient care made the visit feel straightforward.”
-            </blockquote>
-            <blockquote>
-              “The process felt easy from scheduling through treatment, which matters a lot in a clinic setting.”
-            </blockquote>
-            <blockquote>
-              “Patients highlight communication, professionalism, and feeling supported over time.”
-            </blockquote>
-          </div>
-        </section>
-
-        <section id="locations" className="section location-section">
-          <div className="section-heading">
-            <p className="eyebrow">Locations &amp; Hours</p>
-            <h2>Easy to find, easy to call, and easy to schedule.</h2>
-          </div>
-
-          <div className="location-grid">
-            {locations.map((location) => (
-              <article className="location-card" key={location.title}>
-                <h3>{location.title}</h3>
-                <p>
-                  {location.address[0]}
-                  <br />
-                  {location.address[1]}
-                </p>
-                {location.contact.includes("@") ? (
-                  <a href={`mailto:${location.contact}`}>{location.contact}</a>
-                ) : (
-                  <a href="tel:2533978683">{location.contact}</a>
-                )}
-                <p>{location.details}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="section cta-section">
-          <div>
-            <p className="eyebrow">Next Step</p>
-            <h2>Make booking the easiest part of care.</h2>
-            <p>
-              Portal access and online scheduling stay visible right before the footer so patients
-              can take action without searching again.
-            </p>
-          </div>
-          <div className="cta-actions">
-            <a className="button" href="https://www.zocdoc.com/" target="_blank" rel="noreferrer">
-              Schedule Online
-            </a>
-            <a className="button button-secondary" href="https://ehr.ethizo.com/" target="_blank" rel="noreferrer">
-              Open Patient Portal
-            </a>
-          </div>
-        </section>
-
-        <section id="faq" className="section faq-section">
-          <div className="section-heading">
-            <p className="eyebrow">FAQ</p>
-            <h2>Helpful answers before a patient even calls.</h2>
-          </div>
-
-          <div className="faq-list">
-            {faqs.map((faq) => (
-              <details key={faq.question}>
-                <summary>{faq.question}</summary>
-                <p>{faq.answer}</p>
-              </details>
-            ))}
-          </div>
-        </section>
-      </main>
-
-      <footer className="footer">
-        <div>
-          <strong>OneStop Medical Services</strong>
-          <p>
-            Phone: <a href="tel:2533978683">(253) 397-8683</a> | Fax: (253) 342-4353
+    <div className="page">
+      <header className="masthead">
+        <div className="logo-mark">OneStop</div>
+        <div className="masthead-copy">
+          <p className="masthead-kicker">
+            Family Medicine Clinic, Immigration, Labs, Immunizations
           </p>
+          <div className="holiday-note">
+            <p>
+              We will be <span>CLOSED</span> on December 24th &amp; 25th for the Christmas Holiday.
+            </p>
+            <p>Hope you have a Merry Christmas.</p>
+            <p>
+              Also, we will be <span>CLOSED</span> for New Years, January 1st, 2026.
+            </p>
+            <p>We look forward to caring for you and your family in the new year.</p>
+          </div>
+          <h1>
+            Onestop Medical Clinic:
+            <br />
+            <em>Specializing in</em>
+            <br />
+            Primary Care, Weight Management
+            <br />
+            and
+            <br />
+            Immigration Services
+          </h1>
+          <div className="address-pills">
+            <div>1380 112th Ave NE Suite#100, Bellevue, WA 98004</div>
+            <div>1314 Central Ave S, #102, Kent, WA 98032</div>
+          </div>
         </div>
-        <div>
-          <p>Bellevue and Kent, Washington</p>
-          <p>{year} OneStop Medical Services</p>
+      </header>
+
+      <nav className="top-nav" aria-label="Primary">
+        <a href="#home">Home</a>
+        <a href="#policy">Office Policy</a>
+        <a href="#services">Services</a>
+        <a href="#resources">Resources</a>
+        <a href="#providers">Providers</a>
+        <a href="#stories">Patient Stories</a>
+        <a href="#faq">FAQ</a>
+        <a href="#appt">Appt Types</a>
+      </nav>
+
+      <section className="intro-bar">
+        <div className="intro-copy">
+          <p>
+            Getting an online health treatment plan is no longer a challenge. Consult our
+            highly qualified health care professionals for a personalized treatment plan.
+            With or without insurance, you can get the care you choose.
+          </p>
+          <div className="intro-actions">
+            <a href="https://www.zocdoc.com/" target="_blank" rel="noreferrer">
+              Book Online
+            </a>
+            <a href="#contact">Contact Us</a>
+          </div>
         </div>
+        <div className="family-badge">
+          <div className="family-illustration">Care for every stage of life</div>
+        </div>
+      </section>
+
+      <section className="experts" id="providers">
+        <div className="experts-copy">
+          <h2>Explore Highly Qualified HealthCare Experts</h2>
+          <p>
+            Our team of health professionals have been offering in-person and online mental
+            health consultations for over 16 years. They received their education at
+            prestigious medical and nursing schools in the United States. Our healthcare
+            staff will collaborate with you and your family to provide the best possible
+            care that suits you.
+          </p>
+          <a href="#providers-list">Our Providers</a>
+          <strong>
+            Languages Spoken: English, Hindi, Punjabi, Gujarati, French and Spanish
+          </strong>
+        </div>
+
+        <div className="provider-cluster" id="providers-list" aria-label="Provider preview">
+          <div className="cluster-stem" />
+          {providers.map((provider) => (
+            <article
+              key={provider.name}
+              className={`provider-bubble ${provider.size} ${provider.tone}`}
+              style={provider.style}
+            >
+              <span>{provider.initials}</span>
+              <small>{provider.name}</small>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="offerings" id="services">
+        <h2>What We Offer</h2>
+        <div className="service-grid">
+          {serviceCards.map((service) => (
+            <article key={service.title} className="service-card">
+              <div className={`service-image ${service.tone}`} />
+              <h3>{service.title}</h3>
+              {service.subtitle ? <p>{service.subtitle}</p> : null}
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="stories" id="stories">
+        <div className="stories-shell">
+          {testimonials.map((quote, index) => (
+            <article key={quote} className="story-card">
+              <div className={`story-avatar tone-${String.fromCharCode(97 + index)}`}>
+                {["AB", "LM", "DR"][index]}
+              </div>
+              <p>{quote}</p>
+              <span>&rdquo;</span>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="contact" id="contact">
+        <h2>Contact Us</h2>
+        <div className="contact-grid">
+          <div className="contact-map">
+            <div className="map-card">
+              <strong>1380 112th Ave NE Ste 100, Bellevue, WA 98004, USA</strong>
+              <a
+                href="https://maps.google.com/?q=1380%20112th%20Ave%20NE%20Suite%20100%20Bellevue%20WA%2098004"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Directions
+              </a>
+            </div>
+          </div>
+
+          <div className="hours-card">
+            <h3>Hours of Operation</h3>
+            <div>
+              <strong>In-Person Visits: Bellevue</strong>
+              {hours.map((line) => (
+                <p key={`b-${line}`}>{line}</p>
+              ))}
+            </div>
+            <div>
+              <strong>In-Person Visits: Kent</strong>
+              {hours.map((line) => (
+                <p key={`k-${line}`}>{line}</p>
+              ))}
+            </div>
+            <div>
+              <strong>For Virtual Visits</strong>
+              {hours.map((line) => (
+                <p key={`v-${line}`}>{line}</p>
+              ))}
+            </div>
+            <em>We look forward to taking care of you and your family.</em>
+            <small>Languages spoken: English, Gujarati, Punjabi, Hindi, French and Spanish</small>
+          </div>
+        </div>
+
+        <div className="contact-lower">
+          <div className="contact-details">
+            <p>1380 112th Ave NE, #100 Bellevue, WA 98004</p>
+            <p>&amp;</p>
+            <p>1314 Central Ave S, #102 Kent, WA 98032</p>
+            <p>Phone: (253) 397-8683</p>
+            <p>Fax: (253) 342-4353</p>
+            <div className="socials">
+              <a href="/">f</a>
+              <a href="/">t</a>
+              <a href="/">in</a>
+            </div>
+          </div>
+
+          <form className="contact-form">
+            <input type="text" placeholder="Name" />
+            <input type="email" placeholder="Email" />
+            <input type="tel" placeholder="Phone" />
+            <input type="text" placeholder="Subject" />
+            <textarea placeholder="Type your message here..." rows="5" />
+            <div className="form-footer">
+              <span>Thanks for submitting!</span>
+              <button type="button">Submit</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <footer className="site-footer">
+        <h3>OneStop Medical Services</h3>
+        <p>Phone: (253) 397-8683</p>
+        <p>Fax: (253) 342-4353</p>
+        <p>1314 Central Ave S, #102 Kent, WA 98032</p>
+        <p>&amp;</p>
+        <p>1380 112th Ave NE, #100 Bellevue, WA 98004</p>
+        <a href="https://ehr.ethizo.com/" target="_blank" rel="noreferrer">
+          Onestop Portal
+        </a>
+        <div className="footer-socials">
+          <a href="/">t</a>
+          <a href="/">in</a>
+          <a href="/">f</a>
+          <a href="/">ig</a>
+        </div>
+        <small>©2019 by OneStop Medical Services, LLC.</small>
       </footer>
     </div>
   );
