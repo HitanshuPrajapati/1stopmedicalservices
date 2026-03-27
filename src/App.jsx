@@ -29,10 +29,11 @@ const providers = [
   { name: "Jamie Chinnick, NP", role: "Nurse Practitioner" },
 ];
 
-const highlights = [
-  "In-person visits in Bellevue and Kent",
-  "Virtual visit availability on weekdays",
-  "Support in English, Hindi, Punjabi, Gujarati, French, and Spanish",
+const visitOptions = [
+  "Bellevue in-person visits",
+  "Kent in-person visits",
+  "Weekday virtual appointments",
+  "Portal access for returning patients",
 ];
 
 const testimonials = [
@@ -51,28 +52,28 @@ const hours = [
 
 function App() {
   return (
-    <div className="page-shell">
-      <header className="topbar">
-        <p>Primary care, immigration exams, labs, and immunizations</p>
+    <div className="site-shell">
+      <header className="announcement">
+        <span>Family medicine, immigration exams, labs, and immunizations</span>
         <a href="tel:2533978683">(253) 397-8683</a>
       </header>
 
-      <header className="site-header">
+      <header className="header">
         <a className="brand" href="#top">
-          <div className="brand-mark">1</div>
+          <div className="brand-badge">1</div>
           <div>
             <strong>OneStop Medical Services</strong>
-            <span>Family medicine clinic for everyday care and specialized visits</span>
+            <span>Primary care for individuals and families</span>
           </div>
         </a>
 
-        <nav className="main-nav" aria-label="Primary">
+        <nav className="nav" aria-label="Primary">
           <a href="#services">Services</a>
           <a href="#providers">Providers</a>
           <a href="#locations">Locations</a>
           <a href="#contact">Contact</a>
           <a
-            className="nav-button nav-button-secondary"
+            className="pill pill-ghost"
             href="https://ehr.ethizo.com/"
             target="_blank"
             rel="noreferrer"
@@ -80,7 +81,7 @@ function App() {
             Patient Portal
           </a>
           <a
-            className="nav-button"
+            className="pill"
             href="https://www.zocdoc.com/"
             target="_blank"
             rel="noreferrer"
@@ -93,192 +94,180 @@ function App() {
       <main id="top">
         <section className="hero">
           <div className="hero-copy">
-            <p className="eyebrow">Primary care for individuals and families</p>
-            <h1>Clinic care that feels clear, modern, and easy to trust.</h1>
+            <p className="eyebrow">Modern clinic care, without the friction</p>
+            <h1>Healthcare that feels calm, capable, and easy to navigate.</h1>
             <p className="hero-text">
-              OneStop Medical Services provides primary care, immigration medical exams,
-              weight management, immunizations, and lab services with in-person care in
-              Bellevue and Kent plus weekday virtual visits.
+              OneStop Medical Services offers primary care, immigration medical exams,
+              weight management, immunizations, and lab services with weekday access in
+              Bellevue, Kent, and eligible virtual visits.
             </p>
 
             <div className="hero-actions">
               <a
-                className="button"
+                className="pill"
                 href="https://www.zocdoc.com/"
                 target="_blank"
                 rel="noreferrer"
               >
-                Schedule an Appointment
+                Schedule a Visit
               </a>
-              <a className="button button-secondary" href="#locations">
-                View Locations
+              <a className="pill pill-ghost" href="#contact">
+                Contact the Clinic
               </a>
             </div>
 
-            <ul className="hero-list">
-              {highlights.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
+            <div className="hero-note">
+              <strong>Languages spoken</strong>
+              <p>English, Hindi, Punjabi, Gujarati, French, and Spanish</p>
+            </div>
           </div>
 
-          <aside className="hero-card">
-            <div className="hero-card-panel">
-              <span className="panel-label">Hours</span>
-              <h2>Open Monday through Friday</h2>
-              <p>8:00 AM to 6:00 PM for Bellevue, Kent, and eligible virtual visits.</p>
+          <div className="hero-stage">
+            <div className="stage-card stage-card-main">
+              <span>Open weekdays</span>
+              <strong>8:00 AM to 6:00 PM</strong>
+              <p>Convenient hours for Bellevue, Kent, and virtual visit availability.</p>
             </div>
-            <div className="hero-stats">
-              <article>
-                <strong>2 locations</strong>
-                <p>Bellevue and Kent</p>
-              </article>
-              <article>
-                <strong>Patient support</strong>
-                <p>Portal access and online booking</p>
-              </article>
-              <article>
-                <strong>Core services</strong>
-                <p>Primary care, exams, labs, and wellness support</p>
-              </article>
+
+            <div className="stage-card stage-card-list">
+              <span>Visit options</span>
+              <ul>
+                {visitOptions.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
             </div>
-          </aside>
+
+            <div className="stage-graphic">
+              <div className="graphic-ring graphic-ring-a" />
+              <div className="graphic-ring graphic-ring-b" />
+              <div className="graphic-panel">
+                <p>Bellevue</p>
+                <p>Kent</p>
+                <p>Virtual Care</p>
+              </div>
+            </div>
+          </div>
         </section>
 
-        <section className="trust-strip">
+        <section className="metrics">
           <article>
-            <strong>Primary Care</strong>
-            <p>Routine visits, preventive care, and longer-term follow-up.</p>
+            <strong>2 clinic locations</strong>
+            <p>Bellevue and Kent, Washington</p>
           </article>
           <article>
-            <strong>Immigration Exams</strong>
-            <p>I-693 visits presented with a clear next step for patients.</p>
+            <strong>Core family medicine care</strong>
+            <p>Routine visits, wellness support, and follow-up care</p>
           </article>
           <article>
-            <strong>Convenient Access</strong>
-            <p>Two locations, virtual visits, and multiple ways to get in touch.</p>
+            <strong>Specialized visits</strong>
+            <p>Immigration exams, lab services, and weight management</p>
           </article>
         </section>
 
-        <section className="section" id="services">
-          <div className="section-heading">
+        <section className="section services-section" id="services">
+          <div className="section-head">
             <p className="eyebrow">Services</p>
-            <h2>Focused on the care patients most often need.</h2>
-            <p>
-              The page keeps the clinic’s most relevant services front and center, with a
-              simpler structure and fewer distractions.
-            </p>
+            <h2>Built around the reasons patients actually book.</h2>
           </div>
 
-          <div className="services-grid">
-            {services.map((service, index) => (
-              <article key={service.title} className="service-card">
-                <div className={`service-icon service-icon-${index + 1}`} />
-                <h3>{service.title}</h3>
-                <p>{service.description}</p>
-              </article>
-            ))}
+          <div className="services-layout">
+            <div className="services-intro">
+              <p>
+                The home page should answer the basics quickly: what the clinic offers,
+                where it is, and how to get seen. This version keeps those answers visible
+                and trims away anything that feels noisy.
+              </p>
+            </div>
+
+            <div className="services-grid">
+              {services.map((service, index) => (
+                <article key={service.title} className="service-card">
+                  <div className={`service-mark service-mark-${index + 1}`} />
+                  <h3>{service.title}</h3>
+                  <p>{service.description}</p>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 
-        <section className="section feature-section">
-          <div className="feature-copy">
-            <p className="eyebrow">Why this layout works better</p>
-            <h2>A more typical clinic website experience for first-time visitors.</h2>
-            <p>
-              Patients usually want the same few answers quickly: what the clinic offers,
-              where it is, how to book, and whether the team feels credible. This design
-              organizes the page around those decisions.
-            </p>
-          </div>
-          <div className="feature-points">
-            <article>
-              <strong>Stronger visual hierarchy</strong>
-              <p>Important information appears in the right order without overcrowding the page.</p>
-            </article>
-            <article>
-              <strong>Clearer patient actions</strong>
-              <p>Booking, contact, portal access, and locations are easy to find on both desktop and mobile.</p>
-            </article>
-            <article>
-              <strong>More clinic-appropriate tone</strong>
-              <p>The interface feels calmer, more professional, and more aligned with primary care expectations.</p>
-            </article>
-          </div>
-        </section>
-
-        <section className="section" id="providers">
-          <div className="section-heading">
+        <section className="section providers-section" id="providers">
+          <div className="section-head">
             <p className="eyebrow">Providers</p>
-            <h2>Meet the care team.</h2>
-            <p>
-              A concise provider section keeps the staff visible without forcing the home page
-              to carry too much extra detail.
-            </p>
+            <h2>A care team that feels visible and credible.</h2>
           </div>
 
-          <div className="provider-grid">
-            {providers.map((provider, index) => (
-              <article key={provider.name} className="provider-card">
-                <div className={`provider-avatar provider-avatar-${index + 1}`}>
-                  {provider.name
-                    .split(" ")
-                    .slice(0, 2)
-                    .map((part) => part[0])
-                    .join("")}
-                </div>
-                <h3>{provider.name}</h3>
-                <p>{provider.role}</p>
-              </article>
-            ))}
+          <div className="providers-layout">
+            <aside className="providers-sidebar">
+              <strong>What patients need to know first</strong>
+              <p>
+                Experienced clinicians, clear appointment paths, and support for everyday
+                care as well as specialized clinic visits.
+              </p>
+            </aside>
+
+            <div className="providers-grid">
+              {providers.map((provider, index) => (
+                <article key={provider.name} className="provider-card">
+                  <div className={`provider-chip provider-chip-${index + 1}`}>
+                    {provider.name
+                      .split(" ")
+                      .slice(0, 2)
+                      .map((part) => part[0])
+                      .join("")}
+                  </div>
+                  <h3>{provider.name}</h3>
+                  <p>{provider.role}</p>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 
-        <section className="section testimonial-section">
-          <div className="section-heading">
-            <p className="eyebrow">Patient Stories</p>
-            <h2>Positive care experiences still matter.</h2>
+        <section className="section stories-section">
+          <div className="section-head">
+            <p className="eyebrow">Patient Experience</p>
+            <h2>Feedback that supports trust without overwhelming the page.</h2>
           </div>
 
-          <div className="testimonial-grid">
+          <div className="stories-grid">
             {testimonials.map((quote, index) => (
-              <article key={quote} className="testimonial-card">
-                <div className={`testimonial-avatar testimonial-avatar-${index + 1}`}>
-                  {["AB", "LM", "DR"][index]}
-                </div>
+              <article key={quote} className="story-card">
+                <div className={`story-chip story-chip-${index + 1}`}>{["AB", "LM", "DR"][index]}</div>
                 <p>{quote}</p>
               </article>
             ))}
           </div>
         </section>
 
-        <section className="section location-section" id="locations">
-          <div className="section-heading">
+        <section className="section locations-section" id="locations">
+          <div className="section-head">
             <p className="eyebrow">Locations & Hours</p>
-            <h2>Easy to find and easy to contact.</h2>
+            <h2>Fast answers for where to go and when the clinic is open.</h2>
           </div>
 
-          <div className="location-grid">
-            <article className="location-card map-card">
-              <h3>Bellevue Clinic</h3>
+          <div className="locations-grid">
+            <article className="location-card location-card-map">
+              <strong>Bellevue Clinic</strong>
               <p>1380 112th Ave NE, Suite 100<br />Bellevue, WA 98004</p>
               <a
                 href="https://maps.google.com/?q=1380%20112th%20Ave%20NE%20Suite%20100%20Bellevue%20WA%2098004"
                 target="_blank"
                 rel="noreferrer"
               >
-                Open Directions
+                Open directions
               </a>
             </article>
 
             <article className="location-card">
-              <h3>Kent Clinic</h3>
+              <strong>Kent Clinic</strong>
               <p>1314 Central Ave S, Suite 102<br />Kent, WA 98032</p>
               <a href="tel:2533978683">(253) 397-8683</a>
             </article>
 
             <article className="location-card">
-              <h3>Clinic Hours</h3>
+              <strong>Clinic Hours</strong>
               {hours.map((line) => (
                 <p key={line}>{line}</p>
               ))}
@@ -287,13 +276,13 @@ function App() {
         </section>
 
         <section className="section contact-section" id="contact">
-          <div className="section-heading">
+          <div className="section-head">
             <p className="eyebrow">Contact</p>
-            <h2>Reach the clinic or send a message.</h2>
+            <h2>Reach the clinic directly or send a message.</h2>
           </div>
 
-          <div className="contact-grid">
-            <div className="contact-details">
+          <div className="contact-layout">
+            <div className="contact-cards">
               <article>
                 <strong>Phone</strong>
                 <p>(253) 397-8683</p>
@@ -303,8 +292,10 @@ function App() {
                 <p>(253) 342-4353</p>
               </article>
               <article>
-                <strong>Languages Spoken</strong>
-                <p>English, Hindi, Punjabi, Gujarati, French, and Spanish</p>
+                <strong>Patient Portal</strong>
+                <a href="https://ehr.ethizo.com/" target="_blank" rel="noreferrer">
+                  Open portal
+                </a>
               </article>
             </div>
 
@@ -314,7 +305,7 @@ function App() {
               <input type="tel" placeholder="Phone" />
               <input type="text" placeholder="Subject" />
               <textarea rows="5" placeholder="Type your message here..." />
-              <div className="form-footer">
+              <div className="form-row">
                 <span>Thanks for submitting!</span>
                 <button type="button">Submit</button>
               </div>
@@ -323,10 +314,10 @@ function App() {
         </section>
       </main>
 
-      <footer className="site-footer">
+      <footer className="footer">
         <div>
           <strong>OneStop Medical Services</strong>
-          <p>Family medicine clinic with locations in Bellevue and Kent, Washington.</p>
+          <p>Family medicine clinic serving Bellevue and Kent, Washington.</p>
         </div>
         <div>
           <p>Phone: (253) 397-8683</p>
