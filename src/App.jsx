@@ -53,11 +53,6 @@ const hours = [
 function App() {
   return (
     <div className="site-shell">
-      <header className="announcement">
-        <span>Family medicine, immigration exams, labs, and immunizations</span>
-        <a href="tel:2533978683">(253) 397-8683</a>
-      </header>
-
       <header className="header">
         <a className="brand" href="#top">
           <div className="brand-badge">1</div>
@@ -123,29 +118,23 @@ function App() {
           </div>
 
           <div className="hero-stage">
-            <div className="stage-card stage-card-main">
-              <span>Open weekdays</span>
-              <strong>8:00 AM to 6:00 PM</strong>
-              <p>Convenient hours for Bellevue, Kent, and virtual visit availability.</p>
-            </div>
-
-            <div className="stage-card stage-card-list">
-              <span>Visit options</span>
-              <ul>
-                {visitOptions.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-
             <div className="stage-graphic">
               <div className="graphic-ring graphic-ring-a" />
               <div className="graphic-ring graphic-ring-b" />
               <div className="graphic-panel">
-                <p>Bellevue</p>
-                <p>Kent</p>
-                <p>Virtual Care</p>
+                <span>Open weekdays</span>
+                <strong>8:00 AM to 6:00 PM</strong>
+                <p>Care available in Bellevue, Kent, and through eligible virtual visits.</p>
               </div>
+            </div>
+
+            <div className="visit-strip">
+              {visitOptions.map((item) => (
+                <article key={item}>
+                  <span />
+                  <p>{item}</p>
+                </article>
+              ))}
             </div>
           </div>
         </section>
@@ -171,24 +160,22 @@ function App() {
             <h2>Built around the reasons patients actually book.</h2>
           </div>
 
-          <div className="services-layout">
-            <div className="services-intro">
-              <p>
-                The home page should answer the basics quickly: what the clinic offers,
-                where it is, and how to get seen. This version keeps those answers visible
-                and trims away anything that feels noisy.
-              </p>
-            </div>
+          <div className="services-intro">
+            <p>
+              The home page should answer the basics quickly: what the clinic offers,
+              where it is, and how to get seen. This version keeps those answers visible
+              and trims away anything that feels noisy.
+            </p>
+          </div>
 
-            <div className="services-grid">
-              {services.map((service, index) => (
-                <article key={service.title} className="service-card">
-                  <div className={`service-mark service-mark-${index + 1}`} />
-                  <h3>{service.title}</h3>
-                  <p>{service.description}</p>
-                </article>
-              ))}
-            </div>
+          <div className="services-grid">
+            {services.map((service, index) => (
+              <article key={service.title} className="service-card">
+                <div className={`service-mark service-mark-${index + 1}`} />
+                <h3>{service.title}</h3>
+                <p>{service.description}</p>
+              </article>
+            ))}
           </div>
         </section>
 
@@ -198,30 +185,28 @@ function App() {
             <h2>A care team that feels visible and credible.</h2>
           </div>
 
-          <div className="providers-layout">
-            <aside className="providers-sidebar">
-              <strong>What patients need to know first</strong>
-              <p>
-                Experienced clinicians, clear appointment paths, and support for everyday
-                care as well as specialized clinic visits.
-              </p>
-            </aside>
+          <aside className="providers-sidebar">
+            <strong>What patients need to know first</strong>
+            <p>
+              Experienced clinicians, clear appointment paths, and support for everyday
+              care as well as specialized clinic visits.
+            </p>
+          </aside>
 
-            <div className="providers-grid">
-              {providers.map((provider, index) => (
-                <article key={provider.name} className="provider-card">
-                  <div className={`provider-chip provider-chip-${index + 1}`}>
-                    {provider.name
-                      .split(" ")
-                      .slice(0, 2)
-                      .map((part) => part[0])
-                      .join("")}
-                  </div>
-                  <h3>{provider.name}</h3>
-                  <p>{provider.role}</p>
-                </article>
-              ))}
-            </div>
+          <div className="providers-grid">
+            {providers.map((provider, index) => (
+              <article key={provider.name} className="provider-card">
+                <div className={`provider-chip provider-chip-${index + 1}`}>
+                  {provider.name
+                    .split(" ")
+                    .slice(0, 2)
+                    .map((part) => part[0])
+                    .join("")}
+                </div>
+                <h3>{provider.name}</h3>
+                <p>{provider.role}</p>
+              </article>
+            ))}
           </div>
         </section>
 
@@ -281,36 +266,34 @@ function App() {
             <h2>Reach the clinic directly or send a message.</h2>
           </div>
 
-          <div className="contact-layout">
-            <div className="contact-cards">
-              <article>
-                <strong>Phone</strong>
-                <p>(253) 397-8683</p>
-              </article>
-              <article>
-                <strong>Fax</strong>
-                <p>(253) 342-4353</p>
-              </article>
-              <article>
-                <strong>Patient Portal</strong>
-                <a href="https://ehr.ethizo.com/" target="_blank" rel="noreferrer">
-                  Open portal
-                </a>
-              </article>
-            </div>
-
-            <form className="contact-form">
-              <input type="text" placeholder="Name" />
-              <input type="email" placeholder="Email" />
-              <input type="tel" placeholder="Phone" />
-              <input type="text" placeholder="Subject" />
-              <textarea rows="5" placeholder="Type your message here..." />
-              <div className="form-row">
-                <span>Thanks for submitting!</span>
-                <button type="button">Submit</button>
-              </div>
-            </form>
+          <div className="contact-cards">
+            <article>
+              <strong>Phone</strong>
+              <p>(253) 397-8683</p>
+            </article>
+            <article>
+              <strong>Fax</strong>
+              <p>(253) 342-4353</p>
+            </article>
+            <article>
+              <strong>Patient Portal</strong>
+              <a href="https://ehr.ethizo.com/" target="_blank" rel="noreferrer">
+                Open portal
+              </a>
+            </article>
           </div>
+
+          <form className="contact-form">
+            <input type="text" placeholder="Name" />
+            <input type="email" placeholder="Email" />
+            <input type="tel" placeholder="Phone" />
+            <input type="text" placeholder="Subject" />
+            <textarea rows="5" placeholder="Type your message here..." />
+            <div className="form-row">
+              <span>Thanks for submitting!</span>
+              <button type="button">Submit</button>
+            </div>
+          </form>
         </section>
       </main>
 
