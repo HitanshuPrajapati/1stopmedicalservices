@@ -324,19 +324,19 @@ h3 {
 }
 
 .service-card:nth-child(1) {
-  background: linear-gradient(180deg, rgba(224, 242, 245, 0.96), rgba(240, 249, 250, 0.93));
+  background: linear-gradient(180deg, rgba(220, 236, 252, 0.96), rgba(239, 247, 255, 0.93));
 }
 
 .service-card:nth-child(2) {
-  background: linear-gradient(180deg, rgba(224, 235, 248, 0.96), rgba(239, 246, 252, 0.93));
+  background: linear-gradient(180deg, rgba(236, 225, 247, 0.96), rgba(247, 241, 252, 0.93));
 }
 
 .service-card:nth-child(3) {
-  background: linear-gradient(180deg, rgba(225, 239, 242, 0.96), rgba(240, 248, 249, 0.93));
+  background: linear-gradient(180deg, rgba(225, 243, 233, 0.96), rgba(241, 249, 244, 0.93));
 }
 
 .service-card:nth-child(4) {
-  background: linear-gradient(180deg, rgba(228, 241, 236, 0.96), rgba(242, 248, 245, 0.93));
+  background: linear-gradient(180deg, rgba(220, 244, 242, 0.96), rgba(238, 251, 249, 0.93));
 }
 
 .section-action {
