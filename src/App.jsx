@@ -9,7 +9,7 @@ const services = [
   {
     title: "Immigration Medical Exams",
     description:
-      "I-693 exams and related visit support in a clear, patient-friendly clinic setting.",
+      "I-693 exams, immunizations, and paperwork ready in 4-5 business days.",
   },
   {
     title: "Weight Management",
