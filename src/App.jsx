@@ -82,9 +82,13 @@ function App() {
         </a>
 
         <nav className="nav" aria-label="Primary">
+          <a href="#office-policy">Office Policy</a>
           <a href="#services">Services</a>
+          <a href="#resources">Resources</a>
           <a href="#providers">Providers</a>
           <a href="#stories">Patient Stories</a>
+          <a href="#faq">FAQ</a>
+          <a href="#appt-types">Appointment Types</a>
         </nav>
       </header>
 
