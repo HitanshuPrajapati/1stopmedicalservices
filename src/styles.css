@@ -51,7 +51,6 @@ a {
 
 .header,
 .hero,
-.metrics,
 .section,
 .footer {
   position: relative;
@@ -95,9 +94,9 @@ a {
   align-items: center;
   padding: 10px 12px;
   border-radius: 999px;
-  background: rgba(232, 240, 245, 0.92);
-  border: 1px solid rgba(24, 59, 86, 0.1);
-  box-shadow: 0 12px 28px rgba(24, 59, 86, 0.08);
+  background: rgba(201, 224, 224, 0.96);
+  border: 1px solid rgba(24, 59, 86, 0.14);
+  box-shadow: 0 12px 28px rgba(24, 59, 86, 0.09);
 }
 
 .nav a {
@@ -141,7 +140,6 @@ a {
 
 .hero-copy,
 .hero-stage,
-.metrics,
 .section,
 .footer {
   border: 1px solid var(--line);
@@ -234,7 +232,8 @@ h3 {
 
 .hero-stage {
   border-radius: var(--radius-xl);
-  padding: 18px;
+  padding: 0;
+  overflow: hidden;
   background:
     linear-gradient(160deg, rgba(15, 157, 148, 0.08), rgba(255, 255, 255, 0.85));
 }
@@ -250,14 +249,15 @@ h3 {
 
 .carousel-card {
   display: block;
+  height: 100%;
 }
 
 .carousel-media {
   position: relative;
-  min-height: 360px;
+  min-height: 100%;
+  height: 100%;
   overflow: hidden;
-  border-radius: 28px;
-  border: 1px solid rgba(24, 59, 86, 0.08);
+  border-radius: var(--radius-xl);
   background: rgba(255, 255, 255, 0.72);
 }
 
@@ -265,7 +265,7 @@ h3 {
   display: flex;
   width: 100%;
   height: 100%;
-  min-height: 360px;
+  min-height: 100%;
   transition: transform 850ms cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform;
 }
@@ -274,33 +274,9 @@ h3 {
   width: 100%;
   min-width: 100%;
   height: 100%;
-  min-height: 360px;
+  min-height: 100%;
   object-fit: cover;
   display: block;
-}
-
-.metrics {
-  margin-top: 14px;
-  border-radius: var(--radius-xl);
-  padding: 16px 20px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
-
-.metrics article {
-  padding: 8px 0;
-}
-
-.metrics strong {
-  display: block;
-  margin-bottom: 8px;
-  color: var(--ink);
-}
-
-.metrics p {
-  margin: 0;
-  color: var(--muted);
 }
 
 .section {
@@ -322,11 +298,9 @@ h3 {
 }
 
 .services-grid,
-.info-grid,
 .providers-grid,
 .stories-grid,
-.locations-grid,
-.faq-list {
+.locations-grid {
   display: grid;
   gap: 14px;
 }
@@ -336,10 +310,8 @@ h3 {
 }
 
 .service-card,
-.info-card,
 .provider-card,
 .story-card,
-.faq-card,
 .location-card,
 .contact-cards article,
 .contact-form {
@@ -347,14 +319,6 @@ h3 {
   border-radius: var(--radius-lg);
   background: rgba(255, 255, 255, 0.82);
   border: 1px solid var(--line);
-}
-
-.info-grid {
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.compact-grid {
-  gap: 12px;
 }
 
 .service-mark {
@@ -436,24 +400,6 @@ h3 {
   grid-template-columns: repeat(3, 1fr);
 }
 
-.faq-list {
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.info-card strong,
-.faq-card strong {
-  display: block;
-  margin-bottom: 8px;
-  color: var(--navy);
-}
-
-.info-card p,
-.faq-card p {
-  margin: 0;
-  color: var(--muted);
-  line-height: 1.65;
-}
-
 .location-card-map {
   background:
     linear-gradient(90deg, rgba(24, 59, 86, 0.05) 1px, transparent 1px),
@@ -531,9 +477,7 @@ h3 {
 }
 
 @media (max-width: 1080px) {
-  .hero,
-  .info-grid,
-  .faq-list {
+  .hero {
     grid-template-columns: 1fr 1fr;
   }
 
@@ -562,12 +506,9 @@ h3 {
   }
 
   .nav,
-  .metrics,
   .services-grid,
-  .info-grid,
   .providers-grid,
   .stories-grid,
-  .faq-list,
   .locations-grid,
   .contact-cards {
     grid-template-columns: 1fr;
@@ -593,6 +534,6 @@ h3 {
   .carousel-media,
   .carousel-track,
   .carousel-track img {
-    min-height: 280px;
+    min-height: 320px;
   }
 }

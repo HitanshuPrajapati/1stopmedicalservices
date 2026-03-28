@@ -31,41 +31,10 @@ const providers = [
   { name: "Jamie Chinnick, NP", role: "Nurse Practitioner" },
 ];
 
-const visitOptions = [
-  "Bellevue in-person visits",
-  "Kent in-person visits",
-  "Weekday virtual appointments",
-  "Portal access for returning patients",
-];
-
 const testimonials = [
   "The staff was knowledgeable, friendly, and efficient. They made sure I had the information and guidance I needed.",
   "Very happy with my experience. The process felt easy and simple, and the team was helpful throughout.",
   "Communication and professionalism stood out. I felt supported and well cared for during my visits.",
-];
-
-const resources = [
-  "Accepted insurance guidance and visit prep details",
-  "Portal support for returning patients",
-  "Directions for Bellevue and Kent appointments",
-];
-
-const faqs = [
-  {
-    question: "Do you offer virtual visits?",
-    answer:
-      "Yes. Eligible weekday virtual appointments are available depending on the type of care needed.",
-  },
-  {
-    question: "What should I bring to my appointment?",
-    answer:
-      "Please bring your photo ID, insurance card, medication list, and any referral or exam paperwork if needed.",
-  },
-  {
-    question: "Can I book immigration medical exams here?",
-    answer:
-      "Yes. The clinic offers I-693 immigration medical exams along with related follow-up support.",
-  },
 ];
 
 const carouselSlides = [
@@ -113,13 +82,9 @@ function App() {
         </a>
 
         <nav className="nav" aria-label="Primary">
-          <a href="#office-policy">Office Policy</a>
           <a href="#services">Services</a>
-          <a href="#resources">Resources</a>
           <a href="#providers">Providers</a>
           <a href="#stories">Patient Stories</a>
-          <a href="#faq">FAQ</a>
-          <a href="#appt-types">Appt Types</a>
         </nav>
       </header>
 
@@ -174,43 +139,6 @@ function App() {
           </div>
         </section>
 
-        <section className="metrics">
-          <article>
-            <strong>2 clinic locations</strong>
-            <p>Bellevue and Kent, Washington</p>
-          </article>
-          <article>
-            <strong>Core family medicine care</strong>
-            <p>Routine visits, wellness support, and follow-up care</p>
-          </article>
-          <article>
-            <strong>Specialized visits</strong>
-            <p>Immigration exams, lab services, and weight management</p>
-          </article>
-        </section>
-
-        <section className="section office-policy-section" id="office-policy">
-          <div className="section-head">
-            <p className="eyebrow">Office Policy</p>
-            <h2>Clear expectations before patients arrive.</h2>
-          </div>
-
-          <div className="info-grid compact-grid">
-            <article className="info-card">
-              <strong>Please arrive early</strong>
-              <p>Plan to arrive 10 to 15 minutes before your appointment for check-in and paperwork.</p>
-            </article>
-            <article className="info-card">
-              <strong>Bring important documents</strong>
-              <p>Photo ID, insurance card, medication list, and any referral or exam forms help keep visits efficient.</p>
-            </article>
-            <article className="info-card">
-              <strong>Cancellation courtesy</strong>
-              <p>Calling ahead as early as possible helps the clinic offer those openings to other patients.</p>
-            </article>
-          </div>
-        </section>
-
         <section className="section services-section" id="services">
           <div className="section-head">
             <p className="eyebrow">Services</p>
@@ -231,22 +159,6 @@ function App() {
                 <div className={`service-mark service-mark-${index + 1}`} />
                 <h3>{service.title}</h3>
                 <p>{service.description}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="section resources-section" id="resources">
-          <div className="section-head">
-            <p className="eyebrow">Resources</p>
-            <h2>Helpful details patients often look for first.</h2>
-          </div>
-
-          <div className="info-grid">
-            {resources.map((item) => (
-              <article key={item} className="info-card">
-                <strong>{item}</strong>
-                <p>The homepage keeps these essentials easy to spot so patients can move forward without extra searching.</p>
               </article>
             ))}
           </div>
@@ -294,38 +206,6 @@ function App() {
               <article key={quote} className="story-card">
                 <div className={`story-chip story-chip-${index + 1}`}>{["AB", "LM", "DR"][index]}</div>
                 <p>{quote}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="section appt-types-section" id="appt-types">
-          <div className="section-head">
-            <p className="eyebrow">Appointment Types</p>
-            <h2>Visit options laid out in a quick, scannable format.</h2>
-          </div>
-
-          <div className="info-grid compact-grid">
-            {visitOptions.map((item) => (
-              <article key={item} className="info-card">
-                <strong>{item}</strong>
-                <p>Designed to help patients understand where and how they can be seen before contacting the clinic.</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="section faq-section" id="faq">
-          <div className="section-head">
-            <p className="eyebrow">FAQ</p>
-            <h2>Short answers to the most common scheduling questions.</h2>
-          </div>
-
-          <div className="faq-list">
-            {faqs.map((item) => (
-              <article key={item.question} className="faq-card">
-                <strong>{item.question}</strong>
-                <p>{item.answer}</p>
               </article>
             ))}
           </div>
