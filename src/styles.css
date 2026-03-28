@@ -46,7 +46,7 @@ a {
 .site-shell {
   width: min(1180px, calc(100% - 32px));
   margin: 0 auto;
-  padding: 20px 0 48px;
+  padding: 10px 0 26px;
 }
 
 .header,
@@ -60,28 +60,21 @@ a {
 .header {
   display: flex;
   justify-content: space-between;
-  gap: 18px;
+  gap: 14px;
   align-items: center;
-  padding: 20px 0 10px;
+  padding: 6px 0;
 }
 
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 14px;
 }
 
-.brand-badge {
-  width: 54px;
-  height: 54px;
-  border-radius: 18px;
-  display: grid;
-  place-items: center;
-  background: linear-gradient(145deg, var(--navy), #245d86);
-  color: #fff;
-  font-weight: 800;
-  font-size: 1.4rem;
-  box-shadow: var(--shadow);
+.brand-logo {
+  width: 235px;
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 .brand strong,
@@ -97,14 +90,18 @@ a {
 .nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  justify-content: flex-end;
+  gap: 8px;
   align-items: center;
 }
 
-.nav a:not(.pill) {
-  padding: 10px 12px;
+.nav a {
+  padding: 8px 12px;
   color: var(--muted);
-  font-weight: 600;
+  font-weight: 700;
+  border-radius: 999px;
+  border: 1px solid rgba(24, 59, 86, 0.08);
+  background: rgba(255, 255, 255, 0.66);
 }
 
 .pill,
@@ -128,8 +125,9 @@ a {
 
 .hero {
   display: grid;
-  gap: 20px;
-  margin-top: 16px;
+  grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+  gap: 16px;
+  margin-top: 6px;
 }
 
 .hero-copy,
@@ -145,14 +143,14 @@ a {
 
 .hero-copy {
   border-radius: var(--radius-xl);
-  padding: 40px;
+  padding: 24px;
   background:
     radial-gradient(circle at top right, rgba(15, 157, 148, 0.08), transparent 28%),
     var(--paper);
 }
 
 .eyebrow {
-  margin: 0 0 16px;
+  margin: 0 0 12px;
   font-size: 0.78rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -170,12 +168,12 @@ h3 {
 }
 
 h1 {
-  font-size: clamp(3rem, 5vw, 5.4rem);
-  max-width: 10ch;
+  font-size: clamp(2.35rem, 4vw, 4.15rem);
+  max-width: 12ch;
 }
 
 h2 {
-  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-size: clamp(1.8rem, 3.3vw, 2.85rem);
   max-width: 13ch;
 }
 
@@ -198,18 +196,18 @@ h3 {
 
 .hero-text {
   max-width: 58ch;
-  margin-top: 20px;
+  margin-top: 14px;
 }
 
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 14px;
-  margin: 28px 0;
+  gap: 12px;
+  margin: 18px 0 14px;
 }
 
 .hero-note {
-  padding: 20px 22px;
+  padding: 14px 16px;
   border-radius: var(--radius-md);
   background: rgba(217, 238, 240, 0.5);
   border: 1px solid rgba(24, 59, 86, 0.08);
@@ -227,9 +225,9 @@ h3 {
 
 .hero-stage {
   border-radius: var(--radius-xl);
-  padding: 26px;
+  padding: 16px;
   display: grid;
-  gap: 18px;
+  gap: 12px;
   background:
     linear-gradient(160deg, rgba(15, 157, 148, 0.08), rgba(255, 255, 255, 0.85));
 }
@@ -245,7 +243,7 @@ h3 {
 
 .stage-graphic {
   position: relative;
-  min-height: 240px;
+  min-height: 190px;
   border-radius: var(--radius-lg);
   background:
     linear-gradient(160deg, rgba(24, 59, 86, 0.08), rgba(255, 255, 255, 0.4)),
@@ -278,8 +276,8 @@ h3 {
   position: absolute;
   left: 28px;
   right: 28px;
-  bottom: 26px;
-  padding: 20px;
+  bottom: 18px;
+  padding: 14px;
   border-radius: var(--radius-md);
   background: rgba(255, 255, 255, 0.86);
   border: 1px solid var(--line);
@@ -297,8 +295,8 @@ h3 {
 
 .graphic-panel strong {
   display: block;
-  font-size: 1.7rem;
-  margin-bottom: 10px;
+  font-size: 1.5rem;
+  margin-bottom: 8px;
   color: var(--ink);
   font-family: Georgia, "Times New Roman", serif;
 }
@@ -312,14 +310,14 @@ h3 {
 .visit-strip {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
+  gap: 10px;
 }
 
 .visit-strip article {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   align-items: flex-start;
-  padding: 18px;
+  padding: 12px;
   border-radius: var(--radius-md);
   border: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.82);
@@ -341,12 +339,12 @@ h3 {
 }
 
 .metrics {
-  margin-top: 22px;
+  margin-top: 14px;
   border-radius: var(--radius-xl);
-  padding: 24px;
+  padding: 16px 20px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
+  gap: 16px;
 }
 
 .metrics article {
@@ -365,29 +363,31 @@ h3 {
 }
 
 .section {
-  margin-top: 24px;
+  margin-top: 14px;
   border-radius: var(--radius-xl);
-  padding: 34px;
+  padding: 22px;
 }
 
 .section-head {
-  margin-bottom: 26px;
+  margin-bottom: 16px;
 }
 
 .services-intro {
-  margin-bottom: 20px;
-  padding: 22px;
+  margin-bottom: 14px;
+  padding: 16px;
   border-radius: var(--radius-lg);
   background: rgba(255, 255, 255, 0.74);
   border: 1px solid var(--line);
 }
 
 .services-grid,
+.info-grid,
 .providers-grid,
 .stories-grid,
-.locations-grid {
+.locations-grid,
+.faq-list {
   display: grid;
-  gap: 18px;
+  gap: 14px;
 }
 
 .services-grid {
@@ -395,15 +395,25 @@ h3 {
 }
 
 .service-card,
+.info-card,
 .provider-card,
 .story-card,
+.faq-card,
 .location-card,
 .contact-cards article,
 .contact-form {
-  padding: 22px;
+  padding: 16px;
   border-radius: var(--radius-lg);
   background: rgba(255, 255, 255, 0.82);
   border: 1px solid var(--line);
+}
+
+.info-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.compact-grid {
+  gap: 12px;
 }
 
 .service-mark {
@@ -430,8 +440,8 @@ h3 {
 }
 
 .providers-sidebar {
-  margin-bottom: 20px;
-  padding: 24px;
+  margin-bottom: 14px;
+  padding: 16px;
   border-radius: var(--radius-lg);
   background:
     linear-gradient(160deg, rgba(15, 157, 148, 0.08), rgba(255, 255, 255, 0.7));
@@ -485,6 +495,24 @@ h3 {
   grid-template-columns: repeat(3, 1fr);
 }
 
+.faq-list {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.info-card strong,
+.faq-card strong {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--navy);
+}
+
+.info-card p,
+.faq-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
 .location-card-map {
   background:
     linear-gradient(90deg, rgba(24, 59, 86, 0.05) 1px, transparent 1px),
@@ -503,8 +531,8 @@ h3 {
 .contact-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-bottom: 20px;
+  gap: 14px;
+  margin-bottom: 14px;
 }
 
 .contact-form {
@@ -535,7 +563,7 @@ h3 {
   justify-content: space-between;
   align-items: center;
   gap: 16px;
-  padding: 18px;
+  padding: 16px;
 }
 
 .form-row span {
@@ -547,9 +575,9 @@ h3 {
 }
 
 .footer {
-  margin-top: 24px;
+  margin-top: 14px;
   border-radius: var(--radius-xl);
-  padding: 26px 30px;
+  padding: 18px 20px;
   display: flex;
   justify-content: space-between;
   gap: 22px;
@@ -562,6 +590,12 @@ h3 {
 }
 
 @media (max-width: 1080px) {
+  .hero,
+  .info-grid,
+  .faq-list {
+    grid-template-columns: 1fr 1fr;
+  }
+
   .providers-grid {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -577,6 +611,10 @@ h3 {
     width: min(100% - 20px, 1180px);
   }
 
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
   .header,
   .footer {
     flex-direction: column;
@@ -587,8 +625,10 @@ h3 {
   .metrics,
   .visit-strip,
   .services-grid,
+  .info-grid,
   .providers-grid,
   .stories-grid,
+  .faq-list,
   .locations-grid,
   .contact-cards {
     grid-template-columns: 1fr;
@@ -597,7 +637,7 @@ h3 {
   .hero-copy,
   .section,
   .hero-stage {
-    padding: 24px 20px;
+    padding: 20px 16px;
   }
 
   .hero-actions {

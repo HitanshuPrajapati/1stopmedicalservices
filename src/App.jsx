@@ -42,6 +42,30 @@ const testimonials = [
   "Communication and professionalism stood out. I felt supported and well cared for during my visits.",
 ];
 
+const resources = [
+  "Accepted insurance guidance and visit prep details",
+  "Portal support for returning patients",
+  "Directions for Bellevue and Kent appointments",
+];
+
+const faqs = [
+  {
+    question: "Do you offer virtual visits?",
+    answer:
+      "Yes. Eligible weekday virtual appointments are available depending on the type of care needed.",
+  },
+  {
+    question: "What should I bring to my appointment?",
+    answer:
+      "Please bring your photo ID, insurance card, medication list, and any referral or exam paperwork if needed.",
+  },
+  {
+    question: "Can I book immigration medical exams here?",
+    answer:
+      "Yes. The clinic offers I-693 immigration medical exams along with related follow-up support.",
+  },
+];
+
 const hours = [
   "Monday: 8:00AM-6:00PM",
   "Tuesday: 8:00AM-6:00PM",
@@ -55,34 +79,18 @@ function App() {
     <div className="site-shell">
       <header className="header">
         <a className="brand" href="#top">
-          <div className="brand-badge">1</div>
-          <div>
-            <strong>OneStop Medical Services</strong>
-            <span>Primary care for individuals and families</span>
-          </div>
+          <LogoMark />
         </a>
 
         <nav className="nav" aria-label="Primary">
+          <a href="#top">Home</a>
+          <a href="#office-policy">Office Policy</a>
           <a href="#services">Services</a>
+          <a href="#resources">Resources</a>
           <a href="#providers">Providers</a>
-          <a href="#locations">Locations</a>
-          <a href="#contact">Contact</a>
-          <a
-            className="pill pill-ghost"
-            href="https://ehr.ethizo.com/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Patient Portal
-          </a>
-          <a
-            className="pill"
-            href="https://www.zocdoc.com/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Book Online
-          </a>
+          <a href="#stories">Patient Stories</a>
+          <a href="#faq">FAQ</a>
+          <a href="#appt-types">Appt Types</a>
         </nav>
       </header>
 
@@ -154,6 +162,28 @@ function App() {
           </article>
         </section>
 
+        <section className="section office-policy-section" id="office-policy">
+          <div className="section-head">
+            <p className="eyebrow">Office Policy</p>
+            <h2>Clear expectations before patients arrive.</h2>
+          </div>
+
+          <div className="info-grid compact-grid">
+            <article className="info-card">
+              <strong>Please arrive early</strong>
+              <p>Plan to arrive 10 to 15 minutes before your appointment for check-in and paperwork.</p>
+            </article>
+            <article className="info-card">
+              <strong>Bring important documents</strong>
+              <p>Photo ID, insurance card, medication list, and any referral or exam forms help keep visits efficient.</p>
+            </article>
+            <article className="info-card">
+              <strong>Cancellation courtesy</strong>
+              <p>Calling ahead as early as possible helps the clinic offer those openings to other patients.</p>
+            </article>
+          </div>
+        </section>
+
         <section className="section services-section" id="services">
           <div className="section-head">
             <p className="eyebrow">Services</p>
@@ -174,6 +204,22 @@ function App() {
                 <div className={`service-mark service-mark-${index + 1}`} />
                 <h3>{service.title}</h3>
                 <p>{service.description}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="section resources-section" id="resources">
+          <div className="section-head">
+            <p className="eyebrow">Resources</p>
+            <h2>Helpful details patients often look for first.</h2>
+          </div>
+
+          <div className="info-grid">
+            {resources.map((item) => (
+              <article key={item} className="info-card">
+                <strong>{item}</strong>
+                <p>The homepage keeps these essentials easy to spot so patients can move forward without extra searching.</p>
               </article>
             ))}
           </div>
@@ -210,7 +256,7 @@ function App() {
           </div>
         </section>
 
-        <section className="section stories-section">
+        <section className="section stories-section" id="stories">
           <div className="section-head">
             <p className="eyebrow">Patient Experience</p>
             <h2>Feedback that supports trust without overwhelming the page.</h2>
@@ -221,6 +267,38 @@ function App() {
               <article key={quote} className="story-card">
                 <div className={`story-chip story-chip-${index + 1}`}>{["AB", "LM", "DR"][index]}</div>
                 <p>{quote}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="section appt-types-section" id="appt-types">
+          <div className="section-head">
+            <p className="eyebrow">Appointment Types</p>
+            <h2>Visit options laid out in a quick, scannable format.</h2>
+          </div>
+
+          <div className="info-grid compact-grid">
+            {visitOptions.map((item) => (
+              <article key={item} className="info-card">
+                <strong>{item}</strong>
+                <p>Designed to help patients understand where and how they can be seen before contacting the clinic.</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="section faq-section" id="faq">
+          <div className="section-head">
+            <p className="eyebrow">FAQ</p>
+            <h2>Short answers to the most common scheduling questions.</h2>
+          </div>
+
+          <div className="faq-list">
+            {faqs.map((item) => (
+              <article key={item.question} className="faq-card">
+                <strong>{item.question}</strong>
+                <p>{item.answer}</p>
               </article>
             ))}
           </div>
@@ -315,3 +393,50 @@ function App() {
 }
 
 export default App;
+
+function LogoMark() {
+  return (
+    <svg
+      className="brand-logo"
+      viewBox="0 0 380 180"
+      role="img"
+      aria-label="OneStop Medical Services logo"
+    >
+      <defs>
+        <linearGradient id="logoRing" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#67a7dd" />
+          <stop offset="100%" stopColor="#2b6cb0" />
+        </linearGradient>
+      </defs>
+      <circle cx="95" cy="90" r="72" fill="#ffffff" stroke="url(#logoRing)" strokeWidth="6" />
+      <circle cx="58" cy="52" r="6" fill="#1f9ad7" />
+      <rect x="52" y="59" width="12" height="26" rx="4" fill="#1f9ad7" />
+      <rect x="46" y="63" width="6" height="20" rx="3" fill="#1f9ad7" />
+      <rect x="64" y="63" width="6" height="20" rx="3" fill="#1f9ad7" />
+      <rect x="53" y="84" width="4" height="20" rx="2" fill="#1f9ad7" />
+      <rect x="59" y="84" width="4" height="20" rx="2" fill="#1f9ad7" />
+      <circle cx="82" cy="52" r="6" fill="#1f9ad7" />
+      <rect x="76" y="59" width="12" height="26" rx="4" fill="#1f9ad7" />
+      <rect x="70" y="63" width="6" height="20" rx="3" fill="#1f9ad7" />
+      <rect x="88" y="63" width="6" height="20" rx="3" fill="#1f9ad7" />
+      <rect x="77" y="84" width="4" height="20" rx="2" fill="#1f9ad7" />
+      <rect x="83" y="84" width="4" height="20" rx="2" fill="#1f9ad7" />
+      <circle cx="100" cy="71" r="4" fill="#1f9ad7" />
+      <rect x="96" y="76" width="8" height="18" rx="3" fill="#1f9ad7" />
+      <rect x="97" y="92" width="3" height="14" rx="1.5" fill="#1f9ad7" />
+      <rect x="100" y="92" width="3" height="14" rx="1.5" fill="#1f9ad7" />
+      <circle cx="160" cy="70" r="14" fill="#1f3f8b" />
+      <path d="M132 138c2-28 18-45 40-45s38 17 40 45H132Z" fill="#1f3f8b" />
+      <rect x="122" y="102" width="48" height="14" rx="7" fill="#1f3f8b" />
+      <path d="M168 98h12v26c0 10-8 18-18 18h-6v-10h5c4 0 7-3 7-7V98Z" fill="#ffffff" />
+      <path d="M167 96c0-4 3-7 7-7s7 3 7 7v14h-14V96Z" fill="#ffffff" />
+      <circle cx="174" cy="129" r="5" fill="#ffffff" />
+      <text x="220" y="74" fill="#c81d1d" fontSize="24" fontWeight="700" fontFamily="Georgia, serif">
+        ONESTOP
+      </text>
+      <text x="220" y="106" fill="#28a7df" fontSize="24" fontWeight="700" fontFamily="Georgia, serif">
+        MEDICAL
+      </text>
+    </svg>
+  );
+}
