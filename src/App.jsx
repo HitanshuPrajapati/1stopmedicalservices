@@ -146,25 +146,22 @@ function App() {
         <section className="section services-section" id="services">
           <div className="section-head">
             <p className="eyebrow">Services</p>
-            <h2>Built around the reasons patients actually book.</h2>
-          </div>
-
-          <div className="services-intro">
-            <p>
-              The home page should answer the basics quickly: what the clinic offers,
-              where it is, and how to get seen. This version keeps those answers visible
-              and trims away anything that feels noisy.
-            </p>
+            <h2>What our clinic offers.</h2>
           </div>
 
           <div className="services-grid">
-            {services.map((service, index) => (
+            {services.map((service) => (
               <article key={service.title} className="service-card">
-                <div className={`service-mark service-mark-${index + 1}`} />
                 <h3>{service.title}</h3>
                 <p>{service.description}</p>
               </article>
             ))}
+          </div>
+
+          <div className="section-action">
+            <a className="pill" href="#services">
+              See more
+            </a>
           </div>
         </section>
 
