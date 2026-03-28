@@ -358,6 +358,26 @@ h3 {
   justify-content: flex-start;
 }
 
+.provider-card:nth-child(1) {
+  background: linear-gradient(180deg, rgba(225, 239, 252, 0.96), rgba(242, 248, 255, 0.93));
+}
+
+.provider-card:nth-child(2) {
+  background: linear-gradient(180deg, rgba(238, 229, 248, 0.96), rgba(248, 242, 252, 0.93));
+}
+
+.provider-card:nth-child(3) {
+  background: linear-gradient(180deg, rgba(226, 242, 233, 0.96), rgba(242, 249, 245, 0.93));
+}
+
+.provider-card:nth-child(4) {
+  background: linear-gradient(180deg, rgba(222, 243, 243, 0.96), rgba(240, 250, 249, 0.93));
+}
+
+.provider-card:nth-child(5) {
+  background: linear-gradient(180deg, rgba(244, 234, 245, 0.96), rgba(251, 244, 251, 0.93));
+}
+
 .provider-chip,
 .story-chip {
   width: 108px;
