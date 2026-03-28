@@ -1,4 +1,9 @@
 import { useEffect, useState } from "react";
+import payalShahImage from "./assets/providers/payal-shah.avif";
+import jamieChinnickImage from "./assets/providers/jamie-chinnick.avif";
+import paulTrombaImage from "./assets/providers/paul-tromba.avif";
+import xanLayuganImage from "./assets/providers/xan-layugan.avif";
+import sharndeepChokarImage from "./assets/providers/sharndeep-chokar.avif";
 
 const services = [
   {
@@ -24,11 +29,11 @@ const services = [
 ];
 
 const providers = [
-  { name: "Payal Shah, MD", role: "Physician" },
-  { name: "Jamie Chinnick, NP", role: "Nurse Practitioner" },
-  { name: "Paul Tromba, PA", role: "Physician Assistant" },
-  { name: "Xan Layugan, NP", role: "Nurse Practitioner" },
-  { name: "Sharndeep Chokar, PA", role: "Physician Assistant" },
+  { name: "Payal Shah, MD", role: "Physician", image: payalShahImage },
+  { name: "Jamie Chinnick, NP", role: "Nurse Practitioner", image: jamieChinnickImage },
+  { name: "Paul Tromba, PA", role: "Physician Assistant", image: paulTrombaImage },
+  { name: "Xan Layugan, NP", role: "Nurse Practitioner", image: xanLayuganImage },
+  { name: "Sharndeep Chokar, PA", role: "Physician Assistant", image: sharndeepChokarImage },
 ];
 
 const testimonials = [
@@ -172,14 +177,10 @@ function App() {
           </div>
 
           <div className="providers-grid">
-            {providers.map((provider, index) => (
+            {providers.map((provider) => (
               <article key={provider.name} className="provider-card">
-                <div className={`provider-chip provider-chip-${index + 1}`}>
-                  {provider.name
-                    .split(" ")
-                    .slice(0, 2)
-                    .map((part) => part[0])
-                    .join("")}
+                <div className="provider-chip">
+                  <img src={provider.image} alt={provider.name} />
                 </div>
                 <h3>{provider.name}</h3>
                 <p>{provider.role}</p>
