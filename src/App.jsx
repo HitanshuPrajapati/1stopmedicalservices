@@ -70,28 +70,18 @@ const faqs = [
 
 const carouselSlides = [
   {
-    title: "Welcoming primary care spaces",
-    description: "Placeholder image for the reception and check-in experience.",
     image: createPlaceholderImage("#d5ecf0", "#1f5d74", "Reception"),
   },
   {
-    title: "Family-centered appointments",
-    description: "Placeholder image representing patient and family visits.",
     image: createPlaceholderImage("#f7e1c8", "#9c4e2d", "Family Care"),
   },
   {
-    title: "Provider consultations",
-    description: "Placeholder image for one-on-one medical guidance.",
     image: createPlaceholderImage("#dae4f4", "#1f3f8b", "Consultation"),
   },
   {
-    title: "Preventive wellness support",
-    description: "Placeholder image for screenings and routine care.",
     image: createPlaceholderImage("#ddecd7", "#386641", "Wellness"),
   },
   {
-    title: "Convenient clinic visits",
-    description: "Placeholder image for modern in-clinic care moments.",
     image: createPlaceholderImage("#f0d7de", "#8a2846", "Clinic Visit"),
   },
 ];
@@ -138,9 +128,10 @@ function App() {
           <div className="hero-copy">
             <h1>Caring for you and your family, every step of the way.</h1>
             <p className="hero-text">
-              OneStop Medical Services offers primary care, immigration medical exams,
-              weight management, immunizations, and lab services with weekday access in
-              Bellevue, Kent, and eligible virtual visits.
+              Getting an online health treatment plan is no longer a challenge. Consult
+              our highly qualified health care professionals for a personalized
+              treatment plan. With or without insurance, you can get the care you
+              choose!
             </p>
 
             <div className="hero-actions">
@@ -166,29 +157,18 @@ function App() {
           <div className="hero-stage">
             <div className="carousel-card">
               <div className="carousel-media">
-                <img
-                  src={carouselSlides[activeSlide].image}
-                  alt={carouselSlides[activeSlide].title}
-                />
-              </div>
-
-              <div className="carousel-copy">
-                <span>Clinic Highlights</span>
-                <strong>{carouselSlides[activeSlide].title}</strong>
-                <p>{carouselSlides[activeSlide].description}</p>
-              </div>
-
-              <div className="carousel-dots" aria-label="Hero image carousel controls">
-                {carouselSlides.map((slide, index) => (
-                  <button
-                    key={slide.title}
-                    type="button"
-                    className={index === activeSlide ? "is-active" : ""}
-                    aria-label={`Show slide ${index + 1}`}
-                    aria-pressed={index === activeSlide}
-                    onClick={() => setActiveSlide(index)}
-                  />
-                ))}
+                <div
+                  className="carousel-track"
+                  style={{ transform: `translateX(-${activeSlide * 100}%)` }}
+                >
+                  {carouselSlides.map((slide, index) => (
+                    <img
+                      key={index}
+                      src={slide.image}
+                      alt={`Clinic placeholder slide ${index + 1}`}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
           </div>
