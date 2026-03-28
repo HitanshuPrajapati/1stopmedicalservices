@@ -168,7 +168,7 @@ function App() {
         <section className="section providers-section" id="providers">
           <div className="section-head">
             <p className="eyebrow">Providers</p>
-            <h2>A care team that feels visible and credible.</h2>
+            <h2>Meet our healthcare providers</h2>
           </div>
 
           <div className="providers-grid">
