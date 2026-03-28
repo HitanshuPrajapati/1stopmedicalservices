@@ -276,19 +276,6 @@ function App() {
         </section>
       </main>
 
-      <footer className="footer">
-        <div>
-          <strong>OneStop Medical Services</strong>
-          <p>Family medicine clinic serving Bellevue and Kent, Washington.</p>
-        </div>
-        <div>
-          <p>Phone: (253) 397-8683</p>
-          <p>Fax: (253) 342-4353</p>
-        </div>
-        <a href="https://ehr.ethizo.com/" target="_blank" rel="noreferrer">
-          Visit the patient portal
-        </a>
-      </footer>
     </div>
   );
 }

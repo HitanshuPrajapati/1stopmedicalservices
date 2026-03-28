@@ -51,8 +51,7 @@ a {
 
 .header,
 .hero,
-.section,
-.footer {
+.section {
   position: relative;
 }
 
@@ -140,8 +139,7 @@ a {
 
 .hero-copy,
 .hero-stage,
-.section,
-.footer {
+.section {
   border: 1px solid var(--line);
   background: var(--card);
   backdrop-filter: blur(14px);
@@ -194,8 +192,7 @@ h3 {
 .provider-card p,
 .story-card p,
 .location-card p,
-.contact-cards p,
-.footer p {
+.contact-cards p {
   color: var(--muted);
   line-height: 1.75;
 }
@@ -442,7 +439,7 @@ h3 {
 
 .location-card a,
 .contact-cards a,
-.footer a {
+.contact-section a {
   color: var(--navy);
   font-weight: 700;
 }
@@ -493,21 +490,6 @@ h3 {
   cursor: pointer;
 }
 
-.footer {
-  margin-top: 14px;
-  border-radius: var(--radius-xl);
-  padding: 18px 20px;
-  display: flex;
-  justify-content: space-between;
-  gap: 22px;
-  align-items: center;
-}
-
-.footer strong {
-  display: block;
-  margin-bottom: 8px;
-}
-
 @media (max-width: 1080px) {
   .hero {
     grid-template-columns: 1fr 1fr;
@@ -531,8 +513,7 @@ h3 {
     grid-template-columns: 1fr;
   }
 
-  .header,
-  .footer {
+  .header {
     flex-direction: column;
     align-items: flex-start;
   }
