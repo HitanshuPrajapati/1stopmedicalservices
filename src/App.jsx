@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 const services = [
   {
     title: "Primary Care",
@@ -66,6 +68,34 @@ const faqs = [
   },
 ];
 
+const carouselSlides = [
+  {
+    title: "Welcoming primary care spaces",
+    description: "Placeholder image for the reception and check-in experience.",
+    image: createPlaceholderImage("#d5ecf0", "#1f5d74", "Reception"),
+  },
+  {
+    title: "Family-centered appointments",
+    description: "Placeholder image representing patient and family visits.",
+    image: createPlaceholderImage("#f7e1c8", "#9c4e2d", "Family Care"),
+  },
+  {
+    title: "Provider consultations",
+    description: "Placeholder image for one-on-one medical guidance.",
+    image: createPlaceholderImage("#dae4f4", "#1f3f8b", "Consultation"),
+  },
+  {
+    title: "Preventive wellness support",
+    description: "Placeholder image for screenings and routine care.",
+    image: createPlaceholderImage("#ddecd7", "#386641", "Wellness"),
+  },
+  {
+    title: "Convenient clinic visits",
+    description: "Placeholder image for modern in-clinic care moments.",
+    image: createPlaceholderImage("#f0d7de", "#8a2846", "Clinic Visit"),
+  },
+];
+
 const hours = [
   "Monday: 8:00AM-6:00PM",
   "Tuesday: 8:00AM-6:00PM",
@@ -75,6 +105,16 @@ const hours = [
 ];
 
 function App() {
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  useEffect(() => {
+    const intervalId = window.setInterval(() => {
+      setActiveSlide((current) => (current + 1) % carouselSlides.length);
+    }, 4000);
+
+    return () => window.clearInterval(intervalId);
+  }, []);
+
   return (
     <div className="site-shell">
       <header className="header">
@@ -83,7 +123,6 @@ function App() {
         </a>
 
         <nav className="nav" aria-label="Primary">
-          <a href="#top">Home</a>
           <a href="#office-policy">Office Policy</a>
           <a href="#services">Services</a>
           <a href="#resources">Resources</a>
@@ -97,8 +136,7 @@ function App() {
       <main id="top">
         <section className="hero">
           <div className="hero-copy">
-            <p className="eyebrow">Modern clinic care, without the friction</p>
-            <h1>Healthcare that feels calm, capable, and easy to navigate.</h1>
+            <h1>Caring for you and your family, every step of the way.</h1>
             <p className="hero-text">
               OneStop Medical Services offers primary care, immigration medical exams,
               weight management, immunizations, and lab services with weekday access in
@@ -112,10 +150,10 @@ function App() {
                 target="_blank"
                 rel="noreferrer"
               >
-                Schedule a Visit
+                New Patient Booking
               </a>
               <a className="pill pill-ghost" href="#contact">
-                Contact the Clinic
+                Contact Us
               </a>
             </div>
 
@@ -126,23 +164,32 @@ function App() {
           </div>
 
           <div className="hero-stage">
-            <div className="stage-graphic">
-              <div className="graphic-ring graphic-ring-a" />
-              <div className="graphic-ring graphic-ring-b" />
-              <div className="graphic-panel">
-                <span>Open weekdays</span>
-                <strong>8:00 AM to 6:00 PM</strong>
-                <p>Care available in Bellevue, Kent, and through eligible virtual visits.</p>
+            <div className="carousel-card">
+              <div className="carousel-media">
+                <img
+                  src={carouselSlides[activeSlide].image}
+                  alt={carouselSlides[activeSlide].title}
+                />
               </div>
-            </div>
 
-            <div className="visit-strip">
-              {visitOptions.map((item) => (
-                <article key={item}>
-                  <span />
-                  <p>{item}</p>
-                </article>
-              ))}
+              <div className="carousel-copy">
+                <span>Clinic Highlights</span>
+                <strong>{carouselSlides[activeSlide].title}</strong>
+                <p>{carouselSlides[activeSlide].description}</p>
+              </div>
+
+              <div className="carousel-dots" aria-label="Hero image carousel controls">
+                {carouselSlides.map((slide, index) => (
+                  <button
+                    key={slide.title}
+                    type="button"
+                    className={index === activeSlide ? "is-active" : ""}
+                    aria-label={`Show slide ${index + 1}`}
+                    aria-pressed={index === activeSlide}
+                    onClick={() => setActiveSlide(index)}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -439,4 +486,31 @@ function LogoMark() {
       </text>
     </svg>
   );
+}
+
+function createPlaceholderImage(background, accent, label) {
+  const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 640" role="img" aria-label="${label}">
+      <defs>
+        <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="${background}" />
+          <stop offset="100%" stop-color="#ffffff" />
+        </linearGradient>
+      </defs>
+      <rect width="900" height="640" fill="url(#bg)" />
+      <circle cx="135" cy="120" r="70" fill="${accent}" fill-opacity="0.14" />
+      <circle cx="760" cy="130" r="96" fill="${accent}" fill-opacity="0.16" />
+      <circle cx="780" cy="520" r="84" fill="${accent}" fill-opacity="0.12" />
+      <rect x="88" y="138" width="724" height="366" rx="36" fill="#ffffff" fill-opacity="0.74" />
+      <rect x="140" y="208" width="240" height="18" rx="9" fill="${accent}" fill-opacity="0.85" />
+      <rect x="140" y="248" width="320" height="18" rx="9" fill="${accent}" fill-opacity="0.28" />
+      <rect x="140" y="282" width="278" height="18" rx="9" fill="${accent}" fill-opacity="0.2" />
+      <rect x="140" y="360" width="154" height="54" rx="27" fill="${accent}" fill-opacity="0.9" />
+      <rect x="520" y="198" width="210" height="210" rx="30" fill="${accent}" fill-opacity="0.18" />
+      <rect x="562" y="244" width="126" height="126" rx="24" fill="${accent}" fill-opacity="0.82" />
+      <text x="140" y="468" fill="${accent}" font-size="42" font-family="Georgia, serif" font-weight="700">${label}</text>
+    </svg>
+  `;
+
+  return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
 }
