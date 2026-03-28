@@ -290,6 +290,10 @@ h3 {
   margin-bottom: 16px;
 }
 
+.providers-section .section-head h2 {
+  max-width: 16ch;
+}
+
 .services-grid,
 .providers-grid,
 .stories-grid,
