@@ -25,10 +25,10 @@ const services = [
 
 const providers = [
   { name: "Payal Shah, MD", role: "Physician" },
-  { name: "Paul Tromba, PA", role: "Physician Assistant" },
-  { name: "Sharndeep Chokar, PA", role: "Physician Assistant" },
-  { name: "Xan Layugan, NP", role: "Nurse Practitioner" },
   { name: "Jamie Chinnick, NP", role: "Nurse Practitioner" },
+  { name: "Paul Tromba, PA", role: "Physician Assistant" },
+  { name: "Xan Layugan, NP", role: "Nurse Practitioner" },
+  { name: "Sharndeep Chokar, PA", role: "Physician Assistant" },
 ];
 
 const testimonials = [
@@ -170,14 +170,6 @@ function App() {
             <p className="eyebrow">Providers</p>
             <h2>A care team that feels visible and credible.</h2>
           </div>
-
-          <aside className="providers-sidebar">
-            <strong>What patients need to know first</strong>
-            <p>
-              Experienced clinicians, clear appointment paths, and support for everyday
-              care as well as specialized clinic visits.
-            </p>
-          </aside>
 
           <div className="providers-grid">
             {providers.map((provider, index) => (

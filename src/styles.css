@@ -343,29 +343,28 @@ h3 {
   margin-top: 18px;
 }
 
-.providers-sidebar {
-  margin-bottom: 14px;
-  padding: 16px;
-  border-radius: var(--radius-lg);
-  background:
-    linear-gradient(160deg, rgba(15, 157, 148, 0.08), rgba(255, 255, 255, 0.7));
-  border: 1px solid var(--line);
-}
-
 .providers-grid {
   grid-template-columns: repeat(5, 1fr);
 }
 
+.provider-card {
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
 .provider-chip,
 .story-chip {
-  width: 64px;
-  height: 64px;
+  width: 108px;
+  height: 108px;
   border-radius: 50%;
   display: grid;
   place-items: center;
   color: #fff;
   font-weight: 800;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
 }
 
 .provider-chip-1,
