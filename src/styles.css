@@ -92,31 +92,34 @@ a {
   gap: 8px;
   align-items: center;
   padding: 10px 12px;
-  position: sticky;
+  position: fixed;
   top: 14px;
-  margin-inline: auto;
-  z-index: 20;
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: calc(100vw - 32px);
+  z-index: 50;
   border-radius: 999px;
-  background: linear-gradient(180deg, rgba(184, 221, 220, 0.68), rgba(208, 235, 233, 0.52));
-  border: 1px solid rgba(255, 255, 255, 0.34);
+  background: rgba(201, 224, 224, 0.96);
+  border: 1px solid rgba(24, 59, 86, 0.14);
   backdrop-filter: blur(18px) saturate(140%);
   -webkit-backdrop-filter: blur(18px) saturate(140%);
   box-shadow:
-    0 16px 34px rgba(24, 59, 86, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    0 12px 28px rgba(24, 59, 86, 0.09),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
 }
 
 .nav a {
   padding: 8px 12px;
-  color: #14384d;
+  color: var(--navy);
   font-weight: 700;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  background: rgba(255, 255, 255, 0.22);
+  border: 1px solid rgba(24, 59, 86, 0.08);
+  background: rgba(255, 255, 255, 0.54);
 }
 
 .nav a:hover {
-  background: rgba(255, 255, 255, 0.38);
+  background: rgba(255, 255, 255, 0.9);
 }
 
 .pill,
@@ -142,7 +145,7 @@ a {
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
   gap: 16px;
-  margin-top: 6px;
+  margin-top: 76px;
 }
 
 .hero-copy,
@@ -542,7 +545,8 @@ h3 {
   }
 
   .nav {
-    width: 100%;
+    width: calc(100vw - 20px);
+    max-width: calc(100vw - 20px);
     justify-content: center;
     border-radius: 28px;
     top: 10px;
