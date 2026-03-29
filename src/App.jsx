@@ -37,9 +37,14 @@ const providers = [
 ];
 
 const testimonials = [
-  "The staff was knowledgeable, friendly, and efficient. They made sure I had the information and guidance I needed.",
-  "Very happy with my experience. The process felt easy and simple, and the team was helpful throughout.",
-  "Communication and professionalism stood out. I felt supported and well cared for during my visits.",
+  "Great experience! Knowledgeable doctor, personal touch made the treatment comfortable. Highly recommend. Definitely 5 star treatment.",
+  "I went for my physical, and Dr. Shah was very thorough. The office is cozy and welcoming. She takes care my entire family! So glad we found her.",
+  "Knowledgeable doctor. She is very caring and takes the time to explain treatment plan. I would recommend her to everyone.",
+  "Great Bedside manner and Listens!!!!",
+  "Dr Payal is a very nice doctor. I met her around a year ago and she is so nice, friendly, and she works great with patients and I honestly love her clinic. Overall, I would say that this is one of the best doctors out in the Seattle area. Thank you for your services",
+  "We've been seeing Dr. Shah since 2016. She has always taken exceptionally good care of me & my family, listened to our concerns, and provided us with excellent and gentle feedback. She takes the time to educate us about our choices so we can make informed decisions, she brings awareness to cost implications, and she just makes us feel secure, welcome, and comfortable. She is absolutely fantastic and I could not recommend her more highly. It always feels like she really cares about our family. We feel really lucky to have found her!",
+  "So happy that she speaks Hindi. It makes it much easier for my mom to explain her issues.",
+  "Dr. Shah was my PCP when she worked with the Wellness Center on the Microsoft campus. When I was no longer covered through that insurance plan, I could not find another doctor that provided the same quality of care. I was thrilled to find her new office was covered by my current insurance provider. I cannot say enough wonderful things about Dr. Shah. She has helped coordinate my care by really listening to me, ordering proper testing, and diagnosing my core issues. Finding a good doctor is not easy task. Dr. Shah has helped me address my autoimmune problems in a manner that has greatly improved my life.",
 ];
 
 const carouselSlides = [
@@ -71,6 +76,15 @@ const hours = [
 function App() {
   const [activeSlide, setActiveSlide] = useState(0);
   const [isNavPinned, setIsNavPinned] = useState(false);
+  const [activeStory, setActiveStory] = useState(3);
+  const [storyTransitionEnabled, setStoryTransitionEnabled] = useState(true);
+
+  const storyLoopOffset = 3;
+  const storySlides = [
+    ...testimonials.slice(-storyLoopOffset),
+    ...testimonials,
+    ...testimonials.slice(0, storyLoopOffset),
+  ];
 
   useEffect(() => {
     const intervalId = window.setInterval(() => {
@@ -90,6 +104,47 @@ function App() {
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    const intervalId = window.setInterval(() => {
+      setStoryTransitionEnabled(true);
+      setActiveStory((current) => current + 1);
+    }, 8000);
+
+    return () => window.clearInterval(intervalId);
+  }, []);
+
+  const handleStoryTransitionEnd = () => {
+    if (activeStory === testimonials.length + storyLoopOffset) {
+      setStoryTransitionEnabled(false);
+      setActiveStory(storyLoopOffset);
+    } else if (activeStory === 0) {
+      setStoryTransitionEnabled(false);
+      setActiveStory(testimonials.length);
+    }
+  };
+
+  const goToPreviousStory = () => {
+    setStoryTransitionEnabled(true);
+    setActiveStory((current) => current - 1);
+  };
+
+  const goToNextStory = () => {
+    setStoryTransitionEnabled(true);
+    setActiveStory((current) => current + 1);
+  };
+
+  useEffect(() => {
+    if (storyTransitionEnabled) {
+      return undefined;
+    }
+
+    const frameId = window.requestAnimationFrame(() => {
+      setStoryTransitionEnabled(true);
+    });
+
+    return () => window.cancelAnimationFrame(frameId);
+  }, [storyTransitionEnabled]);
 
   return (
     <div className="site-shell">
@@ -207,13 +262,38 @@ function App() {
             <h2>Feedback that supports trust without overwhelming the page.</h2>
           </div>
 
-          <div className="stories-grid">
-            {testimonials.map((quote, index) => (
-              <article key={quote} className="story-card">
-                <div className={`story-chip story-chip-${index + 1}`}>{["AB", "LM", "DR"][index]}</div>
-                <p>{quote}</p>
-              </article>
-            ))}
+          <div className="stories-carousel">
+            <button
+              type="button"
+              className="story-arrow story-arrow-left"
+              aria-label="Previous patient story"
+              onClick={goToPreviousStory}
+            >
+              ‹
+            </button>
+
+            <div className="stories-viewport">
+              <div
+                className={`stories-track${storyTransitionEnabled ? "" : " no-transition"}`}
+                style={{ "--story-index": activeStory }}
+                onTransitionEnd={handleStoryTransitionEnd}
+              >
+                {storySlides.map((quote, index) => (
+                  <article key={`${index}-${quote.slice(0, 24)}`} className="story-card">
+                    <p>{quote}</p>
+                  </article>
+                ))}
+              </div>
+            </div>
+
+            <button
+              type="button"
+              className="story-arrow story-arrow-right"
+              aria-label="Next patient story"
+              onClick={goToNextStory}
+            >
+              ›
+            </button>
           </div>
         </section>
 
