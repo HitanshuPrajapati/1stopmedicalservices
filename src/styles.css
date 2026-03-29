@@ -396,7 +396,7 @@ h3 {
 }
 
 .provider-card:nth-child(1):hover {
-  background: linear-gradient(180deg, rgba(211, 230, 248, 0.98), rgba(233, 242, 252, 0.95));
+  background: linear-gradient(180deg, rgba(193, 217, 240, 0.99), rgba(220, 233, 247, 0.96));
 }
 
 .provider-card:nth-child(2) {
@@ -404,7 +404,7 @@ h3 {
 }
 
 .provider-card:nth-child(2):hover {
-  background: linear-gradient(180deg, rgba(229, 217, 242, 0.98), rgba(241, 233, 248, 0.95));
+  background: linear-gradient(180deg, rgba(214, 198, 232, 0.99), rgba(231, 220, 242, 0.96));
 }
 
 .provider-card:nth-child(3) {
@@ -412,7 +412,7 @@ h3 {
 }
 
 .provider-card:nth-child(3):hover {
-  background: linear-gradient(180deg, rgba(213, 234, 222, 0.98), rgba(233, 244, 237, 0.95));
+  background: linear-gradient(180deg, rgba(196, 221, 207, 0.99), rgba(220, 236, 226, 0.96));
 }
 
 .provider-card:nth-child(4) {
@@ -420,7 +420,7 @@ h3 {
 }
 
 .provider-card:nth-child(4):hover {
-  background: linear-gradient(180deg, rgba(209, 236, 236, 0.98), rgba(229, 244, 243, 0.95));
+  background: linear-gradient(180deg, rgba(190, 223, 223, 0.99), rgba(215, 236, 236, 0.96));
 }
 
 .provider-card:nth-child(5) {
@@ -428,7 +428,7 @@ h3 {
 }
 
 .provider-card:nth-child(5):hover {
-  background: linear-gradient(180deg, rgba(236, 223, 238, 0.98), rgba(246, 237, 246, 0.95));
+  background: linear-gradient(180deg, rgba(223, 206, 225, 0.99), rgba(239, 226, 240, 0.96));
 }
 
 .provider-chip,
