@@ -108,7 +108,10 @@ function App() {
   useEffect(() => {
     const intervalId = window.setInterval(() => {
       setStoryTransitionEnabled(true);
-      setActiveStory((current) => current + 1);
+      setActiveStory((current) => {
+        const next = current + 1;
+        return next > testimonials.length + storyLoopOffset ? storyLoopOffset + 1 : next;
+      });
     }, 8000);
 
     return () => window.clearInterval(intervalId);
@@ -132,6 +135,15 @@ function App() {
 
     return () => window.cancelAnimationFrame(frameId);
   }, [storyTransitionEnabled]);
+
+  useEffect(() => {
+    if (activeStory <= testimonials.length + storyLoopOffset) {
+      return;
+    }
+
+    setStoryTransitionEnabled(false);
+    setActiveStory(storyLoopOffset);
+  }, [activeStory]);
 
   const activeStoryDot = Math.floor(
     ((activeStory - storyLoopOffset + testimonials.length) % testimonials.length) / 3,
@@ -262,7 +274,7 @@ function App() {
                 {storySlides.map((quote, index) => (
                   <article
                     key={`${index}-${quote.slice(0, 24)}`}
-                    className={`story-card story-card-tone-${(index % 8) + 1}${quote.length < 110 ? " story-card-short" : ""}`}
+                    className={`story-card story-card-tone-${(index % 8) + 1}${quote.length < 110 ? " story-card-short" : ""}${quote.length > 220 ? " story-card-long" : ""}`}
                   >
                     <p>{quote}</p>
                   </article>

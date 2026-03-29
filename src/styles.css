@@ -480,11 +480,17 @@ h3 {
   justify-content: center;
   flex: 0 0 calc((100% - (2 * var(--story-gap))) / 3);
   min-height: 230px;
-  height: 100%;
+  align-self: stretch;
   padding: 18px 24px;
   border-radius: var(--radius-lg);
   border: 1px solid rgba(24, 59, 86, 0.18);
   box-shadow: 0 12px 26px rgba(24, 59, 86, 0.06);
+}
+
+.story-card-long {
+  min-height: 285px;
+  padding-top: 28px;
+  padding-bottom: 28px;
 }
 
 .story-card::before,
@@ -517,6 +523,8 @@ h3 {
   font-size: 1rem;
   text-align: center;
   text-wrap: balance;
+  position: relative;
+  z-index: 1;
 }
 
 .story-card-short p {
@@ -725,6 +733,10 @@ h3 {
     min-height: 250px;
     flex-basis: calc((100% - var(--story-gap)) / 2);
   }
+
+  .story-card-long {
+    min-height: 320px;
+  }
 }
 
 @media (max-width: 640px) {
@@ -741,9 +753,7 @@ h3 {
     flex-basis: 100%;
   }
 
-  .story-arrow {
-    width: 42px;
-    height: 42px;
-    font-size: 1.7rem;
+  .story-card-long {
+    min-height: 280px;
   }
 }
