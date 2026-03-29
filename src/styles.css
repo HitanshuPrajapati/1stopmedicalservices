@@ -626,6 +626,12 @@ h3 {
   gap: 0;
 }
 
+.location-card strong {
+  font-size: 1.52rem;
+  line-height: 1.05;
+  margin-bottom: 6px;
+}
+
 .locations-stack .location-card:nth-child(1) {
   background: linear-gradient(180deg, rgba(228, 239, 251, 0.96), rgba(242, 248, 255, 0.93));
 }
@@ -682,7 +688,7 @@ h3 {
 }
 
 .location-card-hours strong {
-  font-size: 2.025rem;
+  font-size: 1.52rem;
   line-height: 1;
   margin-bottom: 14px;
 }
