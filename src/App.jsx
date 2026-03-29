@@ -262,6 +262,7 @@ function App() {
         <section className="section stories-section" id="stories">
           <div className="section-head">
             <p className="eyebrow">Patient Experience</p>
+            <h2>Hear from our patients</h2>
           </div>
 
           <div className="stories-carousel">
