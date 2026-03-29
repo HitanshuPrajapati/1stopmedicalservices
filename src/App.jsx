@@ -85,6 +85,7 @@ function App() {
     ...testimonials,
     ...testimonials.slice(0, storyLoopOffset),
   ];
+  const storyDotCount = Math.ceil(testimonials.length / 3);
 
   useEffect(() => {
     const intervalId = window.setInterval(() => {
@@ -132,6 +133,13 @@ function App() {
   const goToNextStory = () => {
     setStoryTransitionEnabled(true);
     setActiveStory((current) => current + 1);
+  };
+
+  const activeStoryDot = Math.floor(((activeStory - storyLoopOffset + testimonials.length) % testimonials.length) / 3);
+
+  const goToStoryDot = (dotIndex) => {
+    setStoryTransitionEnabled(true);
+    setActiveStory(storyLoopOffset + dotIndex * 3);
   };
 
   useEffect(() => {
@@ -259,7 +267,6 @@ function App() {
         <section className="section stories-section" id="stories">
           <div className="section-head">
             <p className="eyebrow">Patient Experience</p>
-            <h2>Feedback that supports trust without overwhelming the page.</h2>
           </div>
 
           <div className="stories-carousel">
@@ -294,6 +301,19 @@ function App() {
             >
               ›
             </button>
+          </div>
+
+          <div className="story-dots" aria-label="Patient experience carousel position">
+            {Array.from({ length: storyDotCount }, (_, index) => (
+              <button
+                key={index}
+                type="button"
+                className={index === activeStoryDot ? "is-active" : ""}
+                aria-label={`Go to testimonial group ${index + 1}`}
+                aria-pressed={index === activeStoryDot}
+                onClick={() => goToStoryDot(index)}
+              />
+            ))}
           </div>
         </section>
 

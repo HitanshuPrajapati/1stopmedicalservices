@@ -478,8 +478,8 @@ h3 {
 
 .story-card {
   flex: 0 0 calc((100% - (2 * var(--story-gap))) / 3);
-  min-height: 250px;
-  padding: 22px 20px;
+  min-height: 125px;
+  padding: 18px 18px;
   border-radius: var(--radius-lg);
   background:
     linear-gradient(180deg, rgba(230, 242, 246, 0.92), rgba(243, 249, 251, 0.94));
@@ -490,7 +490,8 @@ h3 {
 .story-card p {
   margin: 0;
   color: var(--ink);
-  line-height: 1.75;
+  line-height: 1.55;
+  font-size: 0.98rem;
 }
 
 .story-arrow {
@@ -514,6 +515,31 @@ h3 {
 .story-arrow:hover {
   transform: translateY(-2px);
   background: rgba(209, 229, 232, 0.98);
+}
+
+.story-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.story-dots button {
+  width: 11px;
+  height: 11px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  background: rgba(24, 59, 86, 0.2);
+  transition:
+    width 160ms ease,
+    background 160ms ease;
+}
+
+.story-dots button.is-active {
+  width: 30px;
+  background: rgba(24, 59, 86, 0.68);
 }
 
 .locations-grid {
@@ -657,6 +683,7 @@ h3 {
 
   .story-card {
     flex-basis: calc((100% - var(--story-gap)) / 2);
+    min-height: 145px;
   }
 }
 
@@ -671,7 +698,7 @@ h3 {
 
   .story-card {
     flex-basis: 100%;
-    min-height: 220px;
+    min-height: 160px;
   }
 
   .story-arrow {
