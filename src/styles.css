@@ -462,14 +462,12 @@ h3 {
 
 .stories-carousel {
   --story-gap: 16px;
-  --story-edge-padding: 8px;
   position: relative;
   display: block;
 }
 
 .stories-viewport {
   overflow: hidden;
-  padding-inline: var(--story-edge-padding);
 }
 
 .stories-track {
@@ -478,7 +476,7 @@ h3 {
   transform: translateX(
     calc(
       -1 * var(--story-index) *
-      (((100% - (2 * var(--story-edge-padding))) + var(--story-gap)) / 3)
+      ((100% + var(--story-gap)) / 3)
     )
   );
   transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
@@ -742,7 +740,6 @@ h3 {
 
   .stories-carousel {
     --story-gap: 14px;
-    --story-edge-padding: 6px;
   }
 
   .story-card {
@@ -758,15 +755,10 @@ h3 {
 @media (max-width: 640px) {
   .stories-carousel {
     --story-gap: 0px;
-    --story-edge-padding: 4px;
   }
 
   .stories-track {
-    transform: translateX(
-      calc(
-        -1 * var(--story-index) * (100% - (2 * var(--story-edge-padding)))
-      )
-    );
+    transform: translateX(calc(-1 * var(--story-index) * 100%));
   }
 
   .story-card {
