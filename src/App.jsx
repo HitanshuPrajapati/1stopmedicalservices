@@ -76,17 +76,15 @@ const hours = [
 function App() {
   const [activeSlide, setActiveSlide] = useState(0);
   const [isNavPinned, setIsNavPinned] = useState(false);
-  const [activeStoryPage, setActiveStoryPage] = useState(0);
+  const [activeStory, setActiveStory] = useState(3);
+  const [storyTransitionEnabled, setStoryTransitionEnabled] = useState(true);
+  const storyLoopOffset = 3;
   const storyDotCount = Math.ceil(testimonials.length / 3);
-  const storyPages = Array.from({ length: storyDotCount }, (_, pageIndex) =>
-    Array.from({ length: 3 }, (_, itemIndex) => {
-      const storyIndex = (pageIndex * 3 + itemIndex) % testimonials.length;
-      return {
-        quote: testimonials[storyIndex],
-        storyIndex,
-      };
-    }),
-  );
+  const storySlides = [
+    ...testimonials.slice(-storyLoopOffset),
+    ...testimonials,
+    ...testimonials.slice(0, storyLoopOffset),
+  ];
 
   useEffect(() => {
     const intervalId = window.setInterval(() => {
@@ -109,23 +107,35 @@ function App() {
 
   useEffect(() => {
     const intervalId = window.setInterval(() => {
-      setActiveStoryPage((current) => (current + 1) % storyDotCount);
+      setStoryTransitionEnabled(true);
+      setActiveStory((current) => current + 1);
     }, 8000);
 
     return () => window.clearInterval(intervalId);
-  }, [storyDotCount]);
+  }, []);
 
-  const goToPreviousStory = () => {
-    setActiveStoryPage((current) => (current - 1 + storyDotCount) % storyDotCount);
+  const handleStoryTransitionEnd = () => {
+    if (activeStory === testimonials.length + storyLoopOffset) {
+      setStoryTransitionEnabled(false);
+      setActiveStory(storyLoopOffset);
+    }
   };
 
-  const goToNextStory = () => {
-    setActiveStoryPage((current) => (current + 1) % storyDotCount);
-  };
+  useEffect(() => {
+    if (storyTransitionEnabled) {
+      return undefined;
+    }
 
-  const goToStoryDot = (dotIndex) => {
-    setActiveStoryPage(dotIndex);
-  };
+    const frameId = window.requestAnimationFrame(() => {
+      setStoryTransitionEnabled(true);
+    });
+
+    return () => window.cancelAnimationFrame(frameId);
+  }, [storyTransitionEnabled]);
+
+  const activeStoryDot = Math.floor(
+    ((activeStory - storyLoopOffset + testimonials.length) % testimonials.length) / 3,
+  );
 
   return (
     <div className="site-shell">
@@ -243,55 +253,27 @@ function App() {
           </div>
 
           <div className="stories-carousel">
-            <button
-              type="button"
-              className="story-arrow story-arrow-left"
-              aria-label="Previous patient story"
-              onClick={goToPreviousStory}
-            >
-              ‹
-            </button>
-
             <div className="stories-viewport">
               <div
-                className="stories-track"
-                style={{ "--story-page-index": activeStoryPage }}
+                className={`stories-track${storyTransitionEnabled ? "" : " no-transition"}`}
+                style={{ "--story-index": activeStory }}
+                onTransitionEnd={handleStoryTransitionEnd}
               >
-                {storyPages.map((page, pageIndex) => (
-                  <div key={pageIndex} className="stories-page">
-                    {page.map((story, itemIndex) => (
-                      <article
-                        key={`${pageIndex}-${story.storyIndex}-${itemIndex}`}
-                        className={`story-card${itemIndex === 1 ? " story-card-featured" : ""} story-card-tone-${(story.storyIndex % 8) + 1}`}
-                      >
-                        <p>{story.quote}</p>
-                      </article>
-                    ))}
-                  </div>
+                {storySlides.map((quote, index) => (
+                  <article
+                    key={`${index}-${quote.slice(0, 24)}`}
+                    className={`story-card${index % 3 === 1 ? " story-card-featured" : ""} story-card-tone-${(index % 8) + 1}`}
+                  >
+                    <p>{quote}</p>
+                  </article>
                 ))}
               </div>
             </div>
-
-            <button
-              type="button"
-              className="story-arrow story-arrow-right"
-              aria-label="Next patient story"
-              onClick={goToNextStory}
-            >
-              ›
-            </button>
           </div>
 
           <div className="story-dots" aria-label="Patient experience carousel position">
             {Array.from({ length: storyDotCount }, (_, index) => (
-              <button
-                key={index}
-                type="button"
-                className={index === activeStoryPage ? "is-active" : ""}
-                aria-label={`Go to testimonial group ${index + 1}`}
-                aria-pressed={index === activeStoryPage}
-                onClick={() => goToStoryDot(index)}
-              />
+              <span key={index} className={index === activeStoryDot ? "is-active" : ""} />
             ))}
           </div>
         </section>
