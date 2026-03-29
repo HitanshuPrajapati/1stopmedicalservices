@@ -88,17 +88,14 @@ a {
 .nav {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-end;
   gap: 8px;
   align-items: center;
   padding: 10px 12px;
-  position: fixed;
-  top: 14px;
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative;
   width: max-content;
-  max-width: calc(100vw - 32px);
-  z-index: 50;
+  max-width: 100%;
+  margin-left: auto;
   border-radius: 999px;
   background: rgba(201, 224, 224, 0.96);
   border: 1px solid rgba(24, 59, 86, 0.14);
@@ -107,6 +104,21 @@ a {
   box-shadow:
     0 12px 28px rgba(24, 59, 86, 0.09),
     inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  transition:
+    top 180ms ease,
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.nav.nav-pinned {
+  position: fixed;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: calc(100vw - 32px);
+  margin-left: 0;
+  z-index: 50;
 }
 
 .nav a {
@@ -145,7 +157,7 @@ a {
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
   gap: 16px;
-  margin-top: 76px;
+  margin-top: 6px;
 }
 
 .hero-copy,
@@ -545,11 +557,16 @@ h3 {
   }
 
   .nav {
-    width: calc(100vw - 20px);
-    max-width: calc(100vw - 20px);
+    width: 100%;
     justify-content: center;
     border-radius: 28px;
+    margin-left: 0;
+  }
+
+  .nav.nav-pinned {
     top: 10px;
+    width: calc(100vw - 20px);
+    max-width: calc(100vw - 20px);
   }
 
   .hero-actions {

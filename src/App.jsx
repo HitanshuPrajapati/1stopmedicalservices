@@ -70,6 +70,7 @@ const hours = [
 
 function App() {
   const [activeSlide, setActiveSlide] = useState(0);
+  const [isNavPinned, setIsNavPinned] = useState(false);
 
   useEffect(() => {
     const intervalId = window.setInterval(() => {
@@ -79,6 +80,17 @@ function App() {
     return () => window.clearInterval(intervalId);
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsNavPinned(window.scrollY > 40);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div className="site-shell">
       <header className="header">
@@ -86,7 +98,7 @@ function App() {
           <LogoMark />
         </a>
 
-        <nav className="nav" aria-label="Primary">
+        <nav className={`nav${isNavPinned ? " nav-pinned" : ""}`} aria-label="Primary">
           <a href="#office-policy">Office Policy</a>
           <a href="#services">Services</a>
           <a href="#resources">Resources</a>
