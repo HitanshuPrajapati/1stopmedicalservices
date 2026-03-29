@@ -469,6 +469,7 @@ h3 {
   gap: var(--story-gap);
   transform: translateX(
     calc(
+      var(--story-edge-padding) -
       -1 * var(--story-index) *
       (((100% - (2 * var(--story-edge-padding))) + var(--story-gap)) / 3)
     )
@@ -754,7 +755,12 @@ h3 {
   }
 
   .stories-track {
-    transform: translateX(calc(-1 * var(--story-index) * (100% - (2 * var(--story-edge-padding)))));
+    transform: translateX(
+      calc(
+        var(--story-edge-padding) -
+        -1 * var(--story-index) * (100% - (2 * var(--story-edge-padding)))
+      )
+    );
   }
 
   .story-card {
