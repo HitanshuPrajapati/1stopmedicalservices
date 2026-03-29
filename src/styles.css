@@ -29,9 +29,9 @@ body {
   font-family: "Trebuchet MS", "Segoe UI", sans-serif;
   color: var(--ink);
   background:
-    radial-gradient(circle at top left, rgba(70, 165, 190, 0.2), transparent 30%),
-    radial-gradient(circle at top right, rgba(24, 59, 86, 0.16), transparent 32%),
-    linear-gradient(180deg, #e3f0f9 0%, #d1e3f1 100%);
+    radial-gradient(circle at top left, rgba(70, 165, 190, 0.28), transparent 32%),
+    radial-gradient(circle at top right, rgba(24, 59, 86, 0.24), transparent 34%),
+    linear-gradient(180deg, #cfe1ef 0%, #bdd4e6 100%);
 }
 
 a {
@@ -395,20 +395,40 @@ h3 {
   background: linear-gradient(180deg, rgba(225, 239, 252, 0.96), rgba(242, 248, 255, 0.93));
 }
 
+.provider-card:nth-child(1):hover {
+  background: linear-gradient(180deg, rgba(211, 230, 248, 0.98), rgba(233, 242, 252, 0.95));
+}
+
 .provider-card:nth-child(2) {
   background: linear-gradient(180deg, rgba(238, 229, 248, 0.96), rgba(248, 242, 252, 0.93));
+}
+
+.provider-card:nth-child(2):hover {
+  background: linear-gradient(180deg, rgba(229, 217, 242, 0.98), rgba(241, 233, 248, 0.95));
 }
 
 .provider-card:nth-child(3) {
   background: linear-gradient(180deg, rgba(226, 242, 233, 0.96), rgba(242, 249, 245, 0.93));
 }
 
+.provider-card:nth-child(3):hover {
+  background: linear-gradient(180deg, rgba(213, 234, 222, 0.98), rgba(233, 244, 237, 0.95));
+}
+
 .provider-card:nth-child(4) {
   background: linear-gradient(180deg, rgba(222, 243, 243, 0.96), rgba(240, 250, 249, 0.93));
 }
 
+.provider-card:nth-child(4):hover {
+  background: linear-gradient(180deg, rgba(209, 236, 236, 0.98), rgba(229, 244, 243, 0.95));
+}
+
 .provider-card:nth-child(5) {
   background: linear-gradient(180deg, rgba(244, 234, 245, 0.96), rgba(251, 244, 251, 0.93));
+}
+
+.provider-card:nth-child(5):hover {
+  background: linear-gradient(180deg, rgba(236, 223, 238, 0.98), rgba(246, 237, 246, 0.95));
 }
 
 .provider-chip,
