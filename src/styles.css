@@ -88,27 +88,35 @@ a {
 .nav {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-end;
+  justify-content: center;
   gap: 8px;
   align-items: center;
   padding: 10px 12px;
+  position: sticky;
+  top: 14px;
+  margin-inline: auto;
+  z-index: 20;
   border-radius: 999px;
-  background: rgba(201, 224, 224, 0.96);
-  border: 1px solid rgba(24, 59, 86, 0.14);
-  box-shadow: 0 12px 28px rgba(24, 59, 86, 0.09);
+  background: linear-gradient(180deg, rgba(184, 221, 220, 0.68), rgba(208, 235, 233, 0.52));
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  box-shadow:
+    0 16px 34px rgba(24, 59, 86, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
 .nav a {
   padding: 8px 12px;
-  color: var(--navy);
+  color: #14384d;
   font-weight: 700;
   border-radius: 999px;
-  border: 1px solid rgba(24, 59, 86, 0.08);
-  background: rgba(255, 255, 255, 0.54);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.22);
 }
 
 .nav a:hover {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.38);
 }
 
 .pill,
@@ -535,8 +543,9 @@ h3 {
 
   .nav {
     width: 100%;
-    justify-content: flex-start;
+    justify-content: center;
     border-radius: 28px;
+    top: 10px;
   }
 
   .hero-actions {
