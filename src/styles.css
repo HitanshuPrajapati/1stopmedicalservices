@@ -468,6 +468,8 @@ h3 {
 
 .stories-viewport {
   overflow: hidden;
+  padding-inline: 2px;
+  margin-inline: -2px;
 }
 
 .stories-track {
