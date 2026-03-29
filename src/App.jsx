@@ -294,29 +294,65 @@ function App() {
         <section className="section locations-section" id="locations">
           <div className="section-head">
             <p className="eyebrow">Locations & Hours</p>
-            <h2>Fast answers for where to go and when the clinic is open.</h2>
+            <h2>Where to find us</h2>
           </div>
 
           <div className="locations-grid">
-            <article className="location-card location-card-map">
-              <strong>Bellevue Clinic</strong>
-              <p>1380 112th Ave NE, Suite 100<br />Bellevue, WA 98004</p>
-              <a
-                href="https://maps.google.com/?q=1380%20112th%20Ave%20NE%20Suite%20100%20Bellevue%20WA%2098004"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Open directions
-              </a>
-            </article>
+            <div className="locations-stack">
+              <article className="location-card">
+                <div className="location-card-body">
+                  <div>
+                    <strong>Bellevue Clinic</strong>
+                    <p>1380 112th Ave NE, Suite 100<br />Bellevue, WA 98004</p>
+                  </div>
+                  <a
+                    className="location-map-thumb"
+                    href="https://maps.google.com/?q=1380%20112th%20Ave%20NE%20Suite%20100%20Bellevue%20WA%2098004"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="Open Bellevue clinic in Google Maps"
+                  >
+                    <span>Map</span>
+                  </a>
+                </div>
+                <a
+                  className="pill location-pill"
+                  href="https://maps.google.com/?q=1380%20112th%20Ave%20NE%20Suite%20100%20Bellevue%20WA%2098004"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Open in Maps
+                </a>
+              </article>
 
-            <article className="location-card">
-              <strong>Kent Clinic</strong>
-              <p>1314 Central Ave S, Suite 102<br />Kent, WA 98032</p>
-              <a href="tel:2533978683">(253) 397-8683</a>
-            </article>
+              <article className="location-card">
+                <div className="location-card-body">
+                  <div>
+                    <strong>Kent Clinic</strong>
+                    <p>1314 Central Ave S, Suite 102<br />Kent, WA 98032</p>
+                  </div>
+                  <a
+                    className="location-map-thumb"
+                    href="https://maps.google.com/?q=1314%20Central%20Ave%20S%20Suite%20102%20Kent%20WA%2098032"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="Open Kent clinic in Google Maps"
+                  >
+                    <span>Map</span>
+                  </a>
+                </div>
+                <a
+                  className="pill location-pill"
+                  href="https://maps.google.com/?q=1314%20Central%20Ave%20S%20Suite%20102%20Kent%20WA%2098032"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Open in Maps
+                </a>
+              </article>
+            </div>
 
-            <article className="location-card">
+            <article className="location-card location-card-hours">
               <strong>Clinic Hours</strong>
               {hours.map((line) => (
                 <p key={line}>{line}</p>
