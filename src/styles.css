@@ -464,7 +464,8 @@ h3 {
 
 .stories-track {
   display: flex;
-  transform: translateX(calc(-1 * var(--story-index) * 100%));
+  gap: var(--story-gap);
+  transform: translateX(calc(-1 * var(--story-index) * ((100% + var(--story-gap)) / 3)));
   transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -472,24 +473,16 @@ h3 {
   transition: none;
 }
 
-.stories-page {
-  min-width: 100%;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--story-gap);
-  align-items: stretch;
-}
-
 .story-card {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex: 0 0 calc((100% - (2 * var(--story-gap))) / 3);
   min-height: 230px;
   height: 100%;
   padding: 18px 24px;
   border-radius: var(--radius-lg);
-  background: #ffffff;
   border: 1px solid rgba(24, 59, 86, 0.18);
   box-shadow: 0 12px 26px rgba(24, 59, 86, 0.06);
 }
@@ -554,34 +547,42 @@ h3 {
 }
 
 .story-card-tone-1 {
+  background: #eef6ff;
   border-color: #a7c8ea;
 }
 
 .story-card-tone-2 {
+  background: #f5effd;
   border-color: #cdb4e9;
 }
 
 .story-card-tone-3 {
+  background: #eef9f1;
   border-color: #abd6b8;
 }
 
 .story-card-tone-4 {
+  background: #ecfaf9;
   border-color: #9fd8da;
 }
 
 .story-card-tone-5 {
+  background: #fff1f7;
   border-color: #e3b7cb;
 }
 
 .story-card-tone-6 {
+  background: #fff5ea;
   border-color: #e2c3a2;
 }
 
 .story-card-tone-7 {
+  background: #f1f6fc;
   border-color: #b9cae4;
 }
 
 .story-card-tone-8 {
+  background: #f1fbf5;
   border-color: #b8dbc9;
 }
 
@@ -720,12 +721,9 @@ h3 {
     --story-gap: 14px;
   }
 
-  .stories-page {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .story-card {
     min-height: 250px;
+    flex-basis: calc((100% - var(--story-gap)) / 2);
   }
 }
 
@@ -734,12 +732,13 @@ h3 {
     --story-gap: 0px;
   }
 
-  .stories-page {
-    grid-template-columns: 1fr;
+  .stories-track {
+    transform: translateX(calc(-1 * var(--story-index) * 100%));
   }
 
   .story-card {
     min-height: 220px;
+    flex-basis: 100%;
   }
 
   .story-arrow {

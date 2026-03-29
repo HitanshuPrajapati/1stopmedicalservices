@@ -76,16 +76,14 @@ const hours = [
 function App() {
   const [activeSlide, setActiveSlide] = useState(0);
   const [isNavPinned, setIsNavPinned] = useState(false);
-  const [activeStoryPage, setActiveStoryPage] = useState(1);
+  const [activeStory, setActiveStory] = useState(3);
   const [storyTransitionEnabled, setStoryTransitionEnabled] = useState(true);
   const storyDotCount = Math.ceil(testimonials.length / 3);
-  const storyPages = Array.from({ length: storyDotCount }, (_, pageIndex) =>
-    Array.from({ length: 3 }, (_, itemIndex) => testimonials[(pageIndex * 3 + itemIndex) % testimonials.length]),
-  );
+  const storyLoopOffset = 3;
   const storySlides = [
-    storyPages[storyPages.length - 1],
-    ...storyPages,
-    storyPages[0],
+    ...testimonials.slice(-storyLoopOffset),
+    ...testimonials,
+    ...testimonials.slice(0, storyLoopOffset),
   ];
 
   useEffect(() => {
@@ -110,16 +108,16 @@ function App() {
   useEffect(() => {
     const intervalId = window.setInterval(() => {
       setStoryTransitionEnabled(true);
-      setActiveStoryPage((current) => current + 1);
+      setActiveStory((current) => current + 1);
     }, 8000);
 
     return () => window.clearInterval(intervalId);
   }, []);
 
   const handleStoryTransitionEnd = () => {
-    if (activeStoryPage === storyPages.length + 1) {
+    if (activeStory === testimonials.length + storyLoopOffset) {
       setStoryTransitionEnabled(false);
-      setActiveStoryPage(1);
+      setActiveStory(storyLoopOffset);
     }
   };
 
@@ -135,7 +133,9 @@ function App() {
     return () => window.cancelAnimationFrame(frameId);
   }, [storyTransitionEnabled]);
 
-  const activeStoryDot = (activeStoryPage - 1 + storyPages.length) % storyPages.length;
+  const activeStoryDot = Math.floor(
+    ((activeStory - storyLoopOffset + testimonials.length) % testimonials.length) / 3,
+  );
 
   return (
     <div className="site-shell">
@@ -256,20 +256,16 @@ function App() {
             <div className="stories-viewport">
               <div
                 className={`stories-track${storyTransitionEnabled ? "" : " no-transition"}`}
-                style={{ "--story-index": activeStoryPage }}
+                style={{ "--story-index": activeStory }}
                 onTransitionEnd={handleStoryTransitionEnd}
               >
-                {storySlides.map((page, pageIndex) => (
-                  <div key={pageIndex} className="stories-page">
-                    {page.map((quote, itemIndex) => (
-                      <article
-                        key={`${pageIndex}-${itemIndex}-${quote.slice(0, 24)}`}
-                        className={`story-card story-card-tone-${((pageIndex * 3 + itemIndex) % 8) + 1}${quote.length < 110 ? " story-card-short" : ""}`}
-                      >
-                        <p>{quote}</p>
-                      </article>
-                    ))}
-                  </div>
+                {storySlides.map((quote, index) => (
+                  <article
+                    key={`${index}-${quote.slice(0, 24)}`}
+                    className={`story-card story-card-tone-${(index % 8) + 1}${quote.length < 110 ? " story-card-short" : ""}`}
+                  >
+                    <p>{quote}</p>
+                  </article>
                 ))}
               </div>
             </div>
