@@ -305,15 +305,14 @@ function App() {
                     <strong>Bellevue Clinic</strong>
                     <p>1380 112th Ave NE, Suite 100<br />Bellevue, WA 98004</p>
                   </div>
-                  <a
-                    className="location-map-thumb"
-                    href="https://maps.google.com/?q=1380%20112th%20Ave%20NE%20Suite%20100%20Bellevue%20WA%2098004"
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label="Open Bellevue clinic in Google Maps"
-                  >
-                    <span>Map</span>
-                  </a>
+                </div>
+                <div className="location-map-embed" aria-label="Bellevue clinic map">
+                  <iframe
+                    title="Bellevue Clinic Map"
+                    src="https://www.google.com/maps?q=1380%20112th%20Ave%20NE%20Suite%20100%20Bellevue%20WA%2098004&z=15&output=embed"
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
                 </div>
                 <a
                   className="pill location-pill"
@@ -331,15 +330,14 @@ function App() {
                     <strong>Kent Clinic</strong>
                     <p>1314 Central Ave S, Suite 102<br />Kent, WA 98032</p>
                   </div>
-                  <a
-                    className="location-map-thumb"
-                    href="https://maps.google.com/?q=1314%20Central%20Ave%20S%20Suite%20102%20Kent%20WA%2098032"
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label="Open Kent clinic in Google Maps"
-                  >
-                    <span>Map</span>
-                  </a>
+                </div>
+                <div className="location-map-embed" aria-label="Kent clinic map">
+                  <iframe
+                    title="Kent Clinic Map"
+                    src="https://www.google.com/maps?q=1314%20Central%20Ave%20S%20Suite%20102%20Kent%20WA%2098032&z=15&output=embed"
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
                 </div>
                 <a
                   className="pill location-pill"
