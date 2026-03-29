@@ -150,6 +150,14 @@ a {
   color: #fff;
   border: 1px solid transparent;
   font-weight: 700;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.pill:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 28px rgba(24, 59, 86, 0.18);
 }
 
 .pill-ghost {
@@ -469,7 +477,7 @@ h3 {
   gap: var(--story-gap);
   transform: translateX(
     calc(
-      -5px +
+      -10px +
       -1 * var(--story-index) *
       (((100% - (2 * var(--story-edge-padding))) + var(--story-gap)) / 3)
     )
@@ -757,7 +765,7 @@ h3 {
   .stories-track {
     transform: translateX(
       calc(
-        -5px +
+        -10px +
         -1 * var(--story-index) * (100% - (2 * var(--story-edge-padding)))
       )
     );
