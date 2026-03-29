@@ -477,7 +477,7 @@ h3 {
   gap: var(--story-gap);
   transform: translateX(
     calc(
-      -10px +
+      -14px +
       -1 * var(--story-index) *
       (((100% - (2 * var(--story-edge-padding))) + var(--story-gap)) / 3)
     )
@@ -512,7 +512,7 @@ h3 {
 .story-card::before,
 .story-card::after {
   position: absolute;
-  color: rgba(24, 59, 86, 0.22);
+  color: rgba(29, 42, 54, 0.52);
   font-family: Georgia, "Times New Roman", serif;
   line-height: 1;
   pointer-events: none;
@@ -765,7 +765,7 @@ h3 {
   .stories-track {
     transform: translateX(
       calc(
-        -10px +
+        -14px +
         -1 * var(--story-index) * (100% - (2 * var(--story-edge-padding)))
       )
     );
