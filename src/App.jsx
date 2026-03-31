@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import clinicLogo from "./assets/logo2-1.avif";
+import clinicLogo from "./assets/logo.jpeg";
 import payalShahImage from "./assets/providers/payal-shah.avif";
 import jamieChinnickImage from "./assets/providers/jamie-chinnick.avif";
 import paulTrombaImage from "./assets/providers/paul-tromba.avif";
