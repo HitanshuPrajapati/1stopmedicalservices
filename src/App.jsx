@@ -362,7 +362,7 @@ function App() {
         <section className="section contact-section" id="contact">
           <div className="section-head">
             <p className="eyebrow">Contact</p>
-            <h2>Reach the clinic directly or send a message.</h2>
+            <h2>Reach us directly or send a message</h2>
           </div>
 
           <div className="contact-cards">
@@ -375,9 +375,9 @@ function App() {
               <p>(253) 342-4353</p>
             </article>
             <article>
-              <strong>Patient Portal</strong>
-              <a href="https://ehr.ethizo.com/" target="_blank" rel="noreferrer">
-                Open portal
+              <strong>Email</strong>
+              <a href="mailto:info@1stopmedicalservices.com">
+                info@1stopmedicalservices.com
               </a>
             </article>
           </div>
