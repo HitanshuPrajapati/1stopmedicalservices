@@ -730,6 +730,8 @@ h3 {
 }
 
 .contact-cards article {
+  display: flex;
+  flex-direction: column;
   background:
     linear-gradient(180deg, rgba(244, 250, 253, 0.98), rgba(226, 239, 245, 0.96));
   box-shadow: 0 14px 28px rgba(24, 59, 86, 0.09);
@@ -751,6 +753,15 @@ h3 {
   font-weight: 400;
   color: var(--muted);
   line-height: 1.5;
+}
+
+.contact-cards strong {
+  margin-bottom: 8px;
+}
+
+.contact-cards p,
+.contact-cards a {
+  margin: 0;
 }
 
 .contact-form {
