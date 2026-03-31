@@ -29,9 +29,9 @@ body {
   font-family: "Trebuchet MS", "Segoe UI", sans-serif;
   color: var(--ink);
   background:
-    radial-gradient(circle at top left, rgba(124, 168, 223, 0.2), transparent 30%),
-    radial-gradient(circle at top right, rgba(255, 255, 255, 0.12), transparent 36%),
-    linear-gradient(180deg, #21548f 0%, #316aa8 100%);
+    radial-gradient(circle at top left, rgba(144, 184, 230, 0.22), transparent 30%),
+    radial-gradient(circle at top right, rgba(255, 255, 255, 0.15), transparent 36%),
+    linear-gradient(180deg, #3a6eaa 0%, #4b82bd 100%);
 }
 
 a {
@@ -67,8 +67,8 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 292px;
-  height: 146px;
+  width: 219px;
+  height: 110px;
   padding: 0;
   border-radius: 50%;
   background: #ffffff;
@@ -825,7 +825,7 @@ h3 {
   }
 
   .brand {
-    width: min(292px, 100%);
+    width: min(219px, 100%);
     height: auto;
     aspect-ratio: 2 / 1;
   }
