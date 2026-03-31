@@ -67,7 +67,7 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 219px;
+  width: 198px;
   height: 110px;
   padding: 0;
   border-radius: 50%;
@@ -80,8 +80,8 @@ a {
 }
 
 .brand-logo {
-  width: calc(100% - 40px);
-  height: calc(100% - 30px);
+  width: calc(100% - 24px);
+  height: calc(100% - 20px);
   display: block;
   object-fit: contain;
 }
@@ -825,7 +825,7 @@ h3 {
   }
 
   .brand {
-    width: min(219px, 100%);
+    width: min(198px, 100%);
     height: auto;
     aspect-ratio: 2 / 1;
   }
