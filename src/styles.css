@@ -67,7 +67,7 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 211px;
+  width: 226px;
   height: 115px;
   padding: 0;
   border-radius: 50%;
@@ -750,7 +750,7 @@ h3 {
 .contact-cards a {
   font-weight: 400;
   color: var(--muted);
-  line-height: 1.75;
+  line-height: 1.5;
 }
 
 .contact-form {
@@ -825,7 +825,7 @@ h3 {
   }
 
   .brand {
-    width: min(211px, 100%);
+    width: min(226px, 100%);
     height: auto;
     aspect-ratio: 248 / 115;
   }

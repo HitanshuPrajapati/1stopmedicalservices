@@ -171,7 +171,7 @@ function App() {
       <main id="top">
         <section className="hero">
           <div className="hero-copy">
-            <h1>Caring for you and your family, every step of the way.</h1>
+            <h1>Caring for you and your family, every step of the way!</h1>
             <p className="hero-text">
               Getting an online health treatment plan is no longer a challenge. Consult
               our highly qualified health care professionals for a personalized
@@ -222,7 +222,7 @@ function App() {
         <section className="section services-section" id="services">
           <div className="section-head">
             <p className="eyebrow">Services</p>
-            <h2>What our clinic offers.</h2>
+            <h2>What our clinic offers</h2>
           </div>
 
           <div className="services-grid">
@@ -295,7 +295,7 @@ function App() {
         <section className="section locations-section" id="locations">
           <div className="section-head">
             <p className="eyebrow">Locations & Hours</p>
-            <h2>Where to find us</h2>
+            <h2>Where you can find us</h2>
           </div>
 
           <div className="locations-grid">
