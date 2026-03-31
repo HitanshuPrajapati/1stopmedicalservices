@@ -67,7 +67,7 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 248px;
+  width: 211px;
   height: 115px;
   padding: 0;
   border-radius: 50%;
@@ -825,7 +825,7 @@ h3 {
   }
 
   .brand {
-    width: min(248px, 100%);
+    width: min(211px, 100%);
     height: auto;
     aspect-ratio: 248 / 115;
   }
