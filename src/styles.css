@@ -29,9 +29,9 @@ body {
   font-family: "Trebuchet MS", "Segoe UI", sans-serif;
   color: var(--ink);
   background:
-    radial-gradient(circle at top left, rgba(86, 181, 204, 0.3), transparent 34%),
-    radial-gradient(circle at top right, rgba(24, 59, 86, 0.24), transparent 35%),
-    linear-gradient(180deg, #c4def0 0%, #b1d0e6 100%);
+    radial-gradient(circle at top left, rgba(83, 123, 168, 0.18), transparent 34%),
+    radial-gradient(circle at top right, rgba(24, 59, 86, 0.12), transparent 36%),
+    linear-gradient(180deg, rgba(219, 232, 245, 0.96) 0%, rgba(205, 223, 240, 0.94) 100%);
 }
 
 a {
@@ -69,7 +69,7 @@ a {
 }
 
 .brand-logo {
-  width: 235px;
+  width: 300px;
   max-width: 100%;
   height: auto;
   display: block;

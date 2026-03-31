@@ -406,43 +406,50 @@ function LogoMark() {
   return (
     <svg
       className="brand-logo"
-      viewBox="0 0 380 180"
+      viewBox="0 0 520 250"
       role="img"
       aria-label="OneStop Medical Services logo"
     >
       <defs>
-        <linearGradient id="logoRing" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#67a7dd" />
-          <stop offset="100%" stopColor="#2b6cb0" />
+        <linearGradient id="ovalShadow" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#edf6fb" />
+          <stop offset="100%" stopColor="#ffffff" />
         </linearGradient>
+        <filter id="logoSoftShadow" x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="0" dy="8" stdDeviation="10" floodColor="#183b56" floodOpacity="0.18" />
+        </filter>
       </defs>
-      <circle cx="95" cy="90" r="72" fill="#ffffff" stroke="url(#logoRing)" strokeWidth="6" />
-      <circle cx="58" cy="52" r="6" fill="#1f9ad7" />
-      <rect x="52" y="59" width="12" height="26" rx="4" fill="#1f9ad7" />
-      <rect x="46" y="63" width="6" height="20" rx="3" fill="#1f9ad7" />
-      <rect x="64" y="63" width="6" height="20" rx="3" fill="#1f9ad7" />
-      <rect x="53" y="84" width="4" height="20" rx="2" fill="#1f9ad7" />
-      <rect x="59" y="84" width="4" height="20" rx="2" fill="#1f9ad7" />
-      <circle cx="82" cy="52" r="6" fill="#1f9ad7" />
-      <rect x="76" y="59" width="12" height="26" rx="4" fill="#1f9ad7" />
-      <rect x="70" y="63" width="6" height="20" rx="3" fill="#1f9ad7" />
-      <rect x="88" y="63" width="6" height="20" rx="3" fill="#1f9ad7" />
-      <rect x="77" y="84" width="4" height="20" rx="2" fill="#1f9ad7" />
-      <rect x="83" y="84" width="4" height="20" rx="2" fill="#1f9ad7" />
-      <circle cx="100" cy="71" r="4" fill="#1f9ad7" />
-      <rect x="96" y="76" width="8" height="18" rx="3" fill="#1f9ad7" />
-      <rect x="97" y="92" width="3" height="14" rx="1.5" fill="#1f9ad7" />
-      <rect x="100" y="92" width="3" height="14" rx="1.5" fill="#1f9ad7" />
-      <circle cx="160" cy="70" r="14" fill="#1f3f8b" />
-      <path d="M132 138c2-28 18-45 40-45s38 17 40 45H132Z" fill="#1f3f8b" />
-      <rect x="122" y="102" width="48" height="14" rx="7" fill="#1f3f8b" />
-      <path d="M168 98h12v26c0 10-8 18-18 18h-6v-10h5c4 0 7-3 7-7V98Z" fill="#ffffff" />
-      <path d="M167 96c0-4 3-7 7-7s7 3 7 7v14h-14V96Z" fill="#ffffff" />
-      <circle cx="174" cy="129" r="5" fill="#ffffff" />
-      <text x="220" y="74" fill="#c81d1d" fontSize="24" fontWeight="700" fontFamily="Georgia, serif">
+      <ellipse cx="260" cy="124" rx="230" ry="94" fill="url(#ovalShadow)" filter="url(#logoSoftShadow)" />
+      <ellipse cx="260" cy="124" rx="228" ry="92" fill="none" stroke="rgba(24,59,86,0.08)" strokeWidth="2" />
+
+      <circle cx="148" cy="124" r="78" fill="#ffffff" stroke="#5b9bd5" strokeWidth="6" />
+
+      <circle cx="103" cy="78" r="7" fill="#1f9ad7" />
+      <path d="M94 88h18v36H94z" fill="#1f9ad7" rx="4" />
+      <path d="M89 92h6v27h-6zM111 92h6v27h-6z" fill="#1f9ad7" />
+      <path d="M97 123h4v25h-4zM105 123h4v25h-4z" fill="#1f9ad7" />
+
+      <circle cx="136" cy="76" r="7" fill="#1f9ad7" />
+      <path d="M126 86h20v38h-20z" fill="#1f9ad7" rx="4" />
+      <path d="M121 91h6v28h-6zM145 91h6v28h-6z" fill="#1f9ad7" />
+      <path d="M130 124h4v25h-4zM138 124h4v25h-4z" fill="#1f9ad7" />
+
+      <circle cx="165" cy="95" r="5" fill="#1f9ad7" />
+      <path d="M159 102h12v27h-12z" fill="#1f9ad7" rx="4" />
+      <path d="M162 127h3v21h-3zM166 127h3v21h-3z" fill="#1f9ad7" />
+
+      <circle cx="221" cy="90" r="19" fill="#1f3f8b" />
+      <path d="M184 171c3-42 28-67 62-67s59 25 62 67H184Z" fill="#1f3f8b" />
+      <rect x="170" y="118" width="77" height="18" rx="9" fill="#1f3f8b" />
+      <path d="M245 113h16v42c0 17-13 30-30 30h-9v-13h8c8 0 15-7 15-15v-44Z" fill="#ffffff" />
+      <path d="M243 110c0-6 5-11 10-11s10 5 10 11v23h-20V110Z" fill="#ffffff" />
+      <path d="M253 112h6v53h-6z" fill="#ffffff" />
+      <circle cx="256" cy="171" r="8" fill="#ffffff" />
+
+      <text x="314" y="104" fill="#c81d1d" fontSize="38" fontWeight="700" fontFamily="Georgia, serif">
         ONESTOP
       </text>
-      <text x="220" y="106" fill="#28a7df" fontSize="24" fontWeight="700" fontFamily="Georgia, serif">
+      <text x="314" y="146" fill="#28a7df" fontSize="38" fontWeight="700" fontFamily="Georgia, serif">
         MEDICAL
       </text>
     </svg>
