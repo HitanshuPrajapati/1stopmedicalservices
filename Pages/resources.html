@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resources — OneStop Medical Services</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #f4f8ff; color: #1a2f4a; -webkit-font-smoothing: antialiased; }
+    h1, h2, h3, h4 { font-family: 'Outfit', sans-serif; }
+    ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: #e8f0fe; } ::-webkit-scrollbar-thumb { background: #3b82cc; border-radius: 3px; }
+
+    .nav-btn { font-family: 'Outfit', sans-serif; font-size: 0.875rem; font-weight: 500; color: #0d2b57; text-decoration: none; white-space: nowrap; padding: 8px 16px; border-radius: 100px; border: 1px solid transparent; background: transparent; transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.15s; display: inline-block; }
+    .nav-btn:hover { background: rgba(13,43,87,0.07); border-color: rgba(13,43,87,0.15); color: #1b4a8c; transform: translateY(-1px); }
+    .nav-btn:active { transform: translateY(0); }
+    .nav-btn:focus-visible { outline: 3px solid #1b4a8c; outline-offset: 2px; }
+    .nav-btn.active { background: #0d2b57; color: #fff; border-color: #0d2b57; }
+
+    #navbar { position: relative; background: #fff; border-bottom: 1px solid rgba(13,43,87,0.10); box-shadow: 0 1px 12px rgba(13,43,87,0.08); overflow: visible; z-index: 40; }
+    #nav-logo-oval { border: none !important; box-shadow: 0 8px 48px 6px rgba(13,43,87,0.75) !important; }
+    #navbar-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 0 36px; }
+    #nav-logo { position: relative; z-index: 10; flex-shrink: 0; margin-bottom: -64px; }
+    #nav-logo-oval { background: #fff; border-radius: 50%; width: 225px; height: 108px; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(27,74,140,0.16), 0 2px 6px rgba(27,74,140,0.10); border: 1px solid rgba(27,74,140,0.12); overflow: hidden; padding: 6px; }
+    #nav-logo-oval img { height: 94px; width: auto; border-radius: 0; object-fit: contain; }
+    #navbar-top-nav { display: flex; align-items: center; gap: 4px; }
+
+    #nav-float-pill { position: fixed; top: 0; left: 50%; transform: translateX(-50%) translateY(-80px); z-index: 100; display: flex; align-items: center; gap: 2px; background: #0d2b57; border-radius: 100px; padding: 6px 10px; border: 1px solid rgba(255,255,255,0.10); box-shadow: 0 12px 40px rgba(13,43,87,0.40), 0 4px 12px rgba(13,43,87,0.22); opacity: 0; pointer-events: none; transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s ease; }
+    body.nav-scrolled #nav-float-pill { transform: translateX(-50%) translateY(14px); opacity: 1; pointer-events: all; }
+    .float-btn { font-family: 'Outfit', sans-serif; font-size: 0.875rem; font-weight: 500; text-decoration: none; white-space: nowrap; color: rgba(255,255,255,0.80); padding: 8px 16px; border-radius: 100px; background: transparent; transition: background 0.2s, color 0.2s; display: inline-block; }
+    .float-btn:hover { background: rgba(255,255,255,0.10); color: #fff; }
+    .float-btn.active { background: rgba(255,255,255,0.15); color: #fff; }
+
+    .section-pill { display: inline-block; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.28); border-radius: 100px; padding: 5px 16px; font-family: 'Outfit', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: rgba(255,255,255,0.90); margin-bottom: 16px; }
+
+    .card { background: #fff; border-radius: 16px; border: 1px solid rgba(59,130,204,0.16); box-shadow: 0 2px 8px rgba(27,74,140,0.07), 0 8px 28px rgba(27,74,140,0.08); }
+
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg,#1b4a8c,#2e75cc); color: #fff; font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 0.875rem; padding: 10px 20px; border-radius: 10px; text-decoration: none; box-shadow: 0 3px 12px rgba(27,74,140,0.28); transition: opacity 0.2s, transform 0.15s; }
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+    .btn-primary:active { transform: translateY(0); }
+
+    .btn-secondary { display: inline-flex; align-items: center; gap: 8px; background: #f0f7ff; color: #1b4a8c; border: 1px solid rgba(46,117,204,0.30); font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 0.875rem; padding: 10px 20px; border-radius: 10px; text-decoration: none; transition: background 0.2s, transform 0.15s; }
+    .btn-secondary:hover { background: #dbeafe; transform: translateY(-1px); }
+    .btn-secondary:active { transform: translateY(0); }
+
+    .form-card-icon { width: 44px; height: 44px; background: linear-gradient(135deg,#1b4a8c,#2e75cc); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 3px 10px rgba(27,74,140,0.25); }
+
+    .insurance-tag { display: inline-block; background: #f0f7ff; border: 1px solid rgba(46,117,204,0.20); border-radius: 100px; padding: 6px 14px; font-size: 0.8rem; color: #1b4a8c; font-weight: 500; font-family: 'Outfit', sans-serif; }
+
+    footer { background: #0a1e3d; padding: 18px 24px; }
+  </style>
+</head>
+<body>
+
+<header id="navbar">
+  <div id="navbar-inner">
+    <a href="../index.html" id="nav-logo" style="text-decoration:none;flex-shrink:0;"><div id="nav-logo-oval"><img src="../Images/logo.jpeg" alt="OneStop Medical Services" /></div></a>
+    <nav id="navbar-top-nav">
+      <a href="../index.html" class="nav-btn">Home</a><a href="office-policy.html" class="nav-btn">Office Policy</a>
+      <a href="services.html" class="nav-btn">Services</a>
+      <a href="immigration.html" class="nav-btn">Immigration</a>
+      <a href="resources.html" class="nav-btn active">Resources</a>
+      <a href="appointment-types.html" class="nav-btn">Appointment Types</a>
+      <a href="faqs.html" class="nav-btn">FAQs</a>
+    </nav>
+  </div>
+</header>
+<div id="nav-float-pill" role="navigation" aria-label="Page navigation">
+  <a href="../index.html" class="float-btn">Home</a><a href="office-policy.html" class="float-btn">Office Policy</a>
+  <a href="services.html" class="float-btn">Services</a>
+  <a href="immigration.html" class="float-btn">Immigration</a>
+  <a href="resources.html" class="float-btn active">Resources</a>
+  <a href="appointment-types.html" class="float-btn">Appointment Types</a>
+  <a href="faqs.html" class="float-btn">FAQs</a>
+</div>
+<script>window.addEventListener('scroll',()=>{document.body.classList.toggle('nav-scrolled',window.scrollY>60);},{passive:true});</script>
+
+<!-- HERO -->
+<div style="background:linear-gradient(150deg,#0d2b57 0%,#1b4a8c 55%,#2e75cc 100%);padding:80px 24px 72px;position:relative;overflow:hidden;">
+  <div style="position:absolute;top:-60px;right:-60px;width:420px;height:420px;background:radial-gradient(circle,rgba(46,117,204,0.22) 0%,transparent 70%);border-radius:50%;pointer-events:none;"></div>
+  <div style="position:absolute;bottom:-80px;left:-40px;width:320px;height:320px;background:radial-gradient(circle,rgba(27,74,140,0.18) 0%,transparent 70%);border-radius:50%;pointer-events:none;"></div>
+  <div style="max-width:860px;margin:0 auto;position:relative;z-index:1;text-align:center;">
+    <div class="section-pill">Patient Resources</div>
+    <h1 style="font-size:clamp(2.2rem,5vw,3.2rem);font-weight:800;color:#fff;letter-spacing:-0.03em;line-height:1.1;margin-bottom:18px;">Forms &amp; Resources</h1>
+    <p style="font-size:1.05rem;color:rgba(255,255,255,0.72);line-height:1.7;max-width:580px;margin:0 auto;">Please complete the necessary documents below. If you are a new patient, please complete the History Form before your appointment.</p>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<main style="max-width:1000px;margin:0 auto;padding:56px 24px 80px;">
+
+  <!-- Forms grid -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px;">
+
+    <!-- Health History Form -->
+    <div class="card" style="padding:28px 30px;">
+      <div style="display:flex;align-items:flex-start;gap:16px;margin-bottom:16px;">
+        <div class="form-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <div>
+          <h3 style="font-size:1.05rem;font-weight:800;color:#0d2b57;letter-spacing:-0.01em;margin-bottom:4px;">Health History Form</h3>
+          <p style="font-size:0.875rem;color:#364e6b;line-height:1.65;">If you are new to the practice or coming in for a physical, please complete the Health History Form before your appointment.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;">
+        <button onclick="openPdf('../Clinic Forms/Intake Questionnaire-Full Medical Intake.pdf','New Patient — Health History Form')" class="btn-primary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          New Patient Form
+        </button>
+        <button onclick="openPdf('../Clinic Forms/Patient Update From - Intake Q.pdf','Update Form — Existing Patient')" class="btn-secondary" style="cursor:pointer;border:none;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          Update Form — Existing Patient
+        </button>
+      </div>
+    </div>
+
+    <!-- Privacy Policy -->
+    <div class="card" style="padding:28px 30px;">
+      <div style="display:flex;align-items:flex-start;gap:16px;margin-bottom:16px;">
+        <div class="form-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div>
+          <h3 style="font-size:1.05rem;font-weight:800;color:#0d2b57;letter-spacing:-0.01em;margin-bottom:4px;">OneStop Privacy Policy</h3>
+          <p style="font-size:0.875rem;color:#364e6b;line-height:1.65;">Review our privacy policy to understand how we collect, use, and protect your personal health information.</p>
+        </div>
+      </div>
+      <button onclick="openPdf('../Clinic Forms/Onestop Medical Notice of Privacy Practices.pdf','OneStop Privacy Policy')" class="btn-primary" style="cursor:pointer;border:none;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Privacy Policy
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Patient Portal — full width -->
+  <div class="card" style="padding:28px 30px;margin-bottom:24px;background:linear-gradient(135deg,#0d2b57,#1b4a8c);border-color:transparent;">
+    <div style="display:flex;align-items:flex-start;gap:16px;">
+      <div style="width:44px;height:44px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </div>
+      <div style="flex:1;">
+        <h3 style="font-size:1.05rem;font-weight:800;color:#fff;letter-spacing:-0.01em;margin-bottom:6px;">Patient Portal</h3>
+        <p style="font-size:0.875rem;color:rgba(255,255,255,0.75);line-height:1.65;margin-bottom:18px;max-width:600px;">Come join the family at OneStop Medical. If you are a new patient and have made an appointment, you can access the necessary documents via the portal and sign off on the HIPAA and Assignment of Benefits form before coming to the office.</p>
+        <a href="https://patient.ethizo.com/login" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:#fff;color:#1b4a8c;font-family:'Outfit',sans-serif;font-weight:700;font-size:0.875rem;padding:10px 22px;border-radius:10px;text-decoration:none;box-shadow:0 3px 12px rgba(0,0,0,0.15);transition:opacity 0.2s,transform 0.15s;" onmouseover="this.style.opacity='0.92';this.style.transform='translateY(-1px)'" onmouseout="this.style.opacity='1';this.style.transform=''">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+          Access Patient Portal
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Forms grid row 2 -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px;">
+
+    <!-- I-693 USCIS -->
+    <div class="card" style="padding:28px 30px;">
+      <div style="display:flex;align-items:flex-start;gap:16px;margin-bottom:16px;">
+        <div class="form-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <div>
+          <h3 style="font-size:1.05rem;font-weight:800;color:#0d2b57;letter-spacing:-0.01em;margin-bottom:4px;">I-693 USCIS Immigration Physical Form</h3>
+          <p style="font-size:0.875rem;color:#364e6b;line-height:1.65;">Please complete your portion of this form before your Immigration Physical appointment.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;">
+        <button onclick="openPdf('../Clinic Forms/I-693 Forms.pdf','USCIS Form I-693')" class="btn-primary" style="cursor:pointer;border:none;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          USCIS Form I-693 Paperwork
+        </button>
+        <button onclick="openPdf('../Clinic Forms/Brief I693 Form.pdf','Clinic I-693 Brief Form')" class="btn-secondary" style="cursor:pointer;border:none;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Clinic I-693 Brief Form
+        </button>
+      </div>
+    </div>
+
+    <!-- ADHD Parent/Teacher -->
+    <div class="card" style="padding:28px 30px;">
+      <div style="display:flex;align-items:flex-start;gap:16px;margin-bottom:16px;">
+        <div class="form-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div>
+          <h3 style="font-size:1.05rem;font-weight:800;color:#0d2b57;letter-spacing:-0.01em;margin-bottom:4px;">ADHD Questionnaire — Parent / Teacher</h3>
+          <p style="font-size:0.875rem;color:#364e6b;line-height:1.65;">Vanderbilt ADHD questionnaire for parents and teachers to assess symptoms in children.</p>
+        </div>
+      </div>
+      <button onclick="openPdf('../Clinic Forms/ADHD Questionaire .pdf','ADHD Questionnaire — Parent / Teacher')" class="btn-primary" style="cursor:pointer;border:none;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download Form
+      </button>
+    </div>
+
+  </div>
+
+  <!-- ADHD Adult — half width -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:48px;">
+    <div class="card" style="padding:28px 30px;">
+      <div style="display:flex;align-items:flex-start;gap:16px;margin-bottom:16px;">
+        <div class="form-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div>
+          <h3 style="font-size:1.05rem;font-weight:800;color:#0d2b57;letter-spacing:-0.01em;margin-bottom:4px;">ADHD Questionnaire — Adult</h3>
+          <p style="font-size:0.875rem;color:#364e6b;line-height:1.65;">Self-report questionnaire for adults to assess ADHD symptoms.</p>
+        </div>
+      </div>
+      <button onclick="openPdf('../Clinic Forms/Adult ADHD Questions.pdf','ADHD Questionnaire — Adult')" class="btn-primary" style="cursor:pointer;border:none;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download Form
+      </button>
+    </div>
+    <div></div>
+  </div>
+
+  <!-- Insurances -->
+  <div class="card" style="padding:36px 40px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:28px;">
+      <div>
+        <h2 style="font-size:1.4rem;font-weight:800;color:#0d2b57;letter-spacing:-0.02em;margin-bottom:6px;">Accepted Insurances</h2>
+        <p style="font-size:0.875rem;color:#364e6b;line-height:1.6;">Please contact your insurance company to confirm that OneStop Medical is an In-Network Provider.</p>
+      </div>
+      <a href="index.html#contact" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#1b4a8c,#2e75cc);color:#fff;font-family:'Outfit',sans-serif;font-weight:600;font-size:0.875rem;padding:10px 22px;border-radius:10px;text-decoration:none;box-shadow:0 3px 12px rgba(27,74,140,0.28);transition:opacity 0.2s,transform 0.15s;white-space:nowrap;" onmouseover="this.style.opacity='0.9';this.style.transform='translateY(-1px)'" onmouseout="this.style.opacity='1';this.style.transform=''">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.28h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.84a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.72 16.92z"/></svg>
+        Contact Us
+      </a>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;">
+      <span class="insurance-tag">Cigna</span>
+      <span class="insurance-tag">Premera (BCBS)</span>
+      <span class="insurance-tag">Regence (BCBS)</span>
+      <span class="insurance-tag">Bridgespan</span>
+      <span class="insurance-tag">Tricare Prime</span>
+      <span class="insurance-tag">Aetna</span>
+      <span class="insurance-tag">UHC — United Healthcare</span>
+      <span class="insurance-tag">First Choice</span>
+      <span class="insurance-tag">Multiplan</span>
+      <span class="insurance-tag">UHC Community Plans</span>
+      <span class="insurance-tag">Coordinated Care</span>
+      <span class="insurance-tag">LifeWise — Health Plan of WA</span>
+      <span class="insurance-tag">Asuris Northwest Health</span>
+      <span class="insurance-tag">Kaiser Permanente — PPO</span>
+      <span class="insurance-tag">Molina Healthcare Marketplace</span>
+      <span class="insurance-tag">Ambetter</span>
+      <span class="insurance-tag">Provider Network of America</span>
+      <span class="insurance-tag">Medicare</span>
+      <span class="insurance-tag">Medicaid</span>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:14px;">
+    <div style="display:flex;align-items:center;gap:14px;">
+      <a href="https://x.com/MedicalOnestop" target="_blank" rel="noopener noreferrer" aria-label="X" style="width:38px;height:38px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.18)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'"><svg width="16" height="16" viewBox="0 0 24 24" fill="rgba(255,255,255,0.8)"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+      <a href="https://www.instagram.com/onestopmedicalclinic/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style="width:38px;height:38px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.18)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+      <a href="https://www.facebook.com/OnestopKent/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" style="width:38px;height:38px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.18)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'"><svg width="16" height="16" viewBox="0 0 24 24" fill="rgba(255,255,255,0.8)"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+      <a href="https://www.linkedin.com/in/onestop-medical-26641318b/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" style="width:38px;height:38px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.18)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'"><svg width="16" height="16" viewBox="0 0 24 24" fill="rgba(255,255,255,0.8)"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+    </div>
+    <p style="font-size:0.78rem;color:rgba(255,255,255,0.28);">© 2025 OneStop Medical Services, LLC. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- PDF MODAL -->
+<div id="pdf-modal" style="display:none;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;">
+  <div onclick="closePdf()" style="position:absolute;inset:0;background:rgba(5,15,35,0.72);backdrop-filter:blur(4px);"></div>
+  <div style="position:relative;z-index:1;width:min(860px,94vw);height:min(88vh,900px);background:#fff;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 24px 80px rgba(0,0,0,0.45);">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:#0d2b57;flex-shrink:0;">
+      <span id="pdf-title" style="font-family:'Outfit',sans-serif;font-weight:700;font-size:0.9375rem;color:#fff;display:flex;align-items:center;gap:8px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        <span id="pdf-title-text"></span>
+      </span>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <a id="pdf-download" href="#" download style="display:inline-flex;align-items:center;gap:7px;background:linear-gradient(135deg,#d97706,#f59e0b);color:#fff;font-family:'Outfit',sans-serif;font-weight:600;font-size:0.85rem;padding:8px 18px;border-radius:10px;text-decoration:none;box-shadow:0 3px 10px rgba(217,119,6,0.35);transition:opacity 0.2s;" onmouseover="this.style.opacity='0.88'" onmouseout="this.style.opacity='1'">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download
+        </a>
+        <button onclick="closePdf()" style="background:rgba(255,255,255,0.12);border:none;cursor:pointer;color:#fff;border-radius:8px;width:34px;height:34px;display:flex;align-items:center;justify-content:center;transition:background 0.15s;" onmouseover="this.style.background='rgba(255,255,255,0.22)'" onmouseout="this.style.background='rgba(255,255,255,0.12)'">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+    <iframe id="pdf-frame" src="" style="flex:1;width:100%;border:none;background:#525659;"></iframe>
+  </div>
+</div>
+
+<script>
+  function openPdf(path, title) {
+    const encoded = path.split('/').map(p => encodeURIComponent(p)).join('/');
+    document.getElementById('pdf-title-text').textContent = title;
+    document.getElementById('pdf-download').href = encoded;
+    document.getElementById('pdf-frame').src = encoded;
+    const modal = document.getElementById('pdf-modal');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+  function closePdf() {
+    document.getElementById('pdf-modal').style.display = 'none';
+    document.getElementById('pdf-frame').src = '';
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closePdf(); });
+</script>
+
+</body>
+</html>

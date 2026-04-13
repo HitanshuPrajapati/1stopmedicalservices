@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Immigration Physicals — OneStop Medical Services</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #f4f8ff; color: #1a2f4a; -webkit-font-smoothing: antialiased; }
+    h1, h2, h3, h4 { font-family: 'Outfit', sans-serif; }
+    ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: #e8f0fe; } ::-webkit-scrollbar-thumb { background: #3b82cc; border-radius: 3px; }
+
+    .nav-btn { font-family: 'Outfit', sans-serif; font-size: 0.875rem; font-weight: 500; color: #0d2b57; text-decoration: none; white-space: nowrap; padding: 8px 16px; border-radius: 100px; border: 1px solid transparent; background: transparent; transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.15s; display: inline-block; }
+    .nav-btn:hover { background: rgba(13,43,87,0.07); border-color: rgba(13,43,87,0.15); color: #1b4a8c; transform: translateY(-1px); }
+    .nav-btn:active { transform: translateY(0); }
+    .nav-btn:focus-visible { outline: 3px solid #1b4a8c; outline-offset: 2px; }
+    .nav-btn.active { background: #0d2b57; color: #fff; border-color: #0d2b57; }
+
+    #navbar { position: relative; background: #fff; border-bottom: 1px solid rgba(13,43,87,0.10); box-shadow: 0 1px 12px rgba(13,43,87,0.08); overflow: visible; z-index: 40; }
+    #navbar-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 0 36px; }
+    #nav-logo { position: relative; z-index: 10; flex-shrink: 0; margin-bottom: -64px; }
+    #nav-logo-oval { background: #fff; border-radius: 50%; width: 225px; height: 108px; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 48px 6px rgba(13,43,87,0.75); border: none; overflow: hidden; padding: 6px; }
+    #nav-logo-oval img { height: 94px; width: auto; border-radius: 0; object-fit: contain; }
+    #navbar-top-nav { display: flex; align-items: center; gap: 4px; }
+
+    #nav-float-pill { position: fixed; top: 0; left: 50%; transform: translateX(-50%) translateY(-80px); z-index: 100; display: flex; align-items: center; gap: 2px; background: #0d2b57; border-radius: 100px; padding: 6px 10px; border: 1px solid rgba(255,255,255,0.10); box-shadow: 0 12px 40px rgba(13,43,87,0.40), 0 4px 12px rgba(13,43,87,0.22); opacity: 0; pointer-events: none; transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s ease; }
+    body.nav-scrolled #nav-float-pill { transform: translateX(-50%) translateY(14px); opacity: 1; pointer-events: all; }
+    .float-btn { font-family: 'Outfit', sans-serif; font-size: 0.875rem; font-weight: 500; text-decoration: none; white-space: nowrap; color: rgba(255,255,255,0.80); padding: 8px 16px; border-radius: 100px; background: transparent; transition: background 0.2s, color 0.2s; display: inline-block; }
+    .float-btn:hover { background: rgba(255,255,255,0.10); color: #fff; }
+    .float-btn.active { background: rgba(255,255,255,0.15); color: #fff; }
+
+    .card { background: #fff; border-radius: 16px; border: 1px solid rgba(59,130,204,0.16); box-shadow: 0 2px 8px rgba(27,74,140,0.07), 0 8px 28px rgba(27,74,140,0.08); }
+
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg,#1b4a8c,#2e75cc); color: #fff; font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 0.875rem; padding: 10px 20px; border-radius: 10px; text-decoration: none; border: none; cursor: pointer; box-shadow: 0 3px 12px rgba(27,74,140,0.28); transition: opacity 0.2s, transform 0.15s; }
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+    .btn-secondary { display: inline-flex; align-items: center; gap: 8px; background: #f0f7ff; color: #1b4a8c; border: 1px solid rgba(46,117,204,0.30); font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 0.875rem; padding: 10px 20px; border-radius: 10px; text-decoration: none; cursor: pointer; transition: background 0.2s, transform 0.15s; }
+    .btn-secondary:hover { background: #dbeafe; transform: translateY(-1px); }
+
+    .step-num { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, #1b4a8c, #2e75cc); color: #fff; font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 3px 10px rgba(27,74,140,0.30); }
+
+    .section-anchor { scroll-margin-top: 80px; }
+
+    .tag { display: inline-block; background: #f0f7ff; border: 1px solid rgba(46,117,204,0.22); border-radius: 100px; padding: 4px 12px; font-size: 0.8rem; color: #1b4a8c; font-weight: 500; font-family: 'Outfit', sans-serif; }
+
+    /* PDF Modal */
+    #pdf-modal { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(10,18,40,0.72); align-items: center; justify-content: center; }
+    #pdf-modal.open { display: flex; }
+    #pdf-modal-inner { background: #fff; border-radius: 16px; width: min(820px, 95vw); height: min(88vh, 760px); display: flex; flex-direction: column; box-shadow: 0 32px 80px rgba(0,0,0,0.35); overflow: hidden; }
+    #pdf-modal-header { display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; background: #0d2b57; }
+    #pdf-modal-title { font-family: 'Outfit', sans-serif; font-size: 1rem; font-weight: 700; color: #fff; }
+    #pdf-modal-frame { flex: 1; border: none; }
+    #pdf-modal-close { background: rgba(255,255,255,0.15); border: none; border-radius: 8px; color: #fff; cursor: pointer; padding: 6px 12px; font-size: 0.8rem; font-family: 'Outfit', sans-serif; font-weight: 600; transition: background 0.2s; }
+    #pdf-modal-close:hover { background: rgba(255,255,255,0.25); }
+
+    /* Accordion */
+    .acc-item { border-bottom: 1px solid rgba(59,130,204,0.12); }
+    .acc-item:last-child { border-bottom: none; }
+    .acc-btn { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 18px 24px; background: none; border: none; cursor: pointer; text-align: left; transition: background 0.15s; }
+    .acc-btn:hover { background: rgba(46,117,204,0.04); }
+    .acc-title { font-family: 'Outfit', sans-serif; font-size: 1rem; font-weight: 700; color: #0d2b57; }
+    .acc-chevron { flex-shrink: 0; transition: transform 0.25s cubic-bezier(0.22,1,0.36,1); color: #2e75cc; }
+    .acc-item.open .acc-chevron { transform: rotate(180deg); }
+    .acc-body { display: none; padding: 0 24px 22px; }
+    .acc-item.open .acc-body { display: block; }
+
+    /* Vaccine tool */
+    #vax-result { transition: opacity 0.25s; }
+
+    @media (max-width: 768px) {
+      #navbar-inner { padding: 0 16px; }
+      .two-col { grid-template-columns: 1fr !important; }
+      .three-col { grid-template-columns: 1fr !important; }
+    }
+
+    footer { background: #0a1e3d; padding: 18px 24px; }
+  </style>
+</head>
+<body>
+
+<header id="navbar">
+  <div id="navbar-inner">
+    <a href="../index.html" id="nav-logo" style="text-decoration:none;flex-shrink:0;">
+      <div id="nav-logo-oval">
+        <img src="../Images/logo.jpeg" alt="OneStop Medical Services" />
+      </div>
+    </a>
+    <nav id="navbar-top-nav">
+      <a href="../index.html" class="nav-btn">Home</a>
+      <a href="office-policy.html" class="nav-btn">Office Policy</a>
+      <a href="services.html" class="nav-btn">Services</a>
+      <a href="immigration.html" class="nav-btn active">Immigration</a>
+      <a href="resources.html" class="nav-btn">Resources</a>
+      <a href="appointment-types.html" class="nav-btn">Appointment Types</a>
+      <a href="faqs.html" class="nav-btn">FAQs</a>
+    </nav>
+  </div>
+</header>
+
+<div id="nav-float-pill" role="navigation" aria-label="Page navigation">
+  <a href="../index.html" class="float-btn">Home</a>
+  <a href="office-policy.html" class="float-btn">Office Policy</a>
+  <a href="services.html" class="float-btn">Services</a>
+  <a href="immigration.html" class="float-btn active">Immigration</a>
+  <a href="resources.html" class="float-btn">Resources</a>
+  <a href="appointment-types.html" class="float-btn">Appointment Types</a>
+  <a href="faqs.html" class="float-btn">FAQs</a>
+</div>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.body.classList.toggle('nav-scrolled', window.scrollY > 60);
+  }, { passive: true });
+</script>
+
+<!-- ═══════════════════════════════════
+     HERO
+════════════════════════════════════ -->
+<section style="background: linear-gradient(150deg, #0d2b57 0%, #1b4a8c 55%, #2e75cc 100%); padding: 72px 24px 56px; position: relative; overflow: hidden;">
+  <div style="position:absolute;top:-80px;right:-80px;width:500px;height:500px;background:radial-gradient(circle,rgba(46,117,204,0.25) 0%,transparent 70%);pointer-events:none;"></div>
+  <div style="position:absolute;bottom:-60px;left:-60px;width:340px;height:340px;background:radial-gradient(circle,rgba(0,180,216,0.12) 0%,transparent 70%);pointer-events:none;"></div>
+  <div style="max-width:840px;margin:0 auto;position:relative;z-index:1;text-align:center;">
+    <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.22);border-radius:100px;padding:5px 16px;margin-bottom:20px;">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <span style="font-family:'Outfit',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:rgba(255,255,255,0.85);">USCIS Immigration Physical</span>
+    </div>
+    <h1 style="font-size:clamp(2rem,4.5vw,3rem);font-weight:800;letter-spacing:-0.03em;color:#fff;margin-bottom:18px;line-height:1.15;">I-693 Immigration Physical<br/>— Your Complete Guide</h1>
+    <p style="font-size:1.0625rem;color:rgba(255,255,255,0.75);line-height:1.75;max-width:640px;margin:0 auto 32px;">We handle the full I-693 process in-house — from your initial intake and labs to vaccinations, physical exam, and officially sealed paperwork. Here's everything you need to know.</p>
+
+    <!-- Jump nav -->
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px;">
+      <a href="#getting-started" style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.22);border-radius:100px;padding:7px 16px;font-family:'Outfit',sans-serif;font-size:0.8rem;font-weight:600;color:#fff;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.22)'" onmouseout="this.style.background='rgba(255,255,255,0.12)'">1. Getting Started</a>
+      <a href="#after-scheduling" style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.22);border-radius:100px;padding:7px 16px;font-family:'Outfit',sans-serif;font-size:0.8rem;font-weight:600;color:#fff;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.22)'" onmouseout="this.style.background='rgba(255,255,255,0.12)'">2. After Scheduling</a>
+      <a href="#labs" style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.22);border-radius:100px;padding:7px 16px;font-family:'Outfit',sans-serif;font-size:0.8rem;font-weight:600;color:#fff;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.22)'" onmouseout="this.style.background='rgba(255,255,255,0.12)'">3. Labs</a>
+      <a href="#chest-xray" style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.22);border-radius:100px;padding:7px 16px;font-family:'Outfit',sans-serif;font-size:0.8rem;font-weight:600;color:#fff;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.22)'" onmouseout="this.style.background='rgba(255,255,255,0.12)'">4. Chest X-Ray</a>
+      <a href="#vaccinations" style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.22);border-radius:100px;padding:7px 16px;font-family:'Outfit',sans-serif;font-size:0.8rem;font-weight:600;color:#fff;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.22)'" onmouseout="this.style.background='rgba(255,255,255,0.12)'">5. Vaccinations</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     MAIN CONTENT
+════════════════════════════════════ -->
+<div style="max-width:860px;margin:0 auto;padding:52px 24px 72px;">
+
+  <!-- ── STEP 1: Getting Started ── -->
+  <div id="getting-started" class="section-anchor" style="margin-bottom:40px;">
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
+      <div style="width:44px;height:44px;background:linear-gradient(135deg,#0d2b57,#1b4a8c);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 12px rgba(13,43,87,0.28);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
+      <div>
+        <p style="font-family:'Outfit',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#2e75cc;margin-bottom:2px;">Step 1</p>
+        <h2 style="font-size:1.5rem;font-weight:800;color:#0d2b57;letter-spacing:-0.02em;">How to Get Started</h2>
+      </div>
+    </div>
+
+    <div class="card" style="padding:28px 32px;">
+      <p style="font-size:0.9375rem;color:#364e6b;line-height:1.75;margin-bottom:22px;">Give us a call or walk into either of our clinic locations and let us know you'd like to schedule an <strong style="color:#0d2b57;">Immigration Physical Appointment.</strong></p>
+
+      <!-- What to bring -->
+      <div style="background:#f4f8ff;border-radius:12px;padding:18px 22px;margin-bottom:24px;">
+        <p style="font-family:'Outfit',sans-serif;font-size:0.85rem;font-weight:700;color:#0d2b57;margin-bottom:12px;">Please have the following ready:</p>
+        <div style="display:flex;flex-direction:column;gap:9px;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="width:6px;height:6px;border-radius:50%;background:#2e75cc;flex-shrink:0;"></div>
+            <span style="font-size:0.9rem;color:#364e6b;">Identification Card</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="width:6px;height:6px;border-radius:50%;background:#2e75cc;flex-shrink:0;"></div>
+            <span style="font-size:0.9rem;color:#364e6b;">Insurance card <span style="color:#6b7a94;">(if applicable)</span></span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="width:6px;height:6px;border-radius:50%;background:#2e75cc;flex-shrink:0;"></div>
+            <span style="font-size:0.9rem;color:#364e6b;">All available vaccination records</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Steps list -->
+      <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:28px;">
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+          <div class="step-num">1</div>
+          <div style="padding-top:6px;">
+            <p style="font-size:0.9375rem;color:#1a2f4a;line-height:1.65;">We will use your information to create a medical chart for you.</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+          <div class="step-num">2</div>
+          <div style="padding-top:6px;">
+            <p style="font-size:0.9375rem;color:#1a2f4a;line-height:1.65;">A required intake form called <strong style="color:#0d2b57;">"Brief I-693"</strong> will be sent to you by email and phone to complete at your earliest convenience. This information will be used to fill out your official I-693 form — please verify everything is correct.</p>
+            <p style="font-size:0.825rem;color:#6b7a94;margin-top:6px;">The Brief I-693 form is also available on our <a href="resources.html" style="color:#2e75cc;text-decoration:none;font-weight:600;">Resources page</a>.</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+          <div class="step-num">3</div>
+          <div style="padding-top:6px;">
+            <p style="font-size:0.9375rem;color:#1a2f4a;line-height:1.65;margin-bottom:14px;">Payment will be collected based on your visit type:</p>
+            <!-- Payment table -->
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;" class="three-col">
+              <div style="background:linear-gradient(135deg,#0d2b57,#1b4a8c);border-radius:12px;padding:16px 14px;text-align:center;">
+                <div style="font-family:'Outfit',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-bottom:8px;">Refugee or K Visa</div>
+                <div style="font-family:'Outfit',sans-serif;font-size:1.5rem;font-weight:800;color:#fff;">$275</div>
+              </div>
+              <div style="background:linear-gradient(135deg,#1b4a8c,#2e75cc);border-radius:12px;padding:16px 14px;text-align:center;">
+                <div style="font-family:'Outfit',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-bottom:8px;">With Insurance</div>
+                <div style="font-family:'Outfit',sans-serif;font-size:1.5rem;font-weight:800;color:#fff;">$375</div>
+              </div>
+              <div style="background:linear-gradient(135deg,#2e75cc,#3b8fd6);border-radius:12px;padding:16px 14px;text-align:center;">
+                <div style="font-family:'Outfit',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-bottom:8px;">No Insurance</div>
+                <div style="font-family:'Outfit',sans-serif;font-size:1.5rem;font-weight:800;color:#fff;">$450</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+          <div class="step-num">4</div>
+          <div style="padding-top:6px;">
+            <p style="font-size:0.9375rem;color:#1a2f4a;line-height:1.65;">Once payment is made and your intake form is complete, call us to schedule your pick-up appointment — <strong style="color:#0d2b57;">at least one week out.</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <a href="tel:2533978683" class="btn-primary">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l1.27-.93a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call Us to Schedule
+        </a>
+        <a href="resources.html" class="btn-secondary">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Get the Brief I-693 Form
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── STEP 2: After Scheduling ── -->
+  <div id="after-scheduling" class="section-anchor" style="margin-bottom:40px;">
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
+      <div style="width:44px;height:44px;background:linear-gradient(135deg,#0d2b57,#1b4a8c);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 12px rgba(13,43,87,0.28);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      </div>
+      <div>
+        <p style="font-family:'Outfit',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#2e75cc;margin-bottom:2px;">Step 2</p>
+        <h2 style="font-size:1.5rem;font-weight:800;color:#0d2b57;letter-spacing:-0.02em;">What Happens After Scheduling</h2>
+      </div>
+    </div>
+
+    <div class="card" style="padding:28px 32px;">
+      <div style="display:flex;flex-direction:column;gap:18px;">
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+          <div class="step-num">1</div>
+          <div style="padding-top:6px;"><p style="font-size:0.9375rem;color:#1a2f4a;line-height:1.65;">We generate an I-693 form filled out with the information from your Brief I-693 form.</p></div>
+        </div>
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+          <div class="step-num">2</div>
+          <div style="padding-top:6px;">
+            <p style="font-size:0.9375rem;color:#1a2f4a;line-height:1.65;margin-bottom:10px;">We verify your vaccination records and send you an <strong style="color:#0d2b57;">initial email</strong> listing all pending vaccinations and lab orders based on your age. See our <a href="#vax-tool" style="color:#2e75cc;text-decoration:none;font-weight:600;">Vaccine & Lab Requirements Tool</a> below.</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+          <div class="step-num">3</div>
+          <div style="padding-top:6px;">
+            <p style="font-size:0.9375rem;color:#1a2f4a;line-height:1.65;">Complete your <strong style="color:#0d2b57;">lab tests as soon as possible</strong> — and at least <strong style="color:#c0392b;">2 business days before your pick-up appointment</strong> to avoid rescheduling. See <a href="#labs" style="color:#2e75cc;text-decoration:none;font-weight:600;">"How to Complete Your Labs"</a> below.</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+          <div class="step-num">4</div>
+          <div style="padding-top:6px;"><p style="font-size:0.9375rem;color:#1a2f4a;line-height:1.65;">Complete any pending vaccinations we inform you of. See <a href="#vaccinations" style="color:#2e75cc;text-decoration:none;font-weight:600;">"How to Complete Your Vaccinations"</a> below.</p></div>
+        </div>
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+          <div class="step-num">5</div>
+          <div style="padding-top:6px;"><p style="font-size:0.9375rem;color:#1a2f4a;line-height:1.65;">Once labs and vaccinations are complete with normal results, we will see you on the day of your pick-up appointment for your <strong style="color:#0d2b57;">physical examination</strong> (not required for refugee patients) and the signing and sealing of your official paperwork.</p></div>
+        </div>
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+          <div class="step-num">6</div>
+          <div style="padding-top:6px;">
+            <p style="font-size:0.9375rem;color:#1a2f4a;line-height:1.65;margin-bottom:10px;">At the conclusion of your appointment, you will receive:</p>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <div style="display:flex;align-items:center;gap:10px;background:#f4f8ff;padding:10px 14px;border-radius:10px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e75cc" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12l2 2 4-4"/></svg>
+                <span style="font-size:0.9rem;color:#1a2f4a;">An <strong>official sealed I-693 envelope</strong> — mailed to USCIS (or your lawyer if you have one)</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px;background:#f4f8ff;padding:10px 14px;border-radius:10px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e75cc" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12l2 2 4-4"/></svg>
+                <span style="font-size:0.9rem;color:#1a2f4a;">A <strong>double-sided copy</strong> for your personal records</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── STEP 3: Labs ── -->
+  <div id="labs" class="section-anchor" style="margin-bottom:40px;">
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
+      <div style="width:44px;height:44px;background:linear-gradient(135deg,#0d2b57,#1b4a8c);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 12px rgba(13,43,87,0.28);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6v10l4 7H5l4-7V3z"/><line x1="9" y1="3" x2="15" y2="3"/></svg>
+      </div>
+      <div>
+        <p style="font-family:'Outfit',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#2e75cc;margin-bottom:2px;">Step 3</p>
+        <h2 style="font-size:1.5rem;font-weight:800;color:#0d2b57;letter-spacing:-0.02em;">How to Complete Your Labs</h2>
+      </div>
+    </div>
+
+    <div class="card" style="padding:28px 32px;margin-bottom:16px;">
+
+      <!-- Lab types -->
+      <p style="font-size:0.9375rem;color:#364e6b;line-height:1.75;margin-bottom:22px;">We will attach your lab order to the initial email we send. All of our labs are processed through <strong style="color:#0d2b57;">Labcorp</strong>. Use the button below to find your nearest location.</p>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:24px;" class="three-col">
+        <div style="background:#f4f8ff;border:1px solid rgba(46,117,204,0.18);border-radius:12px;padding:14px 16px;">
+          <div style="font-family:'Outfit',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#2e75cc;margin-bottom:6px;">All Ages</div>
+          <div style="font-size:0.875rem;font-weight:600;color:#0d2b57;margin-bottom:2px;">QuantiFERON®-TB Gold Plus</div>
+          <div style="font-size:0.8rem;color:#6b7a94;">Tuberculosis screening</div>
+        </div>
+        <div style="background:#f4f8ff;border:1px solid rgba(46,117,204,0.18);border-radius:12px;padding:14px 16px;">
+          <div style="font-family:'Outfit',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#2e75cc;margin-bottom:6px;">Ages 18–44</div>
+          <div style="font-size:0.875rem;font-weight:600;color:#0d2b57;margin-bottom:2px;">RPR / TP Confirmation</div>
+          <div style="font-size:0.8rem;color:#6b7a94;">Syphilis screening</div>
+        </div>
+        <div style="background:#f4f8ff;border:1px solid rgba(46,117,204,0.18);border-radius:12px;padding:14px 16px;">
+          <div style="font-family:'Outfit',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#2e75cc;margin-bottom:6px;">Ages 18–24</div>
+          <div style="font-size:0.875rem;font-weight:600;color:#0d2b57;margin-bottom:2px;">Neisseria gonorrhoeae NAA</div>
+          <div style="font-size:0.8rem;color:#6b7a94;">Gonorrhea screening</div>
+        </div>
+      </div>
+
+      <button class="btn-primary" onclick="openPdf('../Clinic Forms/Labcorp Instructions.pdf','Labcorp — Find a Location')" style="margin-bottom:24px;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10H3M21 6H3M21 14H3M21 18H3"/></svg>
+        Find a Labcorp Location
+      </button>
+
+      <!-- Immunity titer option -->
+      <div style="background:linear-gradient(135deg,rgba(5,150,105,0.07),rgba(16,185,129,0.04));border:1px solid rgba(5,150,105,0.22);border-radius:12px;padding:16px 18px;margin-bottom:20px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5" style="flex-shrink:0;"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/><path d="M12 8v4l3 3"/></svg>
+          <p style="font-family:'Outfit',sans-serif;font-size:0.82rem;font-weight:700;color:#059669;letter-spacing:0.04em;text-transform:uppercase;">Optional: Immunity Titer Tests</p>
+        </div>
+        <p style="font-size:0.875rem;color:#364e6b;line-height:1.7;">If you believe you were previously vaccinated for <strong style="color:#0d2b57;">Hepatitis B</strong>, <strong style="color:#0d2b57;">Varicella</strong>, and/or <strong style="color:#0d2b57;">MMR</strong> but no longer have records, you can request an immunity titer test to confirm protection. These are added to your standard lab order at <strong style="color:#0d2b57;">$75 each</strong>. A positive titer means the vaccine requirement is already met — no re-vaccination needed.</p>
+      </div>
+
+      <div style="border-top:1px solid rgba(59,130,204,0.12);padding-top:20px;">
+        <p style="font-family:'Outfit',sans-serif;font-size:0.85rem;font-weight:700;color:#0d2b57;margin-bottom:12px;">Important Notes:</p>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;gap:10px;align-items:flex-start;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e75cc" stroke-width="2.5" style="flex-shrink:0;margin-top:2px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <p style="font-size:0.875rem;color:#364e6b;line-height:1.65;">If you complete labs elsewhere, you are responsible for providing us results as soon as possible.</p>
+          </div>
+          <div style="display:flex;gap:10px;align-items:flex-start;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e75cc" stroke-width="2.5" style="flex-shrink:0;margin-top:2px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <p style="font-size:0.875rem;color:#364e6b;line-height:1.65;">If all results are normal, no further action is needed for labs.</p>
+          </div>
+          <div style="display:flex;gap:10px;align-items:flex-start;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e05c2f" stroke-width="2.5" style="flex-shrink:0;margin-top:2px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <p style="font-size:0.875rem;color:#364e6b;line-height:1.65;">If the <strong style="color:#c0392b;">tuberculosis test is positive</strong>, a Chest X-Ray will be required. See <a href="#chest-xray" style="color:#2e75cc;text-decoration:none;font-weight:600;">Step 4</a> below.</p>
+          </div>
+          <div style="display:flex;gap:10px;align-items:flex-start;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e05c2f" stroke-width="2.5" style="flex-shrink:0;margin-top:2px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <p style="font-size:0.875rem;color:#364e6b;line-height:1.65;">If <strong style="color:#c0392b;">syphilis or gonorrhea tests are positive</strong>, full treatment must be completed before we can issue your official I-693 form.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── STEP 4: Chest X-Ray ── -->
+  <div id="chest-xray" class="section-anchor" style="margin-bottom:40px;">
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
+      <div style="width:44px;height:44px;background:linear-gradient(135deg,#0d2b57,#1b4a8c);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 12px rgba(13,43,87,0.28);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+      </div>
+      <div>
+        <p style="font-family:'Outfit',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#2e75cc;margin-bottom:2px;">Step 4 — If Needed</p>
+        <h2 style="font-size:1.5rem;font-weight:800;color:#0d2b57;letter-spacing:-0.02em;">How to Get Your Chest X-Ray</h2>
+      </div>
+    </div>
+
+    <!-- Conditional banner -->
+    <div style="background:linear-gradient(135deg,rgba(224,92,47,0.08),rgba(192,57,43,0.06));border:1px solid rgba(224,92,47,0.25);border-radius:12px;padding:14px 18px;margin-bottom:16px;display:flex;gap:10px;align-items:flex-start;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c0392b" stroke-width="2.5" style="flex-shrink:0;margin-top:1px;"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <p style="font-size:0.875rem;color:#7d1f1f;line-height:1.65;"><strong>This step only applies if your tuberculosis (QuantiFERON) test comes back positive.</strong> A Chest X-Ray is required to rule out an active infection before we can proceed.</p>
+    </div>
+
+    <div class="card" style="padding:28px 32px;">
+      <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:24px;">
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+          <div class="step-num">1</div>
+          <div style="padding-top:6px;"><p style="font-size:0.9375rem;color:#1a2f4a;line-height:1.65;">Our team will monitor your lab results and, if TB is positive, submit a Chest X-Ray order to <strong style="color:#0d2b57;">RAYUS Radiology</strong> on your behalf. You'll be notified by phone and email with a copy of the order attached.</p></div>
+        </div>
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+          <div class="step-num">2</div>
+          <div style="padding-top:6px;">
+            <p style="font-size:0.9375rem;color:#1a2f4a;line-height:1.65;margin-bottom:12px;">Use the button below to find the closest RAYUS location and complete the Chest X-Ray there. Results will be sent to us automatically.</p>
+            <button class="btn-primary" onclick="openPdf('../Clinic Forms/RAYUS Instructions.pdf','RAYUS Radiology — Find a Location')">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10H3M21 6H3M21 14H3M21 18H3"/></svg>
+              Find a RAYUS Location
+            </button>
+          </div>
+        </div>
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+          <div class="step-num">3</div>
+          <div style="padding-top:6px;"><p style="font-size:0.9375rem;color:#1a2f4a;line-height:1.65;">If you use a different service, you are responsible for providing us the X-Ray results.</p></div>
+        </div>
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+          <div class="step-num">4</div>
+          <div style="padding-top:6px;">
+            <p style="font-size:0.9375rem;color:#1a2f4a;line-height:1.65;margin-bottom:10px;">You'll be notified of the results. At your pick-up appointment, an additional fee will be collected for this process:</p>
+            <div style="display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#0d2b57,#1b4a8c);border-radius:10px;padding:10px 18px;">
+              <span style="font-family:'Outfit',sans-serif;font-size:0.8rem;font-weight:600;color:rgba(255,255,255,0.7);">Chest X-Ray Fee:</span>
+              <span style="font-family:'Outfit',sans-serif;font-size:1.25rem;font-weight:800;color:#fff;">$100</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── STEP 5: Vaccinations ── -->
+  <div id="vaccinations" class="section-anchor" style="margin-bottom:40px;">
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
+      <div style="width:44px;height:44px;background:linear-gradient(135deg,#0d2b57,#1b4a8c);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 12px rgba(13,43,87,0.28);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="2" x2="22" y2="5"/><path d="M17 4l3 3-9.5 9.5-4 1 1-4Z"/><line x1="2" y1="22" x2="8" y2="16"/></svg>
+      </div>
+      <div>
+        <p style="font-family:'Outfit',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#2e75cc;margin-bottom:2px;">Step 5</p>
+        <h2 style="font-size:1.5rem;font-weight:800;color:#0d2b57;letter-spacing:-0.02em;">How to Complete Your Vaccinations</h2>
+      </div>
+    </div>
+
+    <div class="card" style="padding:28px 32px;">
+      <p style="font-size:0.9375rem;color:#364e6b;line-height:1.75;margin-bottom:20px;">Our team will regularly monitor your vaccination records and keep you updated on what's still required. If you have historical records for any required vaccines, we can use those. If not, you'll need to complete the missing immunizations before your pick-up.</p>
+
+      <!-- Translation note -->
+      <div style="background:#fff8e1;border:1px solid rgba(245,158,11,0.30);border-radius:10px;padding:12px 16px;margin-bottom:22px;display:flex;gap:10px;align-items:flex-start;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b45309" stroke-width="2.5" style="flex-shrink:0;margin-top:2px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <p style="font-size:0.85rem;color:#78350f;line-height:1.65;"><strong>Important:</strong> If your vaccination records are in another language, they <strong>must be translated into English</strong> by an official translation service before we can use them.</p>
+      </div>
+
+      <p style="font-size:0.9375rem;color:#1a2f4a;line-height:1.65;margin-bottom:20px;">You may complete vaccinations at a <strong>pharmacy or external clinic</strong>, or at <strong>our clinic on the day of your appointment</strong>. If done elsewhere, send us the records as soon as possible.</p>
+
+      <!-- Clinic vaccine pricing table -->
+      <div style="background:#f4f8ff;border-radius:14px;padding:20px 24px;margin-bottom:20px;">
+        <p style="font-family:'Outfit',sans-serif;font-size:0.9rem;font-weight:700;color:#0d2b57;margin-bottom:14px;">Vaccines Offered at Our Clinic & Pricing</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;" class="two-col">
+          <div style="display:flex;justify-content:space-between;align-items:center;background:#fff;border-radius:8px;padding:10px 14px;border:1px solid rgba(59,130,204,0.12);">
+            <span style="font-size:0.875rem;font-weight:600;color:#1a2f4a;">Tdap / Td</span>
+            <span style="font-family:'Outfit',sans-serif;font-size:0.9rem;font-weight:700;color:#1b4a8c;">$90</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;background:#fff;border-radius:8px;padding:10px 14px;border:1px solid rgba(59,130,204,0.12);">
+            <span style="font-size:0.875rem;font-weight:600;color:#1a2f4a;">Polio</span>
+            <span style="font-family:'Outfit',sans-serif;font-size:0.9rem;font-weight:700;color:#1b4a8c;">$90</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;background:#fff;border-radius:8px;padding:10px 14px;border:1px solid rgba(59,130,204,0.12);">
+            <span style="font-size:0.875rem;font-weight:600;color:#1a2f4a;">MMR</span>
+            <span style="font-family:'Outfit',sans-serif;font-size:0.9rem;font-weight:700;color:#1b4a8c;">$115</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;background:#fff;border-radius:8px;padding:10px 14px;border:1px solid rgba(59,130,204,0.12);">
+            <span style="font-size:0.875rem;font-weight:600;color:#1a2f4a;">Hepatitis B</span>
+            <span style="font-family:'Outfit',sans-serif;font-size:0.9rem;font-weight:700;color:#1b4a8c;">$90</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;background:#fff;border-radius:8px;padding:10px 14px;border:1px solid rgba(59,130,204,0.12);">
+            <span style="font-size:0.875rem;font-weight:600;color:#1a2f4a;">Varicella</span>
+            <span style="font-family:'Outfit',sans-serif;font-size:0.9rem;font-weight:700;color:#1b4a8c;">$205</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;background:#fff;border-radius:8px;padding:10px 14px;border:1px solid rgba(59,130,204,0.12);">
+            <span style="font-size:0.875rem;font-weight:600;color:#1a2f4a;">Influenza</span>
+            <span style="font-family:'Outfit',sans-serif;font-size:0.9rem;font-weight:700;color:#1b4a8c;">$50</span>
+          </div>
+        </div>
+        <p style="font-size:0.8rem;color:#6b7a94;margin-top:10px;">For vaccines not listed above, you will need to visit a pharmacy or external clinic and send us the records.</p>
+      </div>
+
+      <p style="font-size:0.875rem;color:#364e6b;line-height:1.65;">Once all immunizations are complete, we will update your paperwork and it will be ready for pick-up at your scheduled appointment.</p>
+    </div>
+  </div>
+
+  <!-- ── Vaccine & Lab Requirements Tool ── -->
+  <div id="vax-tool" class="section-anchor" style="margin-bottom:40px;">
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
+      <div style="width:44px;height:44px;background:linear-gradient(135deg,#059669,#10b981);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 12px rgba(5,150,105,0.28);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </div>
+      <div>
+        <h2 style="font-size:1.5rem;font-weight:800;color:#0d2b57;letter-spacing:-0.02em;">Lab & Immunizations Requirements Tool</h2>
+        <p style="font-size:0.875rem;color:#6b7a94;margin-top:2px;">Enter your date of birth to see which labs and vaccinations apply to you</p>
+      </div>
+    </div>
+
+    <div class="card" style="padding:28px 32px;">
+      <p style="font-size:0.9375rem;color:#364e6b;line-height:1.75;margin-bottom:22px;">Enter your date of birth to see which required lab screenings and vaccinations apply to you. Your initial email from us will include the full list of any pending immunizations based on your specific records and may look different from the list below.</p>
+
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px;flex-wrap:wrap;">
+        <div style="display:flex;align-items:center;gap:10px;background:#f4f8ff;border:1.5px solid rgba(46,117,204,0.30);border-radius:12px;padding:10px 16px;">
+          <label for="dob-input" style="font-family:'Outfit',sans-serif;font-size:0.875rem;font-weight:600;color:#0d2b57;white-space:nowrap;">Date of Birth:</label>
+          <input type="date" id="dob-input" onchange="updateVaxTool()"
+            style="border:none;background:transparent;font-family:'Outfit',sans-serif;font-size:0.9375rem;font-weight:700;color:#1b4a8c;outline:none;" />
+        </div>
+      </div>
+
+      <div id="vax-result" style="display:none;">
+        <div id="vax-labs-section" style="margin-bottom:20px;">
+          <p style="font-family:'Outfit',sans-serif;font-size:0.82rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#2e75cc;margin-bottom:12px;">Required Lab Tests</p>
+          <div style="display:flex;flex-direction:column;gap:10px;" id="vax-labs-list"></div>
+        </div>
+        <div id="vax-vaccines-section">
+          <p style="font-family:'Outfit',sans-serif;font-size:0.82rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#059669;margin-bottom:12px;">Required Vaccinations</p>
+          <div style="display:flex;flex-direction:column;gap:10px;" id="vax-vaccines-list"></div>
+        </div>
+      </div>
+      <div id="vax-placeholder" style="background:#f4f8ff;border-radius:10px;padding:18px;text-align:center;color:#8099b8;font-size:0.875rem;">
+        Enter your date of birth above to see your required labs and vaccinations.
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Contact CTA ── -->
+  <div style="background:linear-gradient(135deg,#0d2b57 0%,#1b4a8c 60%,#2e75cc 100%);border-radius:20px;padding:36px 40px;text-align:center;box-shadow:0 12px 40px rgba(13,43,87,0.28);">
+    <h2 style="font-size:1.5rem;font-weight:800;color:#fff;letter-spacing:-0.02em;margin-bottom:10px;">Have Questions?</h2>
+    <p style="font-size:1rem;color:rgba(255,255,255,0.75);line-height:1.7;max-width:500px;margin:0 auto 24px;">If you have any questions at any time during your I-693 process, please reach out by phone or email — we're happy to help.</p>
+    <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
+      <a href="tel:2533978683" style="display:inline-flex;align-items:center;gap:8px;background:#fff;color:#0d2b57;font-family:'Outfit',sans-serif;font-weight:700;font-size:0.9375rem;padding:12px 24px;border-radius:12px;text-decoration:none;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l1.27-.93a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (253) 397-8683
+      </a>
+      <a href="mailto:info@1stopmedicalservices.com" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.14);border:1px solid rgba(255,255,255,0.30);color:#fff;font-family:'Outfit',sans-serif;font-weight:600;font-size:0.9375rem;padding:12px 24px;border-radius:12px;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.22)'" onmouseout="this.style.background='rgba(255,255,255,0.14)'">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        info@1stopmedicalservices.com
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════
+     PDF MODAL
+════════════════════════════════════ -->
+<div id="pdf-modal" onclick="if(event.target===this)closePdf()">
+  <div id="pdf-modal-inner">
+    <div id="pdf-modal-header">
+      <span id="pdf-modal-title">Document</span>
+      <div style="display:flex;gap:8px;">
+        <a id="pdf-modal-download" href="#" download style="background:rgba(255,255,255,0.15);border:none;border-radius:8px;color:#fff;cursor:pointer;padding:6px 12px;font-size:0.8rem;font-family:'Outfit',sans-serif;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:5px;transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download
+        </a>
+        <button id="pdf-modal-close" onclick="closePdf()">✕ Close</button>
+      </div>
+    </div>
+    <iframe id="pdf-modal-frame" src=""></iframe>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     FOOTER
+════════════════════════════════════ -->
+<footer>
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:14px;">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <a href="https://x.com/MedicalOnestop" target="_blank" rel="noopener noreferrer" style="width:38px;height:38px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.18)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="rgba(255,255,255,0.8)"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/onestopmedical_/" target="_blank" rel="noopener noreferrer" style="width:38px;height:38px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.18)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <a href="https://www.facebook.com/p/OneStop-Medical-Services-100063516244063/" target="_blank" rel="noopener noreferrer" style="width:38px;height:38px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.18)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="rgba(255,255,255,0.8)"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/company/onestop-medical-services" target="_blank" rel="noopener noreferrer" style="width:38px;height:38px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.18)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="rgba(255,255,255,0.8)"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+    </div>
+    <p style="font-size:0.78rem;color:rgba(255,255,255,0.35);text-align:center;">© 2025 OneStop Medical Services, LLC. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // PDF modal
+  function openPdf(path, title) {
+    const parts = path.split('/');
+    const encoded = parts.map(p => encodeURIComponent(p)).join('/');
+    document.getElementById('pdf-modal-frame').src = encoded;
+    document.getElementById('pdf-modal-title').textContent = title;
+    document.getElementById('pdf-modal-download').href = encoded;
+    document.getElementById('pdf-modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closePdf() {
+    document.getElementById('pdf-modal').classList.remove('open');
+    document.getElementById('pdf-modal-frame').src = '';
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closePdf(); });
+
+  // Lab & Immunizations requirements tool
+  function updateVaxTool() {
+    const dobVal = document.getElementById('dob-input').value;
+    const result = document.getElementById('vax-result');
+    const placeholder = document.getElementById('vax-placeholder');
+    const labsList = document.getElementById('vax-labs-list');
+    const vaccinesList = document.getElementById('vax-vaccines-list');
+
+    if (!dobVal) {
+      result.style.display = 'none';
+      placeholder.style.display = 'block';
+      return;
+    }
+
+    const today = new Date();
+    const birth = new Date(dobVal);
+    if (isNaN(birth) || birth > today) {
+      result.style.display = 'none';
+      placeholder.style.display = 'block';
+      return;
+    }
+
+    // Calculate age components
+    let years = today.getFullYear() - birth.getFullYear();
+    let months = today.getMonth() - birth.getMonth();
+    if (today.getDate() < birth.getDate()) months--;
+    if (months < 0) { years--; months += 12; }
+    const totalMonths = years * 12 + months;
+    const totalDays = Math.floor((today - birth) / 86400000);
+    const totalWeeks = Math.floor(totalDays / 7);
+
+    placeholder.style.display = 'none';
+    result.style.display = 'block';
+
+    const labs = [];
+    const vaccines = [];
+
+    // ── Labs ─────────────────────────────────────────
+    // TB — all ages
+    labs.push({ name: 'QuantiFERON®-TB Gold Plus', desc: 'Tuberculosis screening — required for all ages' });
+    // RPR — ages 18–44
+    if (years >= 18 && years <= 44) {
+      labs.push({ name: 'RPR / Rfx Qn RPR / Confirm TP', desc: 'Syphilis screening — required ages 18–44' });
+    }
+    // Gonorrhea — ages 18–24
+    if (years >= 18 && years <= 24) {
+      labs.push({ name: 'Neisseria gonorrhoeae NAA', desc: 'Gonorrhea screening — required ages 18–24' });
+    }
+
+    // ── Vaccines ─────────────────────────────────────
+    // DTaP / DTP / DT — 2 months to 6 years; adults document childhood doses
+    if (totalMonths >= 2 && years < 7) {
+      vaccines.push({ name: 'DTaP / DTP / DT', desc: 'Childhood diphtheria, tetanus & pertussis series — required ages 2 months to 6 years' });
+    } else if (years >= 7) {
+      vaccines.push({ name: 'DTaP / DTP / DT', desc: 'Provide documentation of doses received during childhood', warn: true });
+    }
+    // Td / Tdap — 11+
+    if (years >= 11) {
+      vaccines.push({ name: 'Td / Tdap', desc: 'Tetanus, diphtheria & pertussis booster — required ages 11+' });
+    }
+    // Polio — 2+ months
+    if (totalMonths >= 2) {
+      vaccines.push({ name: 'Polio (IPV)', desc: 'Inactivated poliovirus — required ages 2+ months' });
+    }
+    // MMR — 12+ months
+    if (totalMonths >= 12) {
+      vaccines.push({ name: 'MMR', desc: 'Measles, mumps & rubella — required ages 12+ months' });
+    }
+    // Hib — 2 to 59 months
+    if (totalMonths >= 2 && totalMonths <= 59) {
+      vaccines.push({ name: 'Hib', desc: 'Haemophilus influenzae type b — required ages 2–59 months' });
+    }
+    // Hepatitis B — up to 59 years
+    if (years <= 59) {
+      vaccines.push({ name: 'Hepatitis B', desc: 'Required for ages up to 59 years' });
+    }
+    // Varicella — 12+ months
+    if (totalMonths >= 12) {
+      vaccines.push({ name: 'Varicella (Chickenpox)', desc: 'Required ages 12+ months' });
+    }
+    // Pneumococcal — 2–59 months or 65+
+    if ((totalMonths >= 2 && totalMonths <= 59) || years >= 65) {
+      vaccines.push({ name: 'Pneumococcal', desc: years >= 65 ? 'Required ages 65+' : 'Required ages 2–59 months' });
+    }
+    // Influenza — 6+ months
+    if (totalMonths >= 6) {
+      vaccines.push({ name: 'Influenza', desc: 'Seasonal flu vaccine — required ages 6+ months' });
+    }
+    // Rotavirus — 6 weeks to 8 months
+    if (totalWeeks >= 6 && totalMonths <= 8) {
+      vaccines.push({ name: 'Rotavirus', desc: 'Required ages 6 weeks to 8 months' });
+    }
+    // Hepatitis A — 12 months to 18 years
+    if (totalMonths >= 12 && years <= 18) {
+      vaccines.push({ name: 'Hepatitis A', desc: 'Required ages 12 months to 18 years' });
+    }
+    // Meningococcal — 11–18 years
+    if (years >= 11 && years <= 18) {
+      vaccines.push({ name: 'Meningococcal', desc: 'Required ages 11–18 years' });
+    }
+
+    const labItemHtml = t => `
+      <div style="display:flex;align-items:flex-start;gap:12px;background:#f0f7ff;border:1px solid rgba(46,117,204,0.20);border-radius:10px;padding:12px 16px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e75cc" stroke-width="2.5" style="flex-shrink:0;margin-top:2px;"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+        <div>
+          <div style="font-size:0.875rem;font-weight:600;color:#0d2b57;">${t.name}</div>
+          <div style="font-size:0.8rem;color:#6b7a94;margin-top:2px;">${t.desc}</div>
+        </div>
+      </div>`;
+
+    const vacItemHtml = t => t.warn ? `
+      <div style="display:flex;align-items:flex-start;gap:12px;background:#fffbeb;border:1px solid rgba(202,138,4,0.30);border-radius:10px;padding:12px 16px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ca8a04" stroke-width="2.5" style="flex-shrink:0;margin-top:2px;"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <div>
+          <div style="font-size:0.875rem;font-weight:600;color:#0d2b57;">${t.name}</div>
+          <div style="font-size:0.8rem;color:#6b7a94;margin-top:2px;">${t.desc}</div>
+        </div>
+      </div>` : `
+      <div style="display:flex;align-items:flex-start;gap:12px;background:#f0fff8;border:1px solid rgba(16,185,129,0.22);border-radius:10px;padding:12px 16px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5" style="flex-shrink:0;margin-top:2px;"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+        <div>
+          <div style="font-size:0.875rem;font-weight:600;color:#0d2b57;">${t.name}</div>
+          <div style="font-size:0.8rem;color:#6b7a94;margin-top:2px;">${t.desc}</div>
+        </div>
+      </div>`;
+
+    labsList.innerHTML = labs.map(labItemHtml).join('');
+    vaccinesList.innerHTML = vaccines.length > 0
+      ? vaccines.map(vacItemHtml).join('')
+      : '<div style="background:#f4f8ff;border-radius:10px;padding:14px 16px;color:#8099b8;font-size:0.875rem;text-align:center;">No vaccinations required for this age range.</div>';
+  }
+</script>
+
+</body>
+</html>
