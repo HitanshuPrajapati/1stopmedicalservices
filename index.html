@@ -226,6 +226,53 @@
       .four-col { grid-template-columns: 1fr !important; }
       .five-col { grid-template-columns: 1fr !important; }
     }
+
+    /* ── Hamburger & mobile nav ──────────────────── */
+    #nav-hamburger { display: none; }
+    #nav-mobile-menu { display: none; }
+    #nav-mobile-menu a {
+      display: block;
+      padding: 12px 16px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1rem; font-weight: 500;
+      color: #0d2b57; text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.15s;
+    }
+    #nav-mobile-menu a:hover { background: rgba(13,43,87,0.07); }
+    #nav-mobile-menu a.active { background: #0d2b57; color: #fff; }
+
+    @media (max-width: 768px) {
+      #navbar-top-nav { display: none !important; }
+      #nav-hamburger { display: flex !important; }
+      #nav-float-pill { display: none !important; }
+      #navbar-inner { padding: 0 16px; }
+      #nav-logo { margin-bottom: -48px; }
+      #nav-logo-oval { width: 160px; height: 76px; }
+      #nav-logo-oval img { height: 66px; }
+
+      /* Hero section */
+      #home { padding: 56px 16px 28px !important; }
+      .hero-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+      .hero-carousel-col { width: 100%; }
+      #hero-carousel { height: 280px !important; }
+
+      /* Services section */
+      #services { padding: 36px 16px !important; }
+
+      /* Providers */
+      #providers { padding: 36px 16px !important; }
+
+      /* Locations */
+      #locations { padding: 36px 16px !important; }
+
+      /* Contact */
+      #contact { padding: 36px 16px !important; }
+    }
+
+    @media (min-width: 481px) and (max-width: 768px) {
+      .five-col { grid-template-columns: repeat(3,1fr) !important; }
+    }
   </style>
 </head>
 <body>
@@ -248,8 +295,22 @@
       <a href="Pages/appointment-types.html" class="nav-btn">Appointment Types</a>
       <a href="Pages/faqs.html" class="nav-btn">FAQs</a>
     </nav>
+    <button id="nav-hamburger" aria-label="Menu" style="display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;">
+      <span style="display:block;width:22px;height:2px;background:#0d2b57;border-radius:2px;transition:transform 0.2s,opacity 0.2s;"></span>
+      <span style="display:block;width:22px;height:2px;background:#0d2b57;border-radius:2px;transition:opacity 0.2s;"></span>
+      <span style="display:block;width:22px;height:2px;background:#0d2b57;border-radius:2px;transition:transform 0.2s,opacity 0.2s;"></span>
+    </button>
   </div>
 </header>
+<div id="nav-mobile-menu" style="display:none;position:fixed;top:64px;left:0;right:0;background:#fff;border-bottom:1px solid rgba(13,43,87,0.10);box-shadow:0 8px 24px rgba(13,43,87,0.12);z-index:39;padding:12px 16px;flex-direction:column;gap:4px;">
+  <a href="index.html" class="active">Home</a>
+  <a href="Pages/office-policy.html">Office Policy</a>
+  <a href="Pages/services.html">Services</a>
+  <a href="Pages/immigration.html">Immigration</a>
+  <a href="Pages/resources.html">Resources</a>
+  <a href="Pages/appointment-types.html">Appointment Types</a>
+  <a href="Pages/faqs.html">FAQs</a>
+</div>
 
 <!-- Floating pill nav — only buttons, centred, locked when scrolling -->
 <div id="nav-float-pill" role="navigation" aria-label="Page navigation">
@@ -304,7 +365,7 @@
     </div>
 
     <!-- Right: Image Carousel -->
-    <div style="position:relative;" class="hide-mobile">
+    <div style="position:relative;" class="hero-carousel-col">
 
       <!-- Carousel wrapper -->
       <div id="hero-carousel" style="position:relative;border-radius:20px;overflow:hidden;height:520px;box-shadow:0 24px 64px rgba(0,0,0,0.35);">
@@ -1128,6 +1189,23 @@
   }
 </script>
 
+<script>
+  // ── Hamburger menu ──────────────────────────────────
+  const hamburger = document.getElementById('nav-hamburger');
+  const mobileMenu = document.getElementById('nav-mobile-menu');
+  if (hamburger && mobileMenu) {
+    hamburger.addEventListener('click', () => {
+      const open = mobileMenu.style.display === 'flex';
+      mobileMenu.style.display = open ? 'none' : 'flex';
+    });
+    // Close on outside click
+    document.addEventListener('click', (e) => {
+      if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+        mobileMenu.style.display = 'none';
+      }
+    });
+  }
+</script>
 
 <!-- ── Thank you popup modal ── -->
 <div id="thank-you-modal" style="display:none;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;background:rgba(13,43,87,0.55);backdrop-filter:blur(4px);">

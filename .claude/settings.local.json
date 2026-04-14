@@ -68,7 +68,9 @@
       "Bash(sed -i 's|href=\"resources\\\\.html\"|href=\"Pages/resources.html\"|g' index.html)",
       "Bash(sed -i 's|href=\"appointment-types\\\\.html\"|href=\"Pages/appointment-types.html\"|g' index.html)",
       "Bash(gh auth:*)",
-      "Bash(gh repo:*)"
+      "Bash(gh repo:*)",
+      "Bash(gh api:*)",
+      "Bash(python3 -)"
     ]
   }
 }

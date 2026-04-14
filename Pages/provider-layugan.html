@@ -19,17 +19,40 @@
     #nav-logo-oval{border:none!important;box-shadow:0 8px 48px 6px rgba(13,43,87,0.75)!important;}
     .nav-btn{color:#0d2b57!important;}
     .nav-btn:hover{background:rgba(13,43,87,0.07)!important;border-color:rgba(13,43,87,0.15)!important;color:#1b4a8c!important;}
+    #nav-hamburger { display: none; }
+    #nav-mobile-menu { display: none; }
+    #nav-mobile-menu a { display: block; padding: 12px 16px; font-family: 'Outfit', sans-serif; font-size: 1rem; font-weight: 500; color: #0d2b57; text-decoration: none; border-radius: 8px; transition: background 0.15s; }
+    #nav-mobile-menu a:hover { background: rgba(13,43,87,0.07); }
+    @media (max-width: 768px) {
+      #navbar-top-nav { display: none !important; }
+      #nav-hamburger { display: flex !important; }
+      #nav-float-pill { display: none !important; }
+      #navbar-inner { padding: 0 16px !important; }
+      #nav-logo { margin-bottom: -48px !important; }
+      #nav-logo-oval { width: 160px !important; height: 76px !important; }
+      #nav-logo-oval img { height: 66px !important; }
+      .provider-hero-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+      .provider-hero-grid > div:first-child { max-width: 280px; margin: 0 auto; }
+      .provider-main-grid { grid-template-columns: 1fr !important; gap: 24px !important; padding: 36px 16px 60px !important; }
+      .info-row { flex-wrap: wrap; gap: 6px; }
+      .info-label { min-width: unset !important; width: 100%; }
+    }
   </style>
 </head>
 <body>
-<header id="navbar"><div id="navbar-inner"><a href="../index.html" id="nav-logo" style="text-decoration:none;flex-shrink:0;"><div id="nav-logo-oval"><img src="../Images/logo.jpeg" alt="OneStop Medical Services" /></div></a><nav id="navbar-top-nav"><a href="../index.html" class="nav-btn">Home</a><a href="office-policy.html" class="nav-btn">Office Policy</a><a href="services.html" class="nav-btn">Services</a><a href="immigration.html" class="nav-btn">Immigration</a><a href="resources.html" class="nav-btn">Resources</a><a href="appointment-types.html" class="nav-btn">Appointment Types</a><a href="faqs.html" class="nav-btn">FAQs</a></nav></div></header>
+<header id="navbar"><div id="navbar-inner"><a href="../index.html" id="nav-logo" style="text-decoration:none;flex-shrink:0;"><div id="nav-logo-oval"><img src="../Images/logo.jpeg" alt="OneStop Medical Services" /></div></a><nav id="navbar-top-nav"><a href="../index.html" class="nav-btn">Home</a><a href="office-policy.html" class="nav-btn">Office Policy</a><a href="services.html" class="nav-btn">Services</a><a href="immigration.html" class="nav-btn">Immigration</a><a href="resources.html" class="nav-btn">Resources</a><a href="appointment-types.html" class="nav-btn">Appointment Types</a><a href="faqs.html" class="nav-btn">FAQs</a></nav>
+    <button id="nav-hamburger" aria-label="Menu" style="display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;"><span style="display:block;width:22px;height:2px;background:#0d2b57;border-radius:2px;"></span><span style="display:block;width:22px;height:2px;background:#0d2b57;border-radius:2px;"></span><span style="display:block;width:22px;height:2px;background:#0d2b57;border-radius:2px;"></span></button>
+</div></header>
+<div id="nav-mobile-menu" style="display:none;position:fixed;top:64px;left:0;right:0;background:#fff;border-bottom:1px solid rgba(13,43,87,0.10);box-shadow:0 8px 24px rgba(13,43,87,0.12);z-index:39;padding:12px 16px;flex-direction:column;gap:4px;"><a href="../index.html">Home</a><a href="office-policy.html">Office Policy</a><a href="services.html">Services</a><a href="immigration.html">Immigration</a><a href="resources.html">Resources</a><a href="appointment-types.html">Appointment Types</a><a href="faqs.html">FAQs</a></div>
 <div id="nav-float-pill" role="navigation"><a href="../index.html" class="float-btn">Home</a><a href="office-policy.html" class="float-btn">Office Policy</a><a href="services.html" class="float-btn">Services</a><a href="immigration.html" class="float-btn">Immigration</a><a href="resources.html" class="float-btn">Resources</a><a href="appointment-types.html" class="float-btn">Appointment Types</a><a href="faqs.html" class="float-btn">FAQs</a></div>
-<script>window.addEventListener('scroll',()=>{document.body.classList.toggle('nav-scrolled',window.scrollY>60);},{passive:true});</script>
+<script>window.addEventListener('scroll',()=>{document.body.classList.toggle('nav-scrolled',window.scrollY>60);},{passive:true});
+const hamburger=document.getElementById('nav-hamburger'),mobileMenu=document.getElementById('nav-mobile-menu');
+if(hamburger&&mobileMenu){hamburger.addEventListener('click',()=>{const open=mobileMenu.style.display==='flex';mobileMenu.style.display=open?'none':'flex';});document.addEventListener('click',(e)=>{if(!hamburger.contains(e.target)&&!mobileMenu.contains(e.target))mobileMenu.style.display='none';});}</script>
 
 <div style="background:#02100d;padding:72px 24px 0;position:relative;overflow:hidden;">
   <canvas id="hero-canvas" data-bg1="0.02,0.16,0.12" data-bg2="0.02,0.36,0.24" data-lc="0.25,1.0,0.60" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;display:block;"></canvas>
   <div style="position:absolute;top:-80px;right:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(16,185,129,0.20) 0%,transparent 70%);border-radius:50%;pointer-events:none;"></div>
-  <div style="max-width:1000px;margin:0 auto;position:relative;z-index:1;display:grid;grid-template-columns:320px 1fr;gap:48px;align-items:flex-end;">
+  <div class="provider-hero-grid" style="max-width:1000px;margin:0 auto;position:relative;z-index:1;display:grid;grid-template-columns:320px 1fr;gap:48px;align-items:flex-end;">
     <div style="border-radius:20px 20px 0 0;overflow:hidden;box-shadow:0 -4px 32px rgba(0,0,0,0.25);align-self:flex-end;"><img src="../Images/provider-layugan.jpg" alt="Xan Layugan, NP" style="width:100%;height:auto;display:block;" /></div>
     <div style="padding-bottom:40px;">
       <div style="display:inline-block;background:rgba(16,185,129,0.20);border:1px solid rgba(16,185,129,0.45);border-radius:100px;padding:4px 14px;font-family:'Outfit',sans-serif;font-size:0.775rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:#6ee7b7;margin-bottom:14px;">Nurse Practitioner</div>
@@ -43,7 +66,7 @@
   </div>
 </div>
 
-<main style="max-width:1000px;margin:0 auto;padding:48px 24px 80px;display:grid;grid-template-columns:1fr 300px;gap:40px;align-items:start;">
+<main class="provider-main-grid" style="max-width:1000px;margin:0 auto;padding:48px 24px 80px;display:grid;grid-template-columns:1fr 300px;gap:40px;align-items:start;">
   <div>
     <section style="background:#fff;border-radius:16px;border:1px solid rgba(59,130,204,0.16);box-shadow:0 2px 8px rgba(27,74,140,0.07),0 8px 28px rgba(27,74,140,0.08);padding:32px 36px;margin-bottom:24px;">
       <h2 style="font-size:1.25rem;font-weight:800;color:#0d2b57;margin-bottom:16px;letter-spacing:-0.015em;">About</h2>
